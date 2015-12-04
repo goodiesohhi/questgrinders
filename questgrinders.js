@@ -281,12 +281,14 @@ Meteor.methods({
       
       
   },
-  click: function () {
 
-   
- Meteor.users.update({_id: this.userId}, {$inc: {'money': 25  }});
 
-  },
+
+click: function () {    
+  var power = Meteor.user().power;
+  Meteor.users.update({_id: this.userId}, {$inc: {'money': power  }});
+},
+  
 
 
 });
