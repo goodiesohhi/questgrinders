@@ -173,7 +173,11 @@ Template.cheat.user = function () {
       Meteor.call('buy', event.target.id); 
     }
   });
-
+ Template.store.events({
+    'click input.power': function (event) {
+      Meteor.call('power', event.target.id); 
+    }
+  });
 
 
 
@@ -244,6 +248,7 @@ if (Meteor.isServer) {
     user.spy = 200;
     user.adv = 10; 
     user.power = 25;
+    user.pcost = 1000000;
     return user;
   })
 
@@ -282,6 +287,12 @@ Meteor.methods({
       
   },
 
+  power: function(amount) {
+    if(Meteor.user().money >= amount && amount > 0)
+      Meteor.users.update({_id: this.userId}, {$inc: {'power': 5,'pcost': 1000000 ,'money': (0-amount), }}); 
+      
+      
+  },
 
 
 click: function () {    
