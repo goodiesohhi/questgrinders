@@ -237,12 +237,13 @@ if (Meteor.isServer) {
   Accounts.onCreateUser(function(options, user) {
  
 
-    user.cheat = "This player is Awesome!"
+    user.cheat = "(Member)"
     user.cost = 1000;
     user.money = 0;
     user.rate = 0;
     user.spy = 200;
-    user.adv = 10;
+    user.adv = 10; 
+    user.power = 25;
     return user;
   })
 
@@ -283,7 +284,7 @@ Meteor.methods({
   click: function () {
 
    
- Meteor.users.update({_id: this.userId}, {$inc: {'money':25}});
+ Meteor.users.update({_id: this.userId}, {$inc: {'money': 25  }});
 
   },
 
