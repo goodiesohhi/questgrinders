@@ -29,8 +29,8 @@ Router.route('/lore', function () {
   this.render('lore');
 });
 
-Router.route('/adventure', function () {
-  this.render('adventure');
+Router.route('/stats', function () {
+  this.render('stats');
 });
 
 Router.route('/help', function () {
@@ -180,6 +180,36 @@ Template.cheat.user = function () {
   });
 
 
+ Template.stats.players = function () {
+    return Meteor.users.find({}, {sort: {'money': -1}});
+  };
+  Template.stats.items = function () {
+    return Items;
+  }
+  Template.stats.user = function () {
+    return Meteor.user();
+  }
+
+  
+
+
+   Template.stats.events({
+    'click input.code': function () {
+      Meteor.call('click');
+    }
+  });
+
+  Template.stats.events({
+    'click input.buy': function (event) {
+      Meteor.call('buy', event.target.id); 
+    }
+  });
+ Template.stats.events({
+    'click input.power': function (event) {
+      Meteor.call('power', event.target.id); 
+    }
+  });
+
 
 
 
@@ -323,8 +353,8 @@ Router.route('/lore', function () {
   this.render('lore');
 });
 
-Router.route('/adventure', function () {
-  this.render('adventure');
+Router.route('/stats', function () {
+  this.render('stats');
 });
 
 Router.route('/help', function () {

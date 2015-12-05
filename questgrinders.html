@@ -229,7 +229,7 @@ LOGIN and CLICK THE LOGO TO PLAY<br>
 {{> loginButtons}}
 </div><br>
 <a href="/base">Your Base</a><br>
-<a href="/adventure">Go adventure!</a><br>
+<a href="/stats">Stats</a><br>
 <a href="/moon">Observe The Moon</a><br>
 <a href="/store">Store</a><br>
 <a href="/leaderboard">The Leaderboards</a><br>
@@ -366,4 +366,17 @@ CLICK TO CHEAT!
 
 <template name="chat2">
  <iframe src="http://quest-grinders.wikia.com/wiki/Special:Chat"></iframe> 
+</template>
+
+<template name="stats">
+
+{{>dash}}
+<p align="center">
+({{user.username}})
+</p>
+<p align="center">
+GOLD = {{formatCurrency user.money}} <br><br>
+Heroes = {{formatCurrency user.rate}} <br><br>
+Power = {{formatCurrency user.power}} <br><br>
+</p>
 </template>
