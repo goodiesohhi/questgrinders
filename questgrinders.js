@@ -279,10 +279,12 @@ Meteor.methods({
   },      
 
    
-
+   
    buy: function(amount) {
+     var hero = Meteor.user().rate;
+     var cost = hero * 100;
     if(Meteor.user().money >= amount && amount > 0)
-      Meteor.users.update({_id: this.userId}, {$inc: {'rate': 1,'cost': 500 ,'money': (0-amount), }}); 
+      Meteor.users.update({_id: this.userId}, {$inc: {'rate': 1,'cost': cost ,'money': (0-amount), }}); 
       
       
   },
