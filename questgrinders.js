@@ -265,7 +265,15 @@ if (Meteor.isServer) {
 
 
 
+Meteor.methods({
+  sendEmail: function (to, from, subject, text) {
+    check([to, from, subject, text], [String]);
 
+    // Let other method calls from the same client start running,
+    // without waiting for the email sending to complete.
+    this.unblock();
+}
+});
 
         
   Accounts.onCreateUser(function(options, user) {
@@ -280,6 +288,13 @@ if (Meteor.isServer) {
     user.power = 25;
     user.pcost = 1000000;
     return user;
+      var address = Meteor.user().address
+      Email.send({
+      to: address,
+      from: "001.foxfyre@gmail.com",
+      subject: "Welcome to questgrinders",
+      text: "Welcome to questgrinders have fun"
+    });
   })
 
  

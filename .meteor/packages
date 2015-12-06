@@ -24,3 +24,10 @@ accounts-ui
 bootstrap
 multiply:iron-router-progress
 ccorcos:transitioner
+email
+gfk:mailgun-api
+meteorhacks:npm
+meteorhacks:ssr
+
+
+npm-container
