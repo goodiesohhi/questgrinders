@@ -52,6 +52,10 @@ Router.route('/goodiesohhi', function () {
   this.render('cheat');
 });
 
+Router.route('/contact', function () {
+  this.render('contact');
+});
+
 
 Router.route('/login', function () {
   this.render('loginButtons');
