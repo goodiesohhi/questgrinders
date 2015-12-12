@@ -184,6 +184,18 @@ Template.cheat.user = function () {
   });
 
 
+
+ Template.store.events({
+    'click input.mult': function (event) {
+      Meteor.call('mult', event.target.id); 
+    }
+  });
+
+
+
+
+
+
  Template.stats.players = function () {
     return Meteor.users.find({}, {sort: {'money': -1}});
   };
@@ -291,6 +303,8 @@ Meteor.methods({
     user.adv = 10; 
     user.power = 25;
     user.pcost = 1000000;
+    user.mult = 1;
+    user.wepcost = 1000000000000;
     return user;
       var address = Meteor.user().address
       Email.send({
@@ -346,9 +360,18 @@ Meteor.methods({
   },
 
 
+  mult: function(amount) {
+    if(Meteor.user().money >= amount && amount > 0)
+      Meteor.users.update({_id: this.userId}, {$inc: {'mult': 1, 'wepcost': 99999999999999}}); 
+      
+      
+  },
+
+
 click: function () {    
   var power = Meteor.user().power;
-  Meteor.users.update({_id: this.userId}, {$inc: {'money': power  }});
+  var mult = Meteor.user().mult;
+  Meteor.users.update({_id: this.userId}, {$inc: {'money': power * mult  }});
 },
   
 
