@@ -311,14 +311,9 @@ Meteor.methods({
     user.mult = 1;
     user.wepcost = 1000000000000;
     return user;
-      var address = Meteor.user().address
-      Email.send({
-      to: address,
-      from: "001.foxfyre@gmail.com",
-      subject: "Welcome to questgrinders",
-      text: "Welcome to questgrinders have fun"
-    });
-  })
+      
+    
+  });
 
  
   Meteor.publish("userData", function () {
@@ -367,7 +362,7 @@ Meteor.methods({
 
   mult: function(amount) {
     if(Meteor.user().money >= amount && amount > 0)
-      Meteor.users.update({_id: this.userId}, {$inc: {'mult': 1, 'wepcost': 99999999999999}}); 
+      Meteor.users.update({_id: this.userId}, {$inc: {'mult': 1, 'wepcost': 100000000000 , 'money': (0-amount), }}); 
       
       
   },
