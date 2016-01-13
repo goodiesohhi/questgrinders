@@ -10,6 +10,9 @@ Items = [{name: "Hero"}];
 if (Meteor.isClient) {
 
 
+Router.route('/minigames', function () {
+  this.render('minigames');
+});
 
 Router.route('/map', function () {
   this.render('map');
