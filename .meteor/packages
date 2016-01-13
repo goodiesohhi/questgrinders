@@ -17,17 +17,7 @@ es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 insecure                # Allow all DB writes from clients (for prototyping)
-iron:router
-rate-limit
-accounts-password
-accounts-ui
+accounts-ui-unstyled
 bootstrap
-multiply:iron-router-progress
-ccorcos:transitioner
-email
-gfk:mailgun-api
-meteorhacks:npm
-meteorhacks:ssr
-
-
-npm-container
+iron:router
+accounts-password
