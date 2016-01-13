@@ -229,11 +229,12 @@ LOGIN and CLICK THE LOGO TO PLAY<br>
 {{> loginButtons}}
 </div><br>
 <a href="/base">Your Base</a><br>
-<a href="/stats">Stats</a><br>
-<a href="/moon">Observe The Moon</a><br>
-<a href="/store">Store</a><br>
+
+<a href="/map">Map</a><br>
 <a href="/leaderboard">The Leaderboards</a><br>
-<a href="http://gq.thecomicseries.com/">Story</a><br><a href="http://quest-grinders.wikia.com/wiki/">Official Wiki</a><br>
+<a href="/stats">Your Stats</a><br>
+
+<a href="http://quest-grinders.wikia.com/wiki/">Official Wiki</a><br>
 <a href="/help">Help!</a><br>
 <a href="/contact">Contact</a><br>
 <br>
@@ -376,5 +377,21 @@ CLICK TO CHEAT!
 GOLD = {{formatCurrency user.money}} <br><br>
 Heroes = {{formatCurrency user.rate}} <br><br>
 Power = {{formatCurrency user.power}} <br><br>
+</p>
+</template>
+
+<template name="map">
+
+{{>dash}}
+<p align="center">
+<img id="map" src="map.png" border="0" width="700" height="640" orgWidth="700" orgHeight="640" usemap="#image-maps-2016-01-13-172911" alt="" />
+<map name="image-maps-2016-01-13-172911" id="ImageMapsCom-image-maps-2016-01-13-172911">
+<area  alt="" title="MiniGames" href="http://questgrinders.herokuapp.com/minigames" shape="rect" coords="58,8,226,187" style="outline:none;" target="_self"     />
+<area shape="rect" coords="698,638,700,640" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" />
+<area  alt="" title="" href="http://questgrinders.herokuapp.com/moon" shape="poly" coords="468,124,471,75,511,33,551,32,592,36,604,61,615,106,621,124,623,142,682,158,663,176,420,171,419,154,450,143,464,135,474,140" style="outline:none;" target="_self"     />
+<area  alt="" title="" href="http://gq.thecomicseries.com/" shape="poly" coords="65,437,103,440,103,398,109,370,151,367,182,377,184,393,188,414,196,459,190,494,188,521,167,550,74,563,45,536,52,455" style="outline:none;" target="_self"     />
+<area  alt="" title="" href="http://questgrinders.herokuapp.com/store" shape="poly" coords="480,350,559,299,652,328,659,473,634,509,488,512,477,510" style="outline:none;" target="_self"     />
+</map>
+
 </p>
 </template>

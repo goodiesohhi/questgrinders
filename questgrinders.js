@@ -11,7 +11,9 @@ if (Meteor.isClient) {
 
 
 
-
+Router.route('/map', function () {
+  this.render('map');
+});
 
 Router.route('/leaderboard', function () {
   this.render('leaderboards');
