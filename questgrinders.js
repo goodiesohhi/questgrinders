@@ -105,6 +105,20 @@ if (Meteor.isClient) {
 
 
 
+    Template.player.players = function() {
+      return Meteor.users.find({}, {
+        sort: {
+          'rate': -1
+        }
+      });
+    };
+    Template.player.items = function() {
+      return Items;
+    }
+    Template.player.user = function() {
+      return Meteor.user();
+    }
+
 
 
 
@@ -183,7 +197,7 @@ if (Meteor.isClient) {
     return Meteor.user();
   }
 
-  Template.player.user = function() {
+  Template.store.user = function() {
     return Meteor.user();
   }
 
