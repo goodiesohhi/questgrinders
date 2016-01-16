@@ -183,7 +183,9 @@ if (Meteor.isClient) {
     return Meteor.user();
   }
 
-
+  Template.player.user = function() {
+    return Meteor.user();
+  }
 
 
   Template.store.events({

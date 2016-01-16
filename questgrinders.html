@@ -102,7 +102,7 @@
     <h5 align="center">
   <table class="leaderboard table">
     <thead>
-      <th>Username</th><th>Heroes</th><th>Gold</th>
+      <th>Username</th><th>View stats</th>
     </thead>
 
     <tbody>
@@ -119,12 +119,28 @@
 
 <template name="player">
 
+
   <tr class="player">
-    <td class="name">{{username}} {{cheat}}</td>
+    <td class="name">{{username}} {{cheat}} </td>
+<td class = "View stats">
+    <div class="btn-group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <span class="caret"></span>
+       </button>
+          <ul class="dropdown-menu" role="menu">
+            <li>GOLD = {{formatCurrency user.money}}</li>
 
-    <td class="rate">{{formatCurrency rate}} Heroes</td>
+           <li>Heroes = {{formatCurrency user.rate}}</li>
 
-    <td class="money">{{formatCurrency money}} Gold</td>
+        <li>Click Power = {{formatCurrency user.power}}</li>
+        <li>Click Multiplier = {{formatCurrency user.mult}}</li>
+        <li>Hero Multiplier = {{formatCurrency user.heropower}}</li>
+      </ul>
+    </div>
+    </td>
+
+
+  
 
 
   </tr>
@@ -438,16 +454,27 @@ LOGIN and CLICK THE LOGO TO PLAY<br>
   {{>dash}}
   <p align="center">
     ({{user.username}})
+    <div class="btn-group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <span class="caret"></span>
+       </button>
+          <ul class="dropdown-menu" role="menu">
+            <li>GOLD = {{formatCurrency user.money}}</li>
+
+           <li>Heroes = {{formatCurrency user.rate}}</li>
+
+        <li>Click Power = {{formatCurrency user.power}}</li>
+        <li>Click Multiplier = {{formatCurrency user.mult}}</li>
+        <li>Hero Multiplier = {{formatCurrency user.heropower}}</li>
+      </ul>
+    </div>
+
   </p>
-  <p align="center">
-    GOLD = {{formatCurrency user.money}}
-    <br>
-    <br> Heroes = {{formatCurrency user.rate}}
-    <br>
-    <br> Power = {{formatCurrency user.power}}
-    <br>
-    <br>
-  </p>
+
+
+
+
+
 </template>
 
 <template name="map">
