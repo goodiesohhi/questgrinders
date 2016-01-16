@@ -1,82 +1,90 @@
-
 <head>
 
-<script type="text/javascript">
-sa_client = "a5f28655bdde04439f8524d0ecfb37cf";
-sa_code = "5c85acdc25cfc89626fcfba0b24dc134";
-sa_protocol = ("https:"==document.location.protocol)?"https":"http";
-sa_pline = "0";
-sa_maxads = "2";
-sa_bgcolor = "DDDDFF";
-sa_bordercolor = "9999BB";
-sa_superbordercolor = "9999BB";
-sa_linkcolor = "000000";
-sa_desccolor = "000000";
-sa_urlcolor = "008000";
-sa_b = "1";
-sa_format = "banner_468x60";
-sa_width = "468";
-sa_height = "60";
-sa_location = "0";
-sa_radius = "0";
-sa_borderwidth = "1";
-sa_font = "0";
-document.write(unescape("%3cscript type='text/javascript' src='"+sa_protocol+"://sa.entireweb.com/sense.js'%3e%3c/script%3e"));
-</script>
+  <script type="text/javascript">
+    sa_client = "a5f28655bdde04439f8524d0ecfb37cf";
+    sa_code = "5c85acdc25cfc89626fcfba0b24dc134";
+    sa_protocol = ("https:" == document.location.protocol) ? "https" : "http";
+    sa_pline = "0";
+    sa_maxads = "2";
+    sa_bgcolor = "DDDDFF";
+    sa_bordercolor = "9999BB";
+    sa_superbordercolor = "9999BB";
+    sa_linkcolor = "000000";
+    sa_desccolor = "000000";
+    sa_urlcolor = "008000";
+    sa_b = "1";
+    sa_format = "banner_468x60";
+    sa_width = "468";
+    sa_height = "60";
+    sa_location = "0";
+    sa_radius = "0";
+    sa_borderwidth = "1";
+    sa_font = "0";
+    document.write(unescape("%3cscript type='text/javascript' src='" + sa_protocol + "://sa.entireweb.com/sense.js'%3e%3c/script%3e"));
+  </script>
 
 
-<link rel="icon" sizes="16x16 32x32" href="/favicon.ico">
+  <link rel="icon" sizes="16x16 32x32" href="/favicon.ico">
 
-<style>
-#wrap { width: 600px; height: 390px; padding: 0; overflow: hidden; }
-#frame { width: 800px; height: 520px; border: 1px solid black; }
-#frame { zoom: 0.10; -moz-transform: scale(0.75); -moz-transform-origin: 0 0; }
-</style>
+  <style>
+    #wrap {
+      width: 600px;
+      height: 390px;
+      padding: 0;
+      overflow: hidden;
+    }
 
-<script type="text/javascript">
-function showSpoiler(obj)
-    {
-    var inner = obj.parentNode.getElementsByTagName("div")[0];
-    if (inner.style.display == "none")
+    #frame {
+      width: 800px;
+      height: 520px;
+      border: 1px solid black;
+    }
+
+    #frame {
+      zoom: 0.10;
+      -moz-transform: scale(0.75);
+      -moz-transform-origin: 0 0;
+    }
+  </style>
+
+  <script type="text/javascript">
+    function showSpoiler(obj) {
+      var inner = obj.parentNode.getElementsByTagName("div")[0];
+      if (inner.style.display == "none")
         inner.style.display = "";
-    else
+      else
         inner.style.display = "none";
     }
-    </script>
- 
+  </script>
+
   <title>QuestGrinders</title>
 
 
-  
+
 </head>
 
 <body>
 
-<p2 align="right">
-	
-	<embed 
-	src="/main.wav"
-	width="1"
-	height="1"
-	loop="true"
-	autostart="true" />
+  <p2 align="right">
 
-<script language="JavaScript" type="text/javascript" src="https://www.rumbletalk.com/client/?D_*:DYv6"></script>
+    <embed src="/main.wav" width="1" height="1" loop="true" autostart="true" />
 
-{{>logo}}
+    <script language="JavaScript" type="text/javascript" src="https://www.rumbletalk.com/client/?D_*:DYv6"></script>
 
-</p2>
+    {{>logo}}
 
-<br>
+  </p2>
+
+  <br>
 
 
-<p align="center">  </p>
+  <p align="center"> </p>
 
-<p align="center">    
+  <p align="center">
 
 
 
-</p>
+  </p>
 
 
 
@@ -89,9 +97,9 @@ function showSpoiler(obj)
 
 <template name="leaderboards">
 
-<div class="leader">
+  <div class="leader">
 
-<h5 align="center">
+    <h5 align="center">
   <table class="leaderboard table">
     <thead>
       <th>Username</th><th>Heroes</th><th>Gold</th>
@@ -104,57 +112,71 @@ function showSpoiler(obj)
     </tbody>
   </table>
 </h5>
-</div>
+  </div>
 
- </template>
+</template>
 
 
 <template name="player">
- 
+
   <tr class="player">
     <td class="name">{{username}} {{cheat}}</td>
-    
+
     <td class="rate">{{formatCurrency rate}} Heroes</td>
-    
+
     <td class="money">{{formatCurrency money}} Gold</td>
-    
+
 
   </tr>
- 
+
 </template>
 
 <template name="chat">
-<div class="right-panel">
-<style>
-#wrapper { width: 400px; height: 600px; padding: 10; overflow: hidden; }
-#scaled-frame { width: 400px; height: 600px; border: 0px; }
-#scaled-frame {
-    zoom: 1111;
-    -moz-transform: scale(0.71);
-    -moz-transform-origin: 0 0;
-    -o-transform: scale(0.71);
-    -o-transform-origin: 0 0;
-    -webkit-transform: scale(0.71);
-    -webkit-transform-origin: 0 0;
-}
+  <div class="right-panel">
+    <style>
+      #wrapper {
+        width: 400px;
+        height: 600px;
+        padding: 10;
+        overflow: hidden;
+      }
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
- #scaled-frame  { zoom: 1;  }
-}
+      #scaled-frame {
+        width: 400px;
+        height: 600px;
+        border: 0px;
+      }
 
-</style>
+      #scaled-frame {
+        zoom: 1111;
+        -moz-transform: scale(0.71);
+        -moz-transform-origin: 0 0;
+        -o-transform: scale(0.71);
+        -o-transform-origin: 0 0;
+        -webkit-transform: scale(0.71);
+        -webkit-transform-origin: 0 0;
+      }
+
+      @media screen and (-webkit-min-device-pixel-ratio:0) {
+        #scaled-frame {
+          zoom: 1;
+        }
+      }
+    </style>
 
 
 
-<div id="wrapper">
-<!-- Begin ParaChat Basic v9 Code -->
-<iframe id="scaled-frame" src='http://quest-grinders.wikia.com/wiki/Special:Chat' style="border-style:ridge;border-width:1px;border-color:#eeeeee #eeeeee;" framespacing='0' frameborder='0' scrolling='yes' width='500' height='200'>
-<p>You do not have iframes enabled. <a href="http://www.parachat.com/iframe.html">More Info</a></p></iframe><a href="http://www.parachat.com"><img src="http://www.parachat.com/images/basic.png" border="0"></a>
+    <div id="wrapper">
+      <!-- Begin ParaChat Basic v9 Code -->
+      <iframe id="scaled-frame" src='http://quest-grinders.wikia.com/wiki/Special:Chat' style="border-style:ridge;border-width:1px;border-color:#eeeeee #eeeeee;" framespacing='0' frameborder='0' scrolling='yes' width='500' height='200'>
+        <p>You do not have iframes enabled. <a href="http://www.parachat.com/iframe.html">More Info</a></p>
+      </iframe>
+      <a href="http://www.parachat.com"><img src="http://www.parachat.com/images/basic.png" border="0"></a>
 
-<!-- End ParaChat Basic v9 Code -->
+      <!-- End ParaChat Basic v9 Code -->
 
-</div>
-</div>
+    </div>
+  </div>
 </template>
 
 
@@ -163,55 +185,56 @@ function showSpoiler(obj)
 
 
 <template name="RESET">
-<p5>
-THERE WILL ALSO BE A RESET...
-<br>
-<br>
-<br>
-<br>?
-PLAY THIS GAME WHILE YOU ARE WAITING: goodiesohhi.minitroopers.com
-</p5>
+  <p5>
+    THERE WILL ALSO BE A RESET...
+    <br>
+    <br>
+    <br>
+    <br>? PLAY THIS GAME WHILE YOU ARE WAITING: goodiesohhi.minitroopers.com
+  </p5>
 
 </template>
 
 
 <template name="UPDATE">
-<p5>
-AN UPDATE IS COMING... GAME DISABLED..
-</p5>
+  <p5>
+    AN UPDATE IS COMING... GAME DISABLED..
+  </p5>
 
 </template>
 
 
 <template name="leaderboard">
-{{>dash}}
+  {{>dash}}
 
- <p align="center">  
-You ({{user.username}}) have {{formatCurrency user.money}} gold and have {{formatCurrency user.rate}} Heroes <br><br>
-
-Visit the shop to buy heroes!<br><br>
-Click the do a quest button to earn money.<br>
-<br>
-
-
-
-  <div class="details">
-    <input type="image" src= "/quest.gif" class="code btn span4" value="Do a quest" />
-    
-  </div>
-</p>
-<p align="right">
-
-</p>
+  <p align="center">
+    You ({{user.username}}) have {{formatCurrency user.money}} gold and have {{formatCurrency user.rate}} Heroes
+    <br>
+    <br> Visit the shop to buy heroes!
+    <br>
+    <br> Click the do a quest button to earn money.
+    <br>
+    <br>
 
 
 
-  
-</template>    
-      
+    <div class="details">
+      <input type="image" src="/quest.gif" class="code btn span4" value="Do a quest" />
+
+    </div>
+  </p>
+  <p align="right">
+
+  </p>
+
+
+
+
+</template>
+
 
 <template name="start">
-<h2 align="center">
+  <h2 align="center">
 WHAT IS THIS??<br>
 This is the lovechild of KoL and Cookie Clicker... Complete with junk art..<br>
 LOGIN and CLICK THE LOGO TO PLAY<br>
@@ -222,8 +245,8 @@ LOGIN and CLICK THE LOGO TO PLAY<br>
 </template>
 
 <template name="dash">
-<div class="left-panel">
-<h3 align="center">
+  <div class="left-panel">
+    <h3 align="center">
 <div class="login" align="center">
 
 {{> loginButtons}}
@@ -239,40 +262,47 @@ LOGIN and CLICK THE LOGO TO PLAY<br>
 <a href="/contact">Contact</a><br>
 <br>
 </h3>
-</div>
+  </div>
 </template>
 
 <template name="help">
-<p align="center">
-Do quests to earn money and use that to hire heroes who will help you earn even more money.
-Adventuring, pvp, bossfights and more will be added.
-</p>
+  <p align="center">
+    Do quests to earn money and use that to hire heroes who will help you earn even more money. Adventuring, pvp, bossfights and more will be added.
+  </p>
 </template>
 
 <template name="contact">
 
-{{>dash}} <p align = "center">
-YOU MAY SEND YOUR COMPLAINTS HERE: <br> <br> <br>
-<a href="https://plus.google.com/communities/115745964315664722173">GPLUS</a></p> <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Email: 001.foxfyre@gmail.com <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If I find that you are spamming us.. I will find you and bad stuff will happen.
+  {{>dash}}
+  <p align="center">
+    YOU MAY SEND YOUR COMPLAINTS HERE:
+    <br>
+    <br>
+    <br>
+    <a href="https://plus.google.com/communities/115745964315664722173">GPLUS</a></p>
+  <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  Email: 001.foxfyre@gmail.com
+  <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If
+  I find that you are spamming us.. I will find you and bad stuff will happen.
 
 
 </template>
 
-<template name= "logo">
-<p align="center">
-<a href="/base"><img src="/logo.png"></a> 
-</p>
+<template name="logo">
+  <p align="center">
+    <a href="/base"><img src="/logo.png"></a>
+  </p>
 </template>
 
 <template name="moon">
-{{>dash}}
-<div class="moon">
-<P6 align="center">
-The moon is deactivated.. Has been for a long time.. You hope it doesn't turn on again
-<a href="/lore"><img src="/moon2.gif"></a>
-</p6>
-</div>
- 
+  {{>dash}}
+  <div class="moon">
+    <P6 align="center">
+      The moon is deactivated.. Has been for a long time.. You hope it doesn't turn on again
+      <a href="/lore"><img src="/moon2.gif"></a>
+    </p6>
+  </div>
+
 </template>
 
 
@@ -280,128 +310,168 @@ The moon is deactivated.. Has been for a long time.. You hope it doesn't turn on
 
 
 <template name="lore">
-{{>dash}}
-<div class="moon">
-<p align="center">        
-<a href="http://gq.thecomicseries.com/"><img src="/lore1.gif"></a>
-</p>
-</div>
- 
+  {{>dash}}
+  <div class="moon">
+    <p align="center">
+      <a href="http://gq.thecomicseries.com/"><img src="/lore1.gif"></a>
+    </p>
+  </div>
+
 </template>
 
 <template name="store">
-{{>dash}}
+  {{>dash}}
 
-<p align="center">        
-<a href="/jack"><img src="/shack.png"></a>
+  <p align="center">
+    <a href="/jack"><img src="/shack.png"></a>
 
- {{#each items}}
-    <input type="image" src= "/hero.png" class="buy btn span4" id="{{user.cost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" />
- <input type="image" src= "/power.png" class="power btn span4" id="{{user.pcost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" /> <input type="image" src= "/mult.png" class="mult btn span4" id="{{user.wepcost}}" value="Ultima Weapon" />{{/each}}
 
-<br> You have {{formatCurrency user.money}} gold and {{formatCurrency user.rate}} heroes<br>
-The current hero hire cost is {{formatCurrency user.cost}}.
-<br>
-The current power up cost is {{formatCurrency user.pcost}}
 
-.</p>
- 
+  <div class="btn-group">
+
+
+
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <span class="caret"></span>
+       </button>
+       <ul class="dropdown-menu" role="menu">
+          <li> <input type="image" src="/hero.png" class="buy btn span2" id="{{user.cost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" /> </li>
+    <li><input type="image" src="/power.png" class="power btn span2" id="{{user.pcost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" /></li>
+    <li><input type="image" src="/mult.png" class="mult btn span2" id="{{user.wepcost}}" value="Ultima Weapon" /> </li>
+    <li><input type="image" src="/hpower.png" class="hpowerup btn span2" id="{{user.hpowercost}}" value="Hero Power" /> </li>
+    </ul>
+  </div>
+
+
+
+
+    <div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+     </button>
+        <ul class="dropdown-menu" role="menu">
+    <li>   You have {{formatCurrency user.money}} gold and {{formatCurrency user.rate}} heroes  </li>
+      <li> The current hero hire cost is {{formatCurrency user.cost}}.  </li>
+      <li> The current Power-Aga (Click Power Up) cost is {{formatCurrency user.pcost}} .  </li>
+      <li> The current Click Multiplier (Ultima Weapon) cost is {{formatCurrency user.wepcost}} .  </li>
+      <li> The current Hero Power Up (Multiplier) (Gun) cost is {{formatCurrency user.hpowercost}} .  </li>
+         </ul>
+  </div>
+
+</p>
+
+
 </template>
 
+
+
+
+
+
+
+
+
+
+
+
+
 <template name="jack">
-{{>dash}}
-<p align="center">
-<img src="/jack.png">
- 
-</p>
+  {{>dash}}
+  <p align="center">
+    <img src="/jack.png">
+
+  </p>
 
 </template>
 
 <template name="ads">
-<div class="ads">
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- QG -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:300px;height:600px"
-     data-ad-client="ca-pub-5252557572574596"
-     data-ad-slot="5982713267"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-</div>
+  <div class="ads">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- QG -->
+    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-5252557572574596" data-ad-slot="5982713267"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
 </template>
 
 
 <template name="adventure">
-{{>dash}}
-<p align="center">
-YOU HAVE {{formatCurrency user.adv}} ADVENTURES LEFT.<br>
+  {{>dash}}
+  <p align="center">
+    YOU HAVE {{formatCurrency user.adv}} ADVENTURES LEFT.
+    <br>
 
-<input type="image" src= "/adventure.png" class="adv btn span4" value="GO ADVENTURE!" />
+    <input type="image" src="/adventure.png" class="adv btn span4" value="GO ADVENTURE!" />
 
-</p>
+  </p>
 
 </template>
 
 <template name="adv">
 
-<p align="center">
+  <p align="center">
 
-TEST
+    TEST
 
 
 
-</p>
+  </p>
 
 </template>
 
 <template name="cheat">
-{{>dash}}
-<p>
-CLICK TO CHEAT!
-</p>
-<input type="image" src= "/goodiesohhi.png" class="cheat btn span4" value="GO ADVENTURE!" />
+  {{>dash}}
+  <p>
+    CLICK TO CHEAT!
+  </p>
+  <input type="image" src="/goodiesohhi.png" class="cheat btn span4" value="GO ADVENTURE!" />
 </template>
 
 <template name="chat2">
- <iframe src="http://quest-grinders.wikia.com/wiki/Special:Chat"></iframe> 
+  <iframe src="http://quest-grinders.wikia.com/wiki/Special:Chat"></iframe>
 </template>
 
 <template name="stats">
 
-{{>dash}}
-<p align="center">
-({{user.username}})
-</p>
-<p align="center">
-GOLD = {{formatCurrency user.money}} <br><br>
-Heroes = {{formatCurrency user.rate}} <br><br>
-Power = {{formatCurrency user.power}} <br><br>
-</p>
+
+  {{>dash}}
+  <p align="center">
+    ({{user.username}})
+  </p>
+  <p align="center">
+    GOLD = {{formatCurrency user.money}}
+    <br>
+    <br> Heroes = {{formatCurrency user.rate}}
+    <br>
+    <br> Power = {{formatCurrency user.power}}
+    <br>
+    <br>
+  </p>
 </template>
 
 <template name="map">
 
-{{>dash}}
-<p align="center">
-<img id="map" src="map.png" border="0" width="700" height="640" orgWidth="700" orgHeight="640" usemap="#image-maps-2016-01-13-172911" alt="" />
-<map name="image-maps-2016-01-13-172911" id="ImageMapsCom-image-maps-2016-01-13-172911">
-<area  alt="" title="MiniGames" href="http://questgrinders.herokuapp.com/minigames" shape="rect" coords="58,8,226,187" style="outline:none;" target="_self"     />
-<area shape="rect" coords="698,638,700,640" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" />
-<area  alt="" title="" href="http://questgrinders.herokuapp.com/moon" shape="poly" coords="468,124,471,75,511,33,551,32,592,36,604,61,615,106,621,124,623,142,682,158,663,176,420,171,419,154,450,143,464,135,474,140" style="outline:none;" target="_self"     />
-<area  alt="" title="" href="http://gq.thecomicseries.com/" shape="poly" coords="65,437,103,440,103,398,109,370,151,367,182,377,184,393,188,414,196,459,190,494,188,521,167,550,74,563,45,536,52,455" style="outline:none;" target="_self"     />
-<area  alt="" title="" href="http://questgrinders.herokuapp.com/store" shape="poly" coords="480,350,559,299,652,328,659,473,634,509,488,512,477,510" style="outline:none;" target="_self"     />
-</map>
-</p>
+  {{>dash}}
+  <p align="center">
+    <img id="map" src="map.png" border="0" width="700" height="640" orgWidth="700" orgHeight="640" usemap="#image-maps-2016-01-13-172911" alt="" />
+    <map name="image-maps-2016-01-13-172911" id="ImageMapsCom-image-maps-2016-01-13-172911">
+      <area alt="" title="MiniGames" href="http://questgrinders.herokuapp.com/minigames" shape="rect" coords="58,8,226,187" style="outline:none;" target="_self" />
+      <area shape="rect" coords="698,638,700,640" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" />
+      <area alt="" title="" href="http://questgrinders.herokuapp.com/moon" shape="poly" coords="468,124,471,75,511,33,551,32,592,36,604,61,615,106,621,124,623,142,682,158,663,176,420,171,419,154,450,143,464,135,474,140" style="outline:none;" target="_self"
+      />
+      <area alt="" title="" href="http://gq.thecomicseries.com/" shape="poly" coords="65,437,103,440,103,398,109,370,151,367,182,377,184,393,188,414,196,459,190,494,188,521,167,550,74,563,45,536,52,455" style="outline:none;" target="_self" />
+      <area alt="" title="" href="http://questgrinders.herokuapp.com/store" shape="poly" coords="480,350,559,299,652,328,659,473,634,509,488,512,477,510" style="outline:none;" target="_self" />
+    </map>
+  </p>
 </template>
 
 <template name="minigames">
 
-{{>dash}}
-<p align="center">
+  {{>dash}}
+  <p align="center">
 
-<a href="/index.html">The Useless Game</a>
+    <a href="/index.html">The Useless Game</a>
 
-</p>
+  </p>
 </template>
-

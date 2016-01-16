@@ -1,145 +1,95 @@
 /* CSS declarations go here */
 
-
 a {
-    color: purple;
+  color: purple;
 }
-
 body {
-    
-    background-image:url("/background.png");
+  background-image: url("/background.png");
 }
-
-
-
-
 body {
-    color: red;
+  color: red;
 }
-
 H2 {
-    color: blue;
+  color: blue;
 }
-
 P3 {
-    color: red;
+  color: red;
 }
-
 P4 {
-    color: black;
+  color: black;
 }
-
-html { overflow: scroll; }
-
+html {
+  overflow: scroll;
+}
 P5 {
-    color: black;
-    font-size: 200%;
+  color: black;
+  font-size: 200%;
 }
-
 H3 {
-    width: 250px;
-    background-image: url("border.png");
-    background-size: 250px 440px;
-    font-size: 100%;
-   
+  width: 250px;
+  background-image: url("border.png");
+  background-size: 250px 440px;
+  font-size: 100%;
 }
-
-
 H5 {
-    
-    font-size: 100%;
-    color: black;
-  }
-
+  font-size: 100%;
+  color: black;
+}
 P {
-    color: blue;
-    font-size: 50%;
+  color: blue;
+  font-size: 50%;
 }
-
 P6 {
-    color: white;
-    background-color: black;
+  color: white;
+  background-color: black;
 }
-
-
 p {
-    font-size: 200%;
+  font-size: 200%;
 }
-
 p3 {
-    font-size: 300%;
+  font-size: 300%;
 }
-
 P2 {
-    font-size: 300%;
+  font-size: 300%;
 }
-
 p {
-    font-family: "Times New Roman", Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
-
 p2 {
-    font-family: "Times New Roman", Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
-
 p2 {
-    colour: black;
+  colour: black;
 }
-
 H2 {
-    font-size: 100%;
+  font-size: 100%;
 }
-
-
-.left-panel
-    {        
-        
-        width: 150px;
-        height:100px;
-        float:left;            
-    }
-.right-panel
-    
-    {        
-       
-        float:right;    
-    }
-
-
-.leader
-    
-    {        
-        
-        font-size: 100%;   
-        float:center;
- background-image:url("/border2.png");   }
-
-
-.chat
-   {
-
-    padding: 10; 
-
-   }
-.ads
-  {
-        float:right;
-  }
-
-
-
-.login
-  {
-        width: 250px;
-    
-  }
-
-
-.moon
-    {        
-        background-color:black;
-        float:right;            
-    }
-
-
-.stats {  background-image:url("/background.png")}
+.left-panel {
+  width: 150px;
+  height: 100px;
+  float: left;
+}
+.right-panel {
+  float: right;
+}
+.leader {
+  font-size: 100%;
+  float: center;
+  background-image: url("/border2.png");
+}
+.chat {
+  padding: 10;
+}
+.ads {
+  float: right;
+}
+.login {
+  width: 250px;
+}
+.moon {
+  background-color: black;
+  float: right;
+}
+.stats {
+  background-image: url("/background.png")
+}
