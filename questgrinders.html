@@ -275,6 +275,7 @@ LOGIN and CLICK THE LOGO TO PLAY<br>
 <a href="http://quest-grinders.wikia.com/wiki/">Official Wiki</a><br>
 <a href="/help">Help!</a><br>
 <a href="/contact">Contact</a><br>
+<a href="http://foxfyre.boards.net/">Official Forum</a><br>
 <br>
 </h3>
   </div>
@@ -350,28 +351,22 @@ LOGIN and CLICK THE LOGO TO PLAY<br>
       <span class="caret"></span>
        </button>
        <ul class="dropdown-menu" role="menu">
-          <li> <input type="image" src="/hero.png" class="buy btn span2" id="{{user.cost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" /> </li>
-    <li><input type="image" src="/power.png" class="power btn span2" id="{{user.pcost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" /></li>
-    <li><input type="image" src="/mult.png" class="mult btn span2" id="{{user.wepcost}}" value="Ultima Weapon" /> </li>
-    <li><input type="image" src="/hpower.png" class="hpowerup btn span2" id="{{user.hpowercost}}" value="Hero Power" /> </li>
+           <li>   You have g{{formatCurrency user.money}} </li>
+          <li> <input type="image" src="/hero.png" class="buy btn span2" id="{{user.cost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" /> Price: g{{formatCurrency user.cost}}</li>
+    <li><input type="image" src="/power.png" class="power btn span2" id="{{user.pcost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" /> Price: g{{formatCurrency user.pcost}}</li>
+    <li><input type="image" src="/mult.png" class="mult btn span2" id="{{user.wepcost}}" value="Ultima Weapon" /> Price: g{{formatCurrency user.wepcost}} </li>
+    <li><input type="image" src="/hpower.png" class="hpowerup btn span2" id="{{user.hpowercost}}" value="Hero Power" /> Price: g{{formatCurrency user.hpowercost}} </li>
     </ul>
   </div>
 
 
 
 
-    <div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-    <span class="caret"></span>
-     </button>
-        <ul class="dropdown-menu" role="menu">
-    <li>   You have {{formatCurrency user.money}} gold and {{formatCurrency user.rate}} heroes  </li>
-      <li> The current hero hire cost is {{formatCurrency user.cost}}.  </li>
-      <li> The current Power-Aga (Click Power Up) cost is {{formatCurrency user.pcost}} .  </li>
-      <li> The current Click Multiplier (Ultima Weapon) cost is {{formatCurrency user.wepcost}} .  </li>
-      <li> The current Hero Power Up (Multiplier) (Gun) cost is {{formatCurrency user.hpowercost}} .  </li>
-         </ul>
-  </div>
+
+
+
+
+
 
 </p>
 
