@@ -285,9 +285,15 @@
 </template>
 
 <template name="help">
+
+  {{>dash}}
   <p align="center">
     Help Pages:
-    <div class="btn-group">
+    </p>
+      <p align="center">
+
+        <div class="helpbutton">
+  <div class="btn-group">
 
     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
       <span class="caret"></span>
@@ -297,10 +303,14 @@
 
         <li><a href="/infopages"> Info Pages</a></li>
         <li><a href="http://quest-grinders.wikia.com/wiki/"> Wiki </a></li>
+        <li><a href="http://foxfyre.boards.net"> Forums </a></li>
 
       </ul>
+
     </div>
-  </p>
+  </div>
+    </p>
+
 </template>
 
 <template name="contact">
@@ -375,6 +385,20 @@
     <li><input type="image" src="/power.png" class="power btn span2" id="{{user.pcost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" /> Price: g{{formatCurrency user.pcost}}</li>
     <li><input type="image" src="/mult.png" class="mult btn span2" id="{{user.wepcost}}" value="Ultima Weapon" /> Price: g{{formatCurrency user.wepcost}} </li>
     <li><input type="image" src="/hpower.png" class="hpowerup btn span2" id="{{user.hpowercost}}" value="Hero Power" /> Price: g{{formatCurrency user.hpowercost}} </li>
+    </ul>
+  </div>
+
+  <div class="btn-group">
+
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+     </button>
+        <ul class="dropdown-menu" role="menu">
+
+
+      <li><a href="/infopages"> WHAT THESE ITEMS DO.</a></li>
+
+
     </ul>
   </div>
 
@@ -520,40 +544,88 @@
 <template name="info">
 
   {{>dash}}
+  <div class="info">
   <p align="center">
-<br>
-    Jack's Shack:
-
-    <div class="btn-group">
-      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-        <span class="caret"></span>
-         </button>
-            <ul class="dropdown-menu" role="menu">
-              Way out in extradimensional space.... Jack's Shack contains everything you need to quest!
-            </ul>
-          </div> <br>
+    INFO <br>
+  </p>
 
 
-      Hero:
-          <div class="btn-group">
+
+
+
+
+      Hero <div class="btn-group">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
               <span class="caret"></span>
                </button>
                   <ul class="dropdown-menu" role="menu">
-                  Generates Gold... Will work for gold.... SO HIRE HIM! (BTW... DON'T TELL HIM THAT HE MAKES MORE THAN HE IS BOUGHT FOR...)
+                  Generates Gold... Will work for gold.... SO HIRE HIM! (BTW... DON'T TELL HIM THAT HE CAN MAKE MONEY WITHOUT YOU... Even though it's true..)
                   </ul>
-                </div> <br>
+                </div> <br><br>
+
+                Jack <div class="btn-group">
+                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                         </button>
+                            <ul class="dropdown-menu" role="menu">
+                              A very powerful and mysterious being... You've known him for years... Owns QuestCo.
+                            </ul>
+                          </div>
+                          <br>
+<br>
+
+
+            Jack's Shack  <div class="btn-group">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                     </button>
+                        <ul class="dropdown-menu" role="menu">
+                          Way out in extradimensional space.... Jack's Quest Shack is a branch of QuestCo. that contains everything you need to quest!
+                        </ul>
+                      </div>
+                      <br><br>
+
+
+                      PowerAga  <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                              <span class="caret"></span>
+                               </button>
+                                  <ul class="dropdown-menu" role="menu">
+                                    Makes you feel way stronger (ADDS 5 to click power every purchase)... Made by QuestCo. Don't question it.
+                                  </ul>
+                                </div>
+                                <br><br>
+
+                                Ultima Weapon  <div class="btn-group">
+                                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                        <span class="caret"></span>
+                                         </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                            SUPER EXPENSIVE.. (ADDS TO YOUR CLICKING POWER MULTIPLIER)
+                                            </ul>
+                                          </div>
+                                          <br><br>
+
+
+                                          Gun  <div class="btn-group">
+                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                  <span class="caret"></span>
+                                                   </button>
+                                                      <ul class="dropdown-menu" role="menu">
+                                                      STANDARD QuestCo. questing rifle. Buying this will add 1 to the hero's multiplier.
+                                                      </ul>
+                                                    </div>
+                                                    <br><br>
 
 
 
 
 
-
-
-  </p>
+</div>
 </template>
 
 <template name="needlogin">
+
   {{> dash}}
   <div class="needlogin">
   <p align="center">

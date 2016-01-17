@@ -103,6 +103,19 @@ background-color: white;
   margin-left: 260px;
 }
 
+.info {
+  background-color: black;
+  float: center;
+  margin-left: 260px;
+}
+
+.helpbutton {
+
+
+  margin-left: 720px;
+}
+
+
 .needlogin {
   background-color: black;
 
