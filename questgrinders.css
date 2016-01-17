@@ -1,4 +1,7 @@
 /* CSS declarations go here */
+moon {
+  background-image: url("/border.png");
+}
 
 a {
   color: purple;
@@ -30,6 +33,13 @@ H3 {
   background-image: url("border.png");
   background-size: 250px 440px;
   font-size: 100%;
+}
+
+
+btn-group {
+  font-size: 100%;
+  color: black;
+  background-color: white;
 }
 H5 {
   font-size: 100%;
@@ -72,23 +82,30 @@ H2 {
 .right-panel {
   float: right;
 }
+
 .leader {
-  font-size: 100%;
-  float: center;
-  background-image: url("/border2.png");
+margin-left: 260px;
+background-color: white;
 }
+
 .chat {
   padding: 10;
 }
 .ads {
-  float: right;
+  float: none;
 }
 .login {
   width: 250px;
 }
 .moon {
   background-color: black;
-  float: right;
+  float: center;
+  margin-left: 260px;
+}
+
+.needlogin {
+  background-color: black;
+
 }
 .stats {
   background-image: url("/background.png")

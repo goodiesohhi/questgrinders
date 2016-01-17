@@ -21,3 +21,4 @@ accounts-ui-unstyled
 bootstrap
 iron:router
 accounts-password
+meteorhacks:fast-render

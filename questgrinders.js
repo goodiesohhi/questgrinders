@@ -8,6 +8,21 @@ Items = [{
 
 if (Meteor.isClient) {
 
+  Router.onBeforeAction(function() {
+      if (!Meteor.user() && this.ready())
+          return this.redirect('/needlogin');
+      else { this.next() }
+  }, {except: ['needlogin']});
+
+
+  Router.route('/infopages', function() {
+    this.render('info');
+  });
+
+  Router.route('/needlogin', function() {
+    this.render('needlogin');
+  });
+
 
   Router.route('/minigames', function() {
     this.render('minigames');
@@ -102,8 +117,41 @@ if (Meteor.isClient) {
   });
 
 
+  Template.moon.rendered = function(){
+    if (!this.rendered){
+      $('body').css('background-image','url(/moonback.png)');
+      this.rendered = true;
+    }
+  };
 
 
+  Template.needlogin.rendered = function(){
+    if (!this.rendered){
+      $('body').css('background-image','url(/moonback.png)');
+      this.rendered = true;
+    }
+  };
+
+  Template.store.rendered = function(){
+    if (!this.rendered){
+      $('body').css('background-image','url(/store.png)');
+      this.rendered = true;
+    }
+  };
+
+  Template.leaderboards.rendered = function(){
+    if (!this.rendered){
+      $('body').css('background-image','url(/scroll.png)');
+      this.rendered = true;
+    }
+  };
+
+  Template.leaderboard.rendered = function(){
+    if (!this.rendered){
+      $('body').css('background-image','url(/background.png)');
+      this.rendered = true;
+    }
+  };
 
     Template.player.players = function() {
       return Meteor.users.find({}, {

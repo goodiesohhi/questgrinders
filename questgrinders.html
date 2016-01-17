@@ -97,6 +97,8 @@
 
 <template name="leaderboards">
 
+{{>dash}}
+
   <div class="leader">
 
     <h5 align="center">
@@ -220,6 +222,9 @@
 
 
 <template name="leaderboard">
+
+
+
   {{>dash}}
 
   <p align="center">
@@ -249,14 +254,12 @@
 
 
 <template name="start">
-  <h2 align="center">
-WHAT IS THIS??<br>
-This is the lovechild of KoL and Cookie Clicker... Complete with junk art..<br>
-LOGIN and CLICK THE LOGO TO PLAY<br>
-<div class="login">
-{{> loginButtons}}<br>
-</div>
-</h2>
+
+{{#if currentUser}}
+  {{> leaderboard}}
+  {{else}}
+  {{> needlogin}}
+  {{/if}}
 </template>
 
 <template name="dash">
@@ -283,7 +286,20 @@ LOGIN and CLICK THE LOGO TO PLAY<br>
 
 <template name="help">
   <p align="center">
-    Do quests to earn money and use that to hire heroes who will help you earn even more money. Adventuring, pvp, bossfights and more will be added.
+    Help Pages:
+    <div class="btn-group">
+
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <span class="caret"></span>
+       </button>
+          <ul class="dropdown-menu" role="menu">
+
+
+        <li><a href="/infopages"> Info Pages</a></li>
+        <li><a href="http://quest-grinders.wikia.com/wiki/"> Wiki </a></li>
+
+      </ul>
+    </div>
   </p>
 </template>
 
@@ -313,9 +329,10 @@ LOGIN and CLICK THE LOGO TO PLAY<br>
 <template name="moon">
   {{>dash}}
   <div class="moon">
-    <P6 align="center">
+    <P6 align="rightmargin">
+
+      <a href="/lore"><img src="/moon2.gif"></a><br>
       The moon is deactivated.. Has been for a long time.. You hope it doesn't turn on again
-      <a href="/lore"><img src="/moon2.gif"></a>
     </p6>
   </div>
 
@@ -337,6 +354,8 @@ LOGIN and CLICK THE LOGO TO PLAY<br>
 
 <template name="store">
   {{>dash}}
+
+
 
   <p align="center">
     <a href="/jack"><img src="/shack.png"></a>
@@ -495,4 +514,60 @@ LOGIN and CLICK THE LOGO TO PLAY<br>
     <a href="/index.html">The Useless Game</a>
 
   </p>
+</template>
+
+
+<template name="info">
+
+  {{>dash}}
+  <p align="center">
+<br>
+    Jack's Shack:
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+         </button>
+            <ul class="dropdown-menu" role="menu">
+              Way out in extradimensional space.... Jack's Shack contains everything you need to quest!
+            </ul>
+          </div> <br>
+
+
+      Hero:
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+               </button>
+                  <ul class="dropdown-menu" role="menu">
+                  Generates Gold... Will work for gold.... SO HIRE HIM! (BTW... DON'T TELL HIM THAT HE MAKES MORE THAN HE IS BOUGHT FOR...)
+                  </ul>
+                </div> <br>
+
+
+
+
+
+
+
+  </p>
+</template>
+
+<template name="needlogin">
+  {{> dash}}
+  <div class="needlogin">
+  <p align="center">
+    YOU NEED TO LOGIN ON THE RIGHT TO PLAY... (DUH.)
+  </p>
+</div>
+
+</template>
+
+
+<template name="login">
+    <form>
+        <input type="email" name="loginEmail">
+        <input type="password" name="loginPassword">
+        <input type="submit" value="Login">
+    </form>
 </template>
