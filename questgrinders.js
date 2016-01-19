@@ -15,6 +15,19 @@ if (Meteor.isClient) {
   }, {except: ['needlogin']});
 
 
+  Router.route('/city', function() {
+    this.render('city');
+  });
+
+  Router.route('/lib', function() {
+    this.render('lib');
+  });
+
+
+  Router.route('/construction', function() {
+    this.render('construct');
+  });
+
   Router.route('/infopages', function() {
     this.render('info');
   });
@@ -492,7 +505,7 @@ Meteor.methods({
       }, {
         $inc: {
           'mult': 1,
-          'wepcost': 100000000000,
+          'wepcost': 1000000000000,
           'money': (0 - amount),
         }
       });
@@ -508,7 +521,7 @@ Meteor.methods({
       }, {
         $inc: {
           'heropower': 1,
-          'hpowercost': 100000000000,
+          'hpowercost': 1000000000000,
           'money': (0 - amount),
         }
       });
