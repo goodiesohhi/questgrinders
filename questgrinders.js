@@ -6,13 +6,16 @@ Items = [{
 
 
 
+
+
+
 if (Meteor.isClient) {
 
   Router.onBeforeAction(function() {
       if (!Meteor.user() && this.ready())
           return this.redirect('/needlogin');
       else { this.next() }
-  }, {except: ['needlogin']});
+  }, {except: ['needlogin','leaderboard','contact','help','infopages']});
 
 
   Router.route('/city', function() {

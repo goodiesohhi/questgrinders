@@ -1,61 +1,11 @@
 <head>
 
-  <script type="text/javascript">
-    sa_client = "a5f28655bdde04439f8524d0ecfb37cf";
-    sa_code = "5c85acdc25cfc89626fcfba0b24dc134";
-    sa_protocol = ("https:" == document.location.protocol) ? "https" : "http";
-    sa_pline = "0";
-    sa_maxads = "2";
-    sa_bgcolor = "DDDDFF";
-    sa_bordercolor = "9999BB";
-    sa_superbordercolor = "9999BB";
-    sa_linkcolor = "000000";
-    sa_desccolor = "000000";
-    sa_urlcolor = "008000";
-    sa_b = "1";
-    sa_format = "banner_468x60";
-    sa_width = "468";
-    sa_height = "60";
-    sa_location = "0";
-    sa_radius = "0";
-    sa_borderwidth = "1";
-    sa_font = "0";
-    document.write(unescape("%3cscript type='text/javascript' src='" + sa_protocol + "://sa.entireweb.com/sense.js'%3e%3c/script%3e"));
-  </script>
+
 
 
   <link rel="icon" sizes="16x16 32x32" href="/favicon.ico">
 
-  <style>
-    #wrap {
-      width: 600px;
-      height: 390px;
-      padding: 0;
-      overflow: hidden;
-    }
 
-    #frame {
-      width: 800px;
-      height: 520px;
-      border: 1px solid black;
-    }
-
-    #frame {
-      zoom: 0.10;
-      -moz-transform: scale(0.75);
-      -moz-transform-origin: 0 0;
-    }
-  </style>
-
-  <script type="text/javascript">
-    function showSpoiler(obj) {
-      var inner = obj.parentNode.getElementsByTagName("div")[0];
-      if (inner.style.display == "none")
-        inner.style.display = "";
-      else
-        inner.style.display = "none";
-    }
-  </script>
 
   <title>QuestGrinders</title>
 
@@ -67,24 +17,15 @@
 
   <p2 align="right">
 
-    <embed src="/main.wav" width="1" height="1" loop="true" autostart="true" />
 
-    <script language="JavaScript" type="text/javascript" src="https://www.rumbletalk.com/client/?D_*:DYv6"></script>
+
 
     {{>logo}}
 
   </p2>
 
-  <br>
 
 
-  <p align="center"> </p>
-
-  <p align="center">
-
-
-
-  </p>
 
 
 
@@ -364,29 +305,33 @@
 
 <template name="store">
   {{>dash}}
-
+<div class="white">
 
 
   <p align="center">
     <a href="/jack"><img src="/shack.png"></a>
 
+    You have g{{formatCurrency user.money}} <br>
 
-
+<div class="white">      <div class="text"> Hero Hire Price: g{{formatCurrency user.cost}} <input type="image" src="/hero.png" class="buy btn span2" id="{{user.cost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" />
   <div class="btn-group">
 
 
 
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
       <span class="caret"></span>
        </button>
        <ul class="dropdown-menu" role="menu">
-           <li>   You have g{{formatCurrency user.money}} </li>
-          <li> <input type="image" src="/hero.png" class="buy btn span2" id="{{user.cost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" /> Price: g{{formatCurrency user.cost}}</li>
+
+
     <li><input type="image" src="/power.png" class="power btn span2" id="{{user.pcost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" /> Price: g{{formatCurrency user.pcost}}</li>
     <li><input type="image" src="/mult.png" class="mult btn span2" id="{{user.wepcost}}" value="Ultima Weapon" /> Price: g{{formatCurrency user.wepcost}} </li>
     <li><input type="image" src="/hpower.png" class="hpowerup btn span2" id="{{user.hpowercost}}" value="Hero Power" /> Price: g{{formatCurrency user.hpowercost}} </li>
     </ul>
   </div>
+
+
 
   <div class="btn-group">
 
@@ -401,6 +346,14 @@
 
     </ul>
   </div>
+</div>
+
+
+</div>
+
+
+
+
 
 
 
@@ -412,6 +365,8 @@
 
 
 </p>
+
+</div>
 
 
 </template>
@@ -437,16 +392,6 @@
 
 </template>
 
-<template name="ads">
-  <div class="ads">
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- QG -->
-    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-5252557572574596" data-ad-slot="5982713267"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
-</template>
 
 
 <template name="adventure">

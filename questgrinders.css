@@ -103,6 +103,17 @@ background-color: white;
   margin-left: 260px;
 }
 
+
+.white {
+  background-color: white;
+  padding: 70;
+
+}
+
+.text {
+    font-size: 50%;
+}
+
 .info {
   background-color: black;
   float: center;
