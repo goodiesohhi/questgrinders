@@ -114,6 +114,10 @@ background-color: white;
     font-size: 50%;
 }
 
+.donate {
+  padding: 500;
+}
+
 .info {
   background-color: black;
   float: center;
