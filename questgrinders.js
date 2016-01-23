@@ -449,7 +449,7 @@ if (Meteor.isServer) {
         }, {
           $inc: {
             'money': user.rate*user.heropower,
-            'exp': user.rate*0.01
+            'exp': user.rate/100
           }
 
 
