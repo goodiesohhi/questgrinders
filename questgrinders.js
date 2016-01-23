@@ -215,6 +215,17 @@ if (Meteor.isClient) {
     });
   };
 
+  Template.status.events({
+    'submit' : function(event) {
+        event.preventDefault(); //prevent page refresh
+        var statusvar = document.getElementById("status").value;
+        alert("Submitted!");
+        Meteor.call('submitme', statusvar);
+    }
+});
+
+
+
   Template.adventure.events({
     'click input.adventure': function() {
       Meteor.call('adventure');
@@ -265,9 +276,6 @@ if (Meteor.isClient) {
     return Meteor.user();
   }
 
-  Template.store.user = function() {
-    return Meteor.user();
-  }
 
 
   Template.profile.user = function() {
@@ -392,6 +400,9 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
 
+
+
+
   Meteor.publish("userProfile",function(username){
       // simulate network latency by sleeping 2s
       Meteor._sleepForMs(2000);
@@ -464,15 +475,9 @@ if (Meteor.isServer) {
 
 
 
-  Meteor.methods({
-    sendEmail: function(to, from, subject, text) {
-      check([to, from, subject, text], [String]);
 
-      // Let other method calls from the same client start running,
-      // without waiting for the email sending to complete.
-      this.unblock();
-    }
-  });
+
+
 
 
   Accounts.onCreateUser(function(options, user) {
@@ -509,6 +514,23 @@ if (Meteor.isServer) {
 
 
 Meteor.methods({
+
+
+
+
+
+
+
+  submitme: function(statusvar) {
+    Meteor.users.update({
+        _id: this.userId
+    }, {
+        $set: {
+            'status': statusvar
+        }
+    });
+},
+
 
 
 

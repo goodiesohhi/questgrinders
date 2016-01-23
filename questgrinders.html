@@ -670,7 +670,9 @@
 <template name="profile">
   <p align="center">
     Username: {{username}} {{cheat}} <br><br>
-    exp: {{exp}}
+    Current Status: {{status}}
+    {{>status}}<br><br>
+    Exp: {{exp}} <br><br>
 
     GOLD = {{formatCurrency money}} <br><br>
 
@@ -679,6 +681,15 @@
    Click Multiplier = {{formatCurrency user.mult}}<br><br>
    Hero Multiplier = {{formatCurrency user.heropower}}<br><br>
 </p>
+
+</template>
+
+
+<template name="status">
+  <form id="status">
+       <input id="status" type="text" name="status"/>
+       <input type="submit" id="submit"/>
+     </form>
 
 </template>
 
