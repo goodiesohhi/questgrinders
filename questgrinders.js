@@ -5,17 +5,21 @@ Items = [{
 
 
 
-
-
-
-
 if (Meteor.isClient) {
+
+
 
   Router.onBeforeAction(function() {
       if (!Meteor.user() && this.ready())
           return this.redirect('/needlogin');
       else { this.next() }
   }, {except: ['needlogin','leaderboard','contact','help','infopages']});
+
+
+
+
+
+
 
 
   Router.route('/city', function() {
@@ -266,6 +270,11 @@ if (Meteor.isClient) {
   }
 
 
+  Template.profile.user = function() {
+    return Meteor.user();
+  }
+
+
   Template.store.events({
     'click input.code': function() {
       Meteor.call('click');
@@ -382,6 +391,53 @@ if (Meteor.isClient) {
 
 
 if (Meteor.isServer) {
+
+  Meteor.publish("userProfile",function(username){
+      // simulate network latency by sleeping 2s
+      Meteor._sleepForMs(2000);
+      // try to find the user by username
+      var user=Meteor.users.findOne({
+          username:username
+      });
+      // if we can't find it, mark the subscription as ready and quit
+      if(!user){
+          this.ready();
+          return;
+      }
+      // if the user we want to display the profile is the currently logged in user...
+      if(this.userId==user._id){
+          // then we return the corresponding full document via a cursor
+          return Meteor.users.find(this.userId);
+      }
+      else{
+          // if we are viewing only the public part, strip the "profile"
+          // property from the fetched document, you might want to
+          // set only a nested property of the profile as private
+          // instead of the whole property
+          return Meteor.users.find(user._id,{
+              fields:{
+                  "profile":0
+              }
+          });
+      }
+  });
+
+
+
+
+
+  ProfileController=RouteController.extend({
+      template:"profile",
+      waitOn:function(){
+          return Meteor.subscribe("userProfile",this.params.username);
+      },
+      data:function(){
+          var username=Router.current().params.username;
+          return Meteor.users.findOne({
+              username:username
+          });
+      }
+  });
   Meteor.startup(function() {
 
 
@@ -392,13 +448,19 @@ if (Meteor.isServer) {
           _id: user._id
         }, {
           $inc: {
-            'money': user.rate*user.heropower
+            'money': user.rate*user.heropower,
+            'exp': user.rate*0.01
           }
+
+
+
         })
       });
     }, 3000)
 
   });
+
+
 
 
 

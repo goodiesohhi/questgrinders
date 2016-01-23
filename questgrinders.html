@@ -47,7 +47,7 @@
     <h5 align="center">
   <table class="leaderboard table">
     <thead>
-      <th>Username</th><th>View stats</th>
+      <th>Username</th> <th>Exp</th><th>View stats</th> <th>View Profile</th>
     </thead>
 
     <tbody>
@@ -83,6 +83,15 @@
       </ul>
     </div>
     </td>
+<td class="View profile">
+
+  <a href="/profile/{{username}}">Profile</a>
+
+  </td>
+
+  <td class="Exp">
+    {{exp}}
+  </td>
 
 
 
@@ -638,6 +647,38 @@
 </p>
 
 
+
+
+
+
+</template>
+
+<template name="dataNotFound">
+  <p align="center">
+
+  <a href="/leaderboard"><img src="/usernotfound.png"></a>
+</p>
+
+</template>
+
+<template name="loading">
+  <p align="center">
+    LOADING.....
+  </p>
+</template>
+
+<template name="profile">
+  <p align="center">
+    Username: {{username}} {{cheat}} <br><br>
+    exp: {{exp}}
+
+    GOLD = {{formatCurrency money}} <br><br>
+
+   Heroes = {{formatCurrency rate}} <br><br>
+   Click Power = {{formatCurrency user.power}}<br><br>
+   Click Multiplier = {{formatCurrency user.mult}}<br><br>
+   Hero Multiplier = {{formatCurrency user.heropower}}<br><br>
+</p>
 
 </template>
 

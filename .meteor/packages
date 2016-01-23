@@ -22,3 +22,5 @@ bootstrap
 iron:router
 accounts-password
 meteorhacks:fast-render
+infinitedg:gsap
+mrt:gsap

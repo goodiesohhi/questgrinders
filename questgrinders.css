@@ -103,6 +103,13 @@ background-color: white;
   margin-left: 260px;
 }
 
+.dataNotFound {
+
+  float: center;
+  margin-left: 360px;
+}
+
+
 
 .white {
   background-color: white;
