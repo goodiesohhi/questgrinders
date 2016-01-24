@@ -679,10 +679,24 @@
 </template>
 
 <template name="profile">
+
   {{>dash}}
+
   <p align="center">
+      <div class="status">
+        <br>
     Username: {{username}} {{cheat}} <br><br>
-    Current Status: {{status}}<br><br>
+</div>
+  <div class="status">
+    <br>
+
+        Current Status: <br><br>
+        <div class="status">
+          <div class="text">
+            {{status}}
+          </div>
+        </div>
+    <br><br>
 
     Exp: {{exp}} <br><br>
 
@@ -692,15 +706,30 @@
    Click Power = {{formatCurrency power}}<br><br>
    Click Multiplier = {{formatCurrency mult}}<br><br>
    Hero Multiplier = {{formatCurrency heropower}}<br><br>
+   </div>
 </p>
+
 
 </template>
 <template name="myProfile">
   {{>dash}}
 
   <p align="center">
+        <div class="status">
+          <br>
     Username: {{user.username}} {{user.cheat}} <br><br>
-    Current Status: {{user.status}}<br><br>
+    </div>
+
+    <div class="status">
+
+<br>
+    Current Status: <br> <br>
+    <div class="status">
+      <div class="text">
+        {{user.status}}
+      </div>
+    </div>
+<br><br>
 Update status below: <br><br>
     {{>status}}<br><br>
 
@@ -712,6 +741,7 @@ Update status below: <br><br>
    Click Power = {{formatCurrency user.power}}<br><br>
    Click Multiplier = {{formatCurrency user.mult}}<br><br>
    Hero Multiplier = {{formatCurrency user.heropower}}<br><br>
+   </div>
 </p>
 
 
