@@ -61,7 +61,11 @@
 
 </template>
 
-
+<template name="statusshow">
+  <div class="status2">
+  {{status}}
+</div>
+</template>
 <template name="player">
 
 
@@ -72,10 +76,15 @@
       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
         <span class="caret"></span>
          </button>
-         <ul class="dropdown-menu" role="menu">
-           <li>{{username}} says: {{status}}</li>
-         </ul>
+
+         <div class="dropdown-menu" role="menu">
+
+          {{username}} says: {{>statusshow}}
+
        </div>
+       </div>
+    
+
 
     </td>
 <td class = "View stats">

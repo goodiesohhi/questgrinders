@@ -137,6 +137,11 @@ if (Meteor.isClient) {
   Template.leaderboard.user = function() {
     return Meteor.user();
   }
+  Template.statusshow.user = function() {
+    return Meteor.user();
+  }
+
+
 
 
 
