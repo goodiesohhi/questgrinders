@@ -83,7 +83,7 @@
 
        </div>
        </div>
-    
+
 
 
     </td>
@@ -198,11 +198,12 @@
 
 
   {{>dash}}
-
+<div class="base">
   <p align="center">
-    You ({{user.username}}) have {{formatCurrency user.money}} gold and have {{formatCurrency user.rate}} Heroes
+    <br> <br>
+    You ({{user.username}}) have {{formatCurrency user.money}} gold. <br> <br> {{formatCurrency user.rate}} Heroes work for you.
     <br>
-    <br> Visit the shop to buy heroes!
+    <br> Visit the shack to hire heroes!
     <br>
     <br> Click the do a quest button to earn money.
     <br>
@@ -219,7 +220,7 @@
 
   </p>
 
-
+</div>
 
 
 </template>
@@ -289,17 +290,18 @@
 
   {{>dash}}
   <p align="center">
+    <div class="contact">
     YOU MAY SEND YOUR COMPLAINTS HERE:
     <br>
     <br>
     <br>
-    <a href="https://plus.google.com/communities/115745964315664722173">GPLUS</a></p>
-  <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://plus.google.com/communities/115745964315664722173">GPLUS</a> </div></p> <div class="contact">
+  <br>
   Email: 001.foxfyre@gmail.com
-  <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If
-  I find that you are spamming us.. I will find you and bad stuff will happen.
+  <br>
+  If I find that you are spamming us.. I will find you and bad stuff will happen.
 
-
+</div>
 </template>
 
 <template name="logo">
@@ -493,7 +495,9 @@
 <template name="map">
 
   {{>dash}}
-  <p align="center">
+
+    <div class="map2">
+        <p align="center">
 <img id="Image-Maps-Com-image-maps-2016-01-17-150751" src="/map.png" border="0" width="700" height="640" orgWidth="700" orgHeight="640" usemap="#image-maps-2016-01-17-150751" alt="" />
 <map name="image-maps-2016-01-17-150751" id="ImageMapsCom-image-maps-2016-01-17-150751">
   <area alt="" title="" href="/minigames" shape="rect" coords="70,23,221,186" style="outline:none;" target="_self" />
@@ -503,8 +507,10 @@
   <area alt="" title="" href="/moon" shape="poly" coords="426,137,468,133,475,42,568,34,610,41,614,77,608,115,608,135,670,166,656,148,661,174,648,145,650,169,431,171" style="outline:none;" target="_self" />
   <area alt="" title="" href="/store" shape="poly" coords="483,350,559,307,650,335,656,421,631,453,633,495,489,509,480,508,621,507,633,509,635,503,475,498,474,506,487,504,466,508" style="outline:none;" target="_self" />
 </map>
+</p>
+</div>
 
-  </p>
+
 </template>
 
 <template name="minigames">
@@ -522,7 +528,7 @@
 
   {{>dash}}
   <div class="info">
-  <p align="center">
+  <p align="center"> <br>
     INFO <br>
   </p>
 
@@ -694,7 +700,8 @@
   <p align="center">
       <div class="status">
         <br>
-    Username: {{username}} {{cheat}} <br><br>
+    Username: {{username}} <br><br>
+    Title: {{cheat}}  <br><br>
 </div>
   <div class="status">
     <br>
@@ -726,7 +733,8 @@
   <p align="center">
         <div class="status">
           <br>
-    Username: {{user.username}} {{user.cheat}} <br><br>
+    Username: {{user.username}} <br><br>
+      Title: {{user.cheat}}  <br><br>
     </div>
 
     <div class="status">
