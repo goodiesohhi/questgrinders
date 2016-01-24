@@ -47,7 +47,7 @@
     <h5 align="center">
   <table class="leaderboard table">
     <thead>
-      <th>Username</th> <th>View stats</th> <th>View Profile</th><th>Exp</th>
+      <th>Username</th> <th>Status</th><th>View stats</th> <th>View Profile</th><th>Exp</th>
     </thead>
 
     <tbody>
@@ -67,6 +67,17 @@
 
   <tr class="player">
     <td class="name">{{username}} {{cheat}} </td>
+    <td class="Status">
+      <div class="btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+         </button>
+         <ul class="dropdown-menu" role="menu">
+           <li>{{username}} says: {{status}}</li>
+         </ul>
+       </div>
+
+    </td>
 <td class = "View stats">
     <div class="btn-group">
     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -225,7 +236,7 @@
 
 <a href="/map">Map</a><br>
 <a href="/leaderboard">The Leaderboards</a><br>
-<a href="/stats">Your Stats</a><br>
+<a href="/myprofile">Your Profile</a><br>
 
 <a href="http://quest-grinders.wikia.com/wiki/">Official Wiki</a><br>
 <a href="/help">Help!</a><br>
@@ -668,28 +679,51 @@
 </template>
 
 <template name="profile">
+  {{>dash}}
   <p align="center">
     Username: {{username}} {{cheat}} <br><br>
-    Current Status: {{status}}
-    {{>status}}<br><br>
+    Current Status: {{status}}<br><br>
+
     Exp: {{exp}} <br><br>
 
     GOLD = {{formatCurrency money}} <br><br>
 
    Heroes = {{formatCurrency rate}} <br><br>
+   Click Power = {{formatCurrency power}}<br><br>
+   Click Multiplier = {{formatCurrency mult}}<br><br>
+   Hero Multiplier = {{formatCurrency heropower}}<br><br>
+</p>
+
+</template>
+<template name="myProfile">
+  {{>dash}}
+
+  <p align="center">
+    Username: {{user.username}} {{user.cheat}} <br><br>
+    Current Status: {{user.status}}<br><br>
+Update status below: <br><br>
+    {{>status}}<br><br>
+
+    Exp: {{user.exp}} <br><br>
+
+    GOLD = {{formatCurrency user.money}} <br><br>
+
+   Heroes = {{formatCurrency user.rate}} <br><br>
    Click Power = {{formatCurrency user.power}}<br><br>
    Click Multiplier = {{formatCurrency user.mult}}<br><br>
    Hero Multiplier = {{formatCurrency user.heropower}}<br><br>
 </p>
 
-</template>
 
+
+</template>
 
 <template name="status">
   <form id="status">
        <input id="status" type="text" name="status"/>
        <input type="submit" id="submit"/>
-     </form>
+
+</form>
 
 </template>
 

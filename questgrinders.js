@@ -18,9 +18,15 @@ if (Meteor.isClient) {
 
 
 
+  Meteor.users.deny({
+    update: function() {
+      return true;
+    }
+  });
 
-
-
+  Router.route('/myprofile', function() {
+    this.render('myProfile');
+  });
 
   Router.route('/city', function() {
     this.render('city');
@@ -120,9 +126,20 @@ if (Meteor.isClient) {
   Template.leaderboard.items = function() {
     return Items;
   }
+  Template.profile.user = function() {
+    return Meteor.user();
+  }
+
+  Template.myProfile.user = function() {
+    return Meteor.user();
+  }
+
   Template.leaderboard.user = function() {
     return Meteor.user();
   }
+
+
+
 
   Template.leaderboard.events({
     'click input.code': function() {
@@ -215,10 +232,18 @@ if (Meteor.isClient) {
     });
   };
 
+
+
   Template.status.events({
+
     'submit' : function(event) {
         event.preventDefault(); //prevent page refresh
-        var statusvar = document.getElementById("status").value;
+
+
+
+        var statusvar = event.target.status.value;
+
+
         alert("Submitted!");
         Meteor.call('submitme', statusvar);
     }
@@ -517,18 +542,29 @@ Meteor.methods({
 
 
 
-
+  submitme2: function() {
+      var statusvar = document.getElementById("status").value;
+      Meteor.call('submitme', statusvar);
+      event.preventDefault();
+    },
 
 
 
   submitme: function(statusvar) {
+
+
     Meteor.users.update({
         _id: this.userId
     }, {
+
         $set: {
             'status': statusvar
         }
+
+
     });
+
+    console.log(statusvar)
 },
 
 
