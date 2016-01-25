@@ -14,6 +14,7 @@
 </head>
 
 <body>
+  {{>dash}}
 
   <p2 align="right">
 
@@ -38,7 +39,7 @@
 
 <template name="leaderboards">
 
-{{>dash}}
+
 
   <div class="leader">
 
@@ -195,7 +196,7 @@
 
 
 
-  {{>dash}}
+
 <div class="base">
   <p align="center">
     <br> <br>
@@ -265,7 +266,7 @@
 
 <template name="help">
 
-  {{>dash}}
+
   <p align="center">
     Help Pages:
     </p>
@@ -294,7 +295,7 @@
 
 <template name="contact">
 
-  {{>dash}}
+
   <p align="center">
     <div class="contact">
     YOU MAY SEND YOUR COMPLAINTS HERE:
@@ -317,7 +318,7 @@
 </template>
 
 <template name="moon">
-  {{>dash}}
+
   <div class="moon">
     <P6 align="rightmargin">
 
@@ -333,7 +334,7 @@
 
 
 <template name="lore">
-  {{>dash}}
+
   <div class="moon">
     <p align="center">
       <a href="http://gq.thecomicseries.com/"><img src="/lore1.gif"></a>
@@ -343,7 +344,7 @@
 </template>
 
 <template name="store">
-  {{>dash}}
+
 <div class="white">
 
 
@@ -423,7 +424,7 @@
 
 
 <template name="jack">
-  {{>dash}}
+
   <p align="center">
     <img src="/jack.png">
 
@@ -434,7 +435,7 @@
 
 
 <template name="adventure">
-  {{>dash}}
+
   <p align="center">
     YOU HAVE {{formatCurrency user.adv}} ADVENTURES LEFT.
     <br>
@@ -458,7 +459,7 @@
 </template>
 
 <template name="cheat">
-  {{>dash}}
+
   <p>
     CLICK TO CHEAT!
   </p>
@@ -472,7 +473,7 @@
 <template name="stats">
 
 
-  {{>dash}}
+
   <p align="center">
     ({{user.username}})
     <div class="btn-group">
@@ -500,7 +501,7 @@
 
 <template name="map">
 
-  {{>dash}}
+
 
     <div class="map2">
         <p align="center">
@@ -521,7 +522,7 @@
 
 <template name="minigames">
 
-  {{>dash}}
+
   <p align="center">
 
     <a href="/index.html">The Useless Game</a>
@@ -532,7 +533,7 @@
 
 <template name="info">
 
-  {{>dash}}
+
   <div class="info">
   <p align="center"> <br>
     INFO <br>
@@ -615,14 +616,20 @@
 
 <template name="needlogin">
 
-  {{> dash}}
+
   <div class="needlogin">
   <p align="center">
-    YOU NEED TO LOGIN ON THE RIGHT TO PLAY... (DUH.) <br><br>
-    QuestGrinders is an online multiplayer idle game.. <br><br>Compete against other people for ranking...
-    <br>
-    <br>
-    BTW, we use the term "multiplayer" very loosely.
+    {{#if currentUser}}
+      {{> leaderboard}}
+      {{else}}
+      YOU NEED TO LOGIN ON THE RIGHT TO PLAY... (DUH.) <br><br>
+      QuestGrinders is an online multiplayer idle game.. <br><br>Compete against other people for ranking...
+      <br>
+      <br>
+      BTW, we use the term "multiplayer" very loosely.
+      {{/if}}
+
+
   </p>
 </div>
 
@@ -641,7 +648,7 @@
 
 <template name="lib">
 
-  {{>dash}}
+
   <p align="center">
 
     <img id="Image-Maps-Com-image-maps-2016-01-19-181059" src="/lib.png" border="0" width="800" height="600" orgWidth="800" orgHeight="600" usemap="#image-maps-2016-01-19-181059" alt="" />
@@ -658,7 +665,7 @@
 
 <template name="city">
 
-  {{>dash}}
+
   <p align="center">
 
     <img id="Image-Maps-Com-image-maps-2016-01-19-181453" src="/city.png" border="0" width="800" height="600" orgWidth="800" orgHeight="600" usemap="#image-maps-2016-01-19-181453" alt="" />
@@ -701,7 +708,7 @@
 
 <template name="profile">
 
-  {{>dash}}
+
 
   <p align="center">
       <div class="status">
@@ -734,7 +741,7 @@
 
 </template>
 <template name="myProfile">
-  {{>dash}}
+
 
   <p align="center">
         <div class="status">

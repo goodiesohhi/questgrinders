@@ -17,6 +17,11 @@ body {
 body {
   color: red;
 }
+
+P {
+  color: blue;
+  font-size: 75%;
+}
 H2 {
   color: blue;
 }
@@ -184,7 +189,7 @@ background-color: white;
 
 .status2 {
   background-color: white;
-  
+
   white-space: normal;
   border: 3px solid #000000;
   word-wrap: break-word;
