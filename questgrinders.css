@@ -35,8 +35,11 @@ P5 {
 }
 H3 {
   width: 250px;
-  background-image: url("border.png");
-  background-size: 250px 440px;
+  border: 6px solid #000000;
+
+
+  background-color: grey;
+
   font-size: 100%;
 }
 
@@ -181,7 +184,7 @@ background-color: white;
 
 .status2 {
   background-color: white;
-  width: 500px;
+  
   white-space: normal;
   border: 3px solid #000000;
   word-wrap: break-word;

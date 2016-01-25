@@ -24,8 +24,6 @@
 
   </p2>
 
-{{>donate}}
-
 
 
 
@@ -236,12 +234,14 @@
 </template>
 
 <template name="dash">
+  <div class="status2">
   <div class="left-panel">
     <h3 align="center">
 <div class="login" align="center">
 
 {{> loginButtons}}
 </div><br>
+<div class="status2">
 <a href="/base">Your Base</a><br>
 
 <a href="/map">Map</a><br>
@@ -253,10 +253,14 @@
 <a href="/contact">Contact</a><br>
 <a href="http://foxfyre.boards.net/">Official Forum</a><br>
 <a href="https://discord.gg/0mpIi9utjLhoCJDT">Official Chatroom</a><br>
+{{>donate}}
+</div>
+
 
 <br>
 </h3>
   </div>
+</div>
 </template>
 
 <template name="help">
