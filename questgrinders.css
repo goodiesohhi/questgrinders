@@ -43,6 +43,7 @@ H3 {
   border: 6px solid #000000;
 
 
+
   background-color: grey;
 
   font-size: 100%;
@@ -178,6 +179,14 @@ background-color: white;
   margin-left: 720px;
 }
 
+.dash {
+  position:fixed;
+}
+
+.dash2 {
+  position:fixed;
+  margin-left: 360px;
+}
 
 .needlogin {
   background-color: black;
