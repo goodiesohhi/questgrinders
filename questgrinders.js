@@ -716,14 +716,11 @@ attack2: function(target) {
       $inc: {
         'money': power * mult,
         'lifetimeclick': 1,
+        'spycost': 0,
 
       },
 
-      $set: {
-        'done': 1,
 
-
-      }
     });
   },
 
