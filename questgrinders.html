@@ -380,6 +380,7 @@
     <li><input type="image" src="/power.png" class="power btn span2" id="{{user.pcost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" /> Price: g{{formatCurrency user.pcost}}</li>
     <li><input type="image" src="/mult.png" class="mult btn span2" id="{{user.wepcost}}" value="Ultima Weapon" /> Price: g{{formatCurrency user.wepcost}} </li>
     <li><input type="image" src="/hpower.png" class="hpowerup btn span2" id="{{user.hpowercost}}" value="Hero Power" /> Price: g{{formatCurrency user.hpowercost}} </li>
+    <li><a href="/spyshop"> <img src="/pvp.png"></a></li>
     </ul>
   </div>
 
@@ -746,6 +747,7 @@
     GOLD = {{formatCurrency money}} <br><br>
 
    Heroes = {{formatCurrency rate}} <br><br>
+   Spies = {{formatCurrency spy}}<br><br>
    Click Power = {{formatCurrency power}}<br><br>
    Click Multiplier = {{formatCurrency mult}}<br><br>
    Hero Multiplier = {{formatCurrency heropower}}<br><br>
@@ -784,6 +786,7 @@ Update status below: <br><br>
     GOLD = {{formatCurrency user.money}} <br><br>
 
    Heroes = {{formatCurrency user.rate}} <br><br>
+   Spies = {{formatCurrency user.spy}}<br><br>
    Click Power = {{formatCurrency user.power}}<br><br>
    Click Multiplier = {{formatCurrency user.mult}}<br><br>
    Hero Multiplier = {{formatCurrency user.heropower}}<br><br>
@@ -840,7 +843,7 @@ You do not have access to spy shop.
 
     Amount of money required to train a spy is: g{{formatCurrency user.spycost}}<br><br>
 
- <input type="image" src="/spy.png" class="buyspy btn span2" id="{{user.spycost}}" value="Derp" />
+ <input type="image" src="/spy.png" class="buyspy btn span4" id="{{user.spycost}}" value="Derp" />
  </p>
 
 

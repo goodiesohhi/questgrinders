@@ -508,7 +508,7 @@ if (Meteor.isServer) {
     user.cost = 1000;
     user.money = 0;
     user.rate = 0;
-    user.spy = 200;
+
     user.adv = 10;
     user.power = 25;
     user.pcost = 1000000;
