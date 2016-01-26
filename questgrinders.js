@@ -161,7 +161,7 @@ if (Meteor.isClient) {
   Template.leaderboard.events({
     'click input.code': function() {
       Meteor.call('click');
-      Meteor.call('spyset');
+
     }
   });
 
@@ -716,19 +716,21 @@ attack2: function(target) {
       $inc: {
         'money': power * mult,
         'lifetimeclick': 1,
-        'spycost': 0,
+        'done': 1,
 
       },
 
 
+
     });
+      Meteor.call('spyset');
   },
 
 
 
 
       spyset: function () {
-        if(Meteor.user().done = 0 )
+        if(Meteor.user().done < 10 )
 
           Meteor.users.update({
             _id: this.userId
@@ -736,7 +738,7 @@ attack2: function(target) {
             $set: {
 
               'spycost': 100000,
-              'done': 1,
+              'done': 20,
 
             }
             });
