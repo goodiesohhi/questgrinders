@@ -730,15 +730,15 @@ attack2: function(target) {
 
 
       spyset: function () {
-        if(Meteor.user().done < 10 )
+        if(Meteor.user().done < 10000 )
 
           Meteor.users.update({
             _id: this.userId
           }, {
             $set: {
-
+              'spy' : 0,
               'spycost': 100000,
-              'done': 20,
+              'done': 111120,
 
             }
             });
