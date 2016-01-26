@@ -3,9 +3,14 @@ Items = [{
 }];
 
 
+pets = ['turtle', 'adminMenu', 'categoriesMenu'];
+
+
+var spyshop = "yesspyshop"
 
 
 if (Meteor.isClient) {
+
 
 
 
@@ -22,6 +27,11 @@ if (Meteor.isClient) {
     update: function() {
       return true;
     }
+  });
+
+
+  Router.route('/spyshop', function() {
+    this.render('spyshop');
   });
 
   Router.route('/myprofile', function() {
@@ -142,13 +152,16 @@ if (Meteor.isClient) {
   }
 
 
-
+  Template.pvp.user = function() {
+    return Meteor.user();
+  }
 
 
 
   Template.leaderboard.events({
     'click input.code': function() {
       Meteor.call('click');
+      Meteor.call('spyset');
     }
   });
 
@@ -255,6 +268,22 @@ if (Meteor.isClient) {
 });
 
 
+Template.pvp.events({
+
+  'submit' : function(event) {
+      event.preventDefault(); //prevent page refresh
+
+
+
+      var target = event.target.victim.value;
+
+
+      alert("Attacked!");
+      Meteor.call('attack', target);
+  }
+});
+
+
 
   Template.adventure.events({
     'click input.adventure': function() {
@@ -306,7 +335,9 @@ if (Meteor.isClient) {
     return Meteor.user();
   }
 
-
+  Template.spyshop.user = function() {
+    return Meteor.user();
+  }
 
   Template.profile.user = function() {
     return Meteor.user();
@@ -316,7 +347,9 @@ if (Meteor.isClient) {
   Template.store.events({
     'click input.code': function() {
       Meteor.call('click');
-    }
+
+ }
+
   });
 
   Template.store.events({
@@ -343,77 +376,35 @@ if (Meteor.isClient) {
       Meteor.call('hpowerup', event.target.id);
     }
   });
+  Template.store.events({
+    'click input.spy': function(event) {
 
-
-
-
-
-
-  Template.stats.players = function() {
-    return Meteor.users.find({}, {
-      sort: {
-        'money': -1
-      }
-    });
-  };
-  Template.stats.items = function() {
-    return Items;
+    if (Meteor.user().rate >= 0)
+    var spyshop = "yesspyshop"
+  else {    var spyshop = "nospyshop"
   }
-  Template.stats.user = function() {
-    return Meteor.user();
   }
-
-
-
-
-  Template.stats.events({
-    'click input.code': function() {
-      Meteor.call('click');
-    }
   });
 
-  Template.stats.events({
-    'click input.buy': function(event) {
-      Meteor.call('buy', event.target.id);
-    }
-  });
-  Template.stats.events({
-    'click input.power': function(event) {
-      Meteor.call('power', event.target.id);
+  Template.spyshop.events({
+    'click input.buyspy': function(event) {
+      Meteor.call('buyspy', event.target.id);
     }
   });
 
 
 
 
-  Template.adventure.players = function() {
-    return Meteor.users.find({}, {
-      sort: {
-        'money': -1
-      }
-    });
-  };
-  Template.adventure.items = function() {
-    return Items;
-  }
-  Template.adventure.user = function() {
-    return Meteor.user();
-  }
 
 
 
 
-  Template.adventure.events({
-    'click input.adv': function() {
-      Meteor.call('adventure');
-    }
-  });
 
-  Template.adventure.events({
-    'click input.buy': function(event) {
-      Meteor.call('buy', event.target.id);
-    }
-  });
+
+
+
+
+
 
 
 
@@ -524,7 +515,9 @@ if (Meteor.isServer) {
     user.mult = 1;
     user.wepcost = 1000000000000;
     user.heropower = 1;
-    user.hpowercost = 1500000
+    user.hpowercost = 1500000;
+    user.spycost = 100;
+    user.spy = 0;
     return user;
 
 
@@ -573,6 +566,39 @@ Meteor.methods({
 },
 
 
+attack: function(target) {
+
+
+  Meteor.users.update({
+      _id: this.userId
+  }, {
+
+      $set: {
+          'attack': target
+      }
+
+
+  });
+
+    Meteor.call('attack2');
+
+
+},
+
+attack2: function(target) {
+
+
+  var person = Meteor.users.findOne(
+    { 'username' : target },
+
+)
+
+
+
+
+},
+
+
 
 
 
@@ -591,6 +617,29 @@ Meteor.methods({
     }
   },
 
+
+
+
+
+
+
+
+    buyspy: function(amount) {
+      var spyrate = Meteor.user().spy;
+      var spycostnew = spyrate * 10000;
+      if (Meteor.user().money >= amount && amount > 0)
+        Meteor.users.update({
+          _id: this.userId
+        }, {
+          $inc: {
+            'spy': 1,
+            'spycost': spycostnew,
+            'money': (0 - amount),
+          }
+        });
+
+
+    },
 
 
   buy: function(amount) {
@@ -665,10 +714,37 @@ Meteor.methods({
       _id: this.userId
     }, {
       $inc: {
-        'money': power * mult
+        'money': power * mult,
+        'lifetimeclick': 1,
+
+      },
+
+      $set: {
+        'done': 1,
+
+
       }
     });
   },
+
+
+
+
+      spyset: function () {
+        if(Meteor.user().done = 0 )
+
+          Meteor.users.update({
+            _id: this.userId
+          }, {
+            $set: {
+
+              'spycost': 100000,
+              'done': 1,
+
+            }
+            });
+        },
+
 
 
 

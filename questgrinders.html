@@ -401,6 +401,7 @@
 </div>
 
 
+
 </div>
 
 
@@ -526,6 +527,7 @@
   <area alt="" title="" href="/moon" shape="poly" coords="426,137,468,133,475,42,568,34,610,41,614,77,608,115,608,135,670,166,656,148,661,174,648,145,650,169,431,171" style="outline:none;" target="_self" />
   <area alt="" title="" href="/store" shape="poly" coords="483,350,559,307,650,335,656,421,631,453,633,495,489,509,480,508,621,507,633,509,635,503,475,498,474,506,487,504,466,508" style="outline:none;" target="_self" />
 </map>
+
 </p>
 </div>
 
@@ -721,7 +723,7 @@
 <template name="profile">
 
 
-
+<div class="prof">
   <p align="center">
       <div class="status">
         <br>
@@ -747,13 +749,15 @@
    Click Power = {{formatCurrency power}}<br><br>
    Click Multiplier = {{formatCurrency mult}}<br><br>
    Hero Multiplier = {{formatCurrency heropower}}<br><br>
+   Lifetime Clicks = {{formatCurrency lifetimeclick}}<br><br>
    </div>
 </p>
+</div>
 
 
 </template>
 <template name="myProfile">
-
+<div class="prof">
 
   <p align="center">
         <div class="status">
@@ -783,10 +787,33 @@ Update status below: <br><br>
    Click Power = {{formatCurrency user.power}}<br><br>
    Click Multiplier = {{formatCurrency user.mult}}<br><br>
    Hero Multiplier = {{formatCurrency user.heropower}}<br><br>
+   Lifetime Clicks = {{formatCurrency user.lifetimeclick}}<br><br>
    </div>
 </p>
+</div>
 
 
+
+</template>
+
+<template name="pvp">
+  <form id="status">
+       <input id="victim" type="text" name="victim"/>
+       <input type="submit" id="submit"/>
+
+</form>
+</template>
+
+<template name="yesspyshop">
+
+<a href="/spyshop">LOL</a>
+
+</template>
+
+<template name="nospyshop">
+
+
+You do not have access to spy shop.
 
 </template>
 
@@ -798,6 +825,31 @@ Update status below: <br><br>
 </form>
 
 </template>
+
+
+<template name="spyshop">
+  <input type="button" class="spy btn span2" value="Spy Shop (100 heroes or above)" />
+
+  <div class="white">
+
+
+    <p align="center">
+      <a href="/jack"><img src="/shack.png"></a>
+
+      You have g{{formatCurrency user.money}} <br><br>
+
+    Amount of money required to train a spy is: g{{formatCurrency user.spycost}}<br><br>
+
+ <input type="image" src="/spy.png" class="buyspy btn span2" id="{{user.spycost}}" value="Derp" />
+ </p>
+
+
+
+  </div>
+
+
+</template>
+
 
 <template name="donate">
   <div class="donatenow">
