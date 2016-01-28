@@ -4,10 +4,14 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+<!-- 
+Play through a useless game and find not link.
+Look a little deeper it'll be there. Don't you think?Can't find? Hint it's in the external script.-->
 
 <url>
   <loc>http://questgrinders.herokuapp.com/</loc>
   <changefreq>always</changefreq>
 </url>
 </urlset>
+
+

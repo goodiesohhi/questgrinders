@@ -30,6 +30,12 @@ if (Meteor.isClient) {
   });
 
 
+  Router.route('/1234567890youhavewon', function() {
+    this.render('reward');
+  });
+
+
+
   Router.route('/spyshop', function() {
     this.render('spyshop');
   });
@@ -136,6 +142,10 @@ if (Meteor.isClient) {
   Template.leaderboard.items = function() {
     return Items;
   }
+
+  Template.reward.items = function() {
+    return Meteor.user();
+  }
   Template.profile.user = function() {
     return Meteor.user();
   }
@@ -164,6 +174,17 @@ if (Meteor.isClient) {
 
     }
   });
+
+
+
+
+    Template.reward.events({
+      'click input.win': function() {
+        Meteor.call('promo1');
+        alert("You have just won 1 free Standard QuestCo. Questing Rifle! Unless you already did this. This only works once.");
+
+      }
+    });
 
   Template.leaderboard.events({
     'click input.buy': function(event) {
@@ -716,7 +737,8 @@ attack2: function(target) {
       $inc: {
         'money': power * mult,
         'lifetimeclick': 1,
-        'done': 1,
+        'done': 0,
+        'done2': 0,
 
       },
 
@@ -743,6 +765,31 @@ attack2: function(target) {
             }
             });
         },
+
+
+
+        promo1: function () {
+          if(Meteor.user().done2 < 1000 )
+
+
+            Meteor.users.update({
+              _id: this.userId
+            }, {
+              $set: {
+
+                'done2': 99111120,
+
+              },
+
+              $inc: {
+
+                'heropower': 1,
+
+              }
+              });
+          },
+
+
 
 
 
