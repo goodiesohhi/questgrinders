@@ -181,7 +181,7 @@ if (Meteor.isClient) {
     Template.reward.events({
       'click input.win': function() {
         Meteor.call('promo1');
-        alert("You have just won 1 free Standard QuestCo. Questing Rifle! Unless you already did this. This only works once.");
+        alert("You have just won 1 free Standard QuestCo. Questing Rifle! Unless you already did this. This only works once!");
 
       }
     });
