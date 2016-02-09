@@ -29,6 +29,10 @@ if (Meteor.isClient) {
     }
   });
 
+  Router.route('/quest', function() {
+    this.render('quest');
+  });
+
 
   Router.route('/1234567890youhavewon', function() {
     this.render('reward');
@@ -127,10 +131,17 @@ if (Meteor.isClient) {
   });
 
   Meteor.subscribe('userData');
+    Meteor.subscribe('quest');
 
 
 
 
+        Template.leaderboard.keeper = function() {
+          var username="QuestKeeper";
+          return Meteor.users.findOne({
+              username:username
+          });
+        };
 
   Template.leaderboard.players = function() {
     return Meteor.users.find({}, {
@@ -241,6 +252,22 @@ if (Meteor.isClient) {
     }
     Template.player.user = function() {
       return Meteor.user();
+    }
+
+    Template.quest.keeper = function() {
+      var username="QuestKeeper";
+      return Meteor.users.findOne({
+          username:username
+      });
+
+    }
+
+    Template.leaderboard.keeper = function() {
+      var username="QuestKeeper";
+      return Meteor.users.findOne({
+          username:username
+      });
+
     }
 
 
@@ -509,6 +536,9 @@ if (Meteor.isServer) {
 
         })
       });
+
+
+
     }, 3000)
 
   });
@@ -555,6 +585,10 @@ if (Meteor.isServer) {
 
 
 }
+
+
+
+
 
 
 Meteor.methods({
@@ -739,6 +773,7 @@ attack2: function(target) {
         'lifetimeclick': 1,
         'done': 0,
         'done2': 0,
+        'done3': 0,
 
       },
 

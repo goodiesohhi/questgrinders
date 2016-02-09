@@ -771,7 +771,26 @@
 </p>
 
 </template>
+<template name="quest">
+  <div class="prof">
+    <p align="center">
+      <div class="status">
+        {{#each keeper}}
 
+        The Current quest is: {{keeper.quest}} <br>
+        Progress {{keeper.progress}} <br>
+        Progress required by deadline: {{keeper.questcomplete}} <br>
+        Deadline: March. 20th 2016 <br>
+
+        {{/each}}
+
+
+
+      </div>
+    </p>
+  </div>
+
+</template>
 
 <template name="myProfile">
 <div class="prof">
