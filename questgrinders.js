@@ -134,6 +134,8 @@ if (Meteor.isClient) {
 
   Meteor.subscribe('keeperData');
 
+    
+
 
 
 
@@ -250,6 +252,15 @@ if (Meteor.isClient) {
     Template.player.user = function() {
       return Meteor.user();
     }
+
+    Template.keeper.keeper = function() {
+      var username="QuestKeeper";
+      return Meteor.users.findOne({
+          username:username
+      });
+
+    }
+
 
     Template.quest.keeper = function() {
       var username="QuestKeeper";
@@ -599,6 +610,7 @@ if (Meteor.isServer) {
 
 
 
+
 Meteor.methods({
 
 
@@ -783,21 +795,19 @@ attack2: function(target) {
         'done': 0,
         'done2': 0,
         'done3': 0,
-
+        'progress': 1,
       },
 
 
     });
 
-    Meteor.keeper.update({
+    Meteor.users.update({
+        _id: keeper
 
     }, {
       $inc: {
-        'money': power * mult,
-        'lifetimeclick': 1,
-        'done': 0,
-        'done2': 0,
-        'done3': 0,
+        'progress': 1,
+
 
       },
 
