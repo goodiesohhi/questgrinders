@@ -134,7 +134,7 @@ if (Meteor.isClient) {
 
   Meteor.subscribe('keeperData');
 
-    
+
 
 
 
@@ -256,7 +256,7 @@ if (Meteor.isClient) {
     Template.keeper.keeper = function() {
       var username="QuestKeeper";
       return Meteor.users.findOne({
-          username:username
+          username:"QuestKeeper"
       });
 
     }
@@ -265,7 +265,7 @@ if (Meteor.isClient) {
     Template.quest.keeper = function() {
       var username="QuestKeeper";
       return Meteor.users.findOne({
-          username:username
+          username:"QuestKeeper"
       });
 
     }
@@ -273,7 +273,7 @@ if (Meteor.isClient) {
     Template.leaderboard.keeper = function() {
       var username="QuestKeeper";
       return Meteor.users.findOne({
-          username:username
+          username:"QuestKeeper"
       });
 
     }
