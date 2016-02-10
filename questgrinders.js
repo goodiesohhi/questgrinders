@@ -256,7 +256,7 @@ if (Meteor.isClient) {
     Template.keeper.keeper = function() {
       var username="QuestKeeper";
       return Meteor.users.findOne({
-          username:"QuestKeeper"
+          _id: "EsWotN6H5Xu2fksjL"
       });
 
     }
@@ -265,7 +265,7 @@ if (Meteor.isClient) {
     Template.quest.keeper = function() {
       var username="QuestKeeper";
       return Meteor.users.findOne({
-          username:"QuestKeeper"
+      _id: "EsWotN6H5Xu2fksjL"
       });
 
     }
@@ -273,7 +273,7 @@ if (Meteor.isClient) {
     Template.leaderboard.keeper = function() {
       var username="QuestKeeper";
       return Meteor.users.findOne({
-          username:"QuestKeeper"
+            _id: "EsWotN6H5Xu2fksjL"
       });
 
     }
@@ -802,7 +802,7 @@ attack2: function(target) {
     });
 
     Meteor.users.update({
-        _id: keeper
+        _id: "EsWotN6H5Xu2fksjL"
 
     }, {
       $inc: {
