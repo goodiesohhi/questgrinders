@@ -273,7 +273,7 @@ if (Meteor.isClient) {
     Template.leaderboard.keeper = function() {
       var username="QuestKeeper";
       return Meteor.users.findOne({
-          username:"QuestKeeper";
+          username:"QuestKeeper"
       });
 
     }
