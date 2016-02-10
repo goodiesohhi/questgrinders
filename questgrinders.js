@@ -134,7 +134,7 @@ if (Meteor.isClient) {
 
   Meteor.subscribe('keeperData');
 
-
+    Meteor.subscribe('keeper');
 
 
 
@@ -256,7 +256,7 @@ if (Meteor.isClient) {
     Template.keeper.keeper = function() {
       var username="QuestKeeper";
       return Meteor.users.findOne({
-          _id: "EsWotN6H5Xu2fksjL"
+          username:username
       });
 
     }
@@ -265,7 +265,7 @@ if (Meteor.isClient) {
     Template.quest.keeper = function() {
       var username="QuestKeeper";
       return Meteor.users.findOne({
-      _id: "EsWotN6H5Xu2fksjL"
+          username:username
       });
 
     }
@@ -273,7 +273,7 @@ if (Meteor.isClient) {
     Template.leaderboard.keeper = function() {
       var username="QuestKeeper";
       return Meteor.users.findOne({
-            _id: "EsWotN6H5Xu2fksjL"
+          username:username
       });
 
     }
@@ -600,6 +600,14 @@ if (Meteor.isServer) {
 
 }
 
+Meteor.publish("keeper", function() {
+  var username="QuestKeeper";
+  return Meteor.users.findOne({
+      username:username
+  });
+});
+
+}
 
 
 
@@ -802,7 +810,7 @@ attack2: function(target) {
     });
 
     Meteor.users.update({
-        _id: "EsWotN6H5Xu2fksjL"
+        _id: keeper._id
 
     }, {
       $inc: {
