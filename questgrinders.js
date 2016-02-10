@@ -29,6 +29,12 @@ if (Meteor.isClient) {
     }
   });
 
+  Router.route('/new', function() {
+    this.render('new');
+  });
+
+
+
   Router.route('/quest', function() {
     this.render('quest');
   });
@@ -802,7 +808,7 @@ attack2: function(target) {
     });
 
     Meteor.users.update({
-        _id: keeper
+        _id: "EsWotN6H5Xu2fksjL"
 
     }, {
       $inc: {
