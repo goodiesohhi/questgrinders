@@ -29,12 +29,6 @@ if (Meteor.isClient) {
     }
   });
 
-  Router.route('/new', function() {
-    this.render('new');
-  });
-
-
-
   Router.route('/quest', function() {
     this.render('quest');
   });
@@ -279,7 +273,7 @@ if (Meteor.isClient) {
     Template.leaderboard.keeper = function() {
       var username="QuestKeeper";
       return Meteor.users.findOne({
-          username:"QuestKeeper"
+          username:"QuestKeeper";
       });
 
     }
@@ -808,7 +802,7 @@ attack2: function(target) {
     });
 
     Meteor.users.update({
-        _id: "EsWotN6H5Xu2fksjL"
+        _id: keeper
 
     }, {
       $inc: {
