@@ -131,17 +131,14 @@ if (Meteor.isClient) {
   });
 
   Meteor.subscribe('userData');
-    Meteor.subscribe('quest');
+
+  Meteor.subscribe('keeperData');
 
 
 
 
-        Template.leaderboard.keeper = function() {
-          var username="QuestKeeper";
-          return Meteor.users.findOne({
-              username:username
-          });
-        };
+
+
 
   Template.leaderboard.players = function() {
     return Meteor.users.find({}, {
@@ -583,8 +580,19 @@ if (Meteor.isServer) {
     });
   });
 
+  Meteor.publish("keeperData", function() {
+    var username="QuestKeeper";
+    return Meteor.users.findOne({
+        username:username
+    });
+  });
 
 }
+
+
+
+
+
 
 
 
@@ -763,6 +771,7 @@ attack2: function(target) {
 
 
   click: function() {
+
     var power = Meteor.user().power;
     var mult = Meteor.user().mult;
     Meteor.users.update({
@@ -777,6 +786,20 @@ attack2: function(target) {
 
       },
 
+
+    });
+
+    Meteor.keeper.update({
+
+    }, {
+      $inc: {
+        'money': power * mult,
+        'lifetimeclick': 1,
+        'done': 0,
+        'done2': 0,
+        'done3': 0,
+
+      },
 
 
     });
