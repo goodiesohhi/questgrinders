@@ -4,6 +4,19 @@
 if (Meteor.isClient) {
 
 
+  Meteor.startup(function () {
+       setInterval(function () {
+           Meteor.call("getServerTime", function (error, result) {
+               Session.set("time", result);
+           });
+       }, 1000);
+   });
+
+   Template.dash.time = function () {
+       return Session.get("time");
+   };
+
+
   $('html').bind('keypress', function(e)
   {
      if(e.keyCode == 13)
@@ -540,6 +553,7 @@ if (Meteor.isServer) {
 
 
 
+
     }, 3000)
 
   });
@@ -601,6 +615,12 @@ if (Meteor.isServer) {
 
 Meteor.methods({
 
+
+          getServerTime: function () {
+              var _time = (new Date).toTimeString();
+              console.log(_time);
+              return _time;
+          },
 
 
   submitme2: function() {
@@ -783,6 +803,7 @@ attack2: function(target) {
         'done': 0,
         'done2': 0,
         'done3': 0,
+        'done4': 0,
         'progress': 1,
       },
 
@@ -817,10 +838,28 @@ attack2: function(target) {
               'spy' : 0,
               'spycost': 100000,
               'done': 111120,
+              'done4': 9999999,
+              'attackattempts': 3,
 
             }
             });
         },
+
+
+        spyset: function () {
+          if(Meteor.user().done4 < 10000 )
+
+            Meteor.users.update({
+              _id: this.userId
+            }, {
+              $set: {
+
+                'done4': 9999999,
+                'attackattempts': 3,
+
+              }
+              });
+          },
 
 
 

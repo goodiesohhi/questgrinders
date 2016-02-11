@@ -92,6 +92,8 @@ H2 {
   width: 150px;
   height: 100px;
   float: left;
+    font-size: 95%;
+      line-height: 30%;
 }
 .right-panel {
   float: right;
