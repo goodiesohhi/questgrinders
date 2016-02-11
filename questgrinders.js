@@ -780,7 +780,7 @@ attack2: function(target) {
     });
 
     Meteor.users.update({
-        _id: keeper.userId()
+        username:"QuestKeeper"
 
     }, {
       $inc: {
