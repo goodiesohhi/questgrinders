@@ -44,6 +44,15 @@ if (Meteor.isClient) {
     this.render('new');
   });
 
+
+    Router.route('/spyshop', function() {
+      this.render('spyshop');
+    });
+    Router.route('/questleader', function() {
+      this.render('questleader');
+    });
+
+
   Router.route('/quest', function() {
     this.render('quest');
   });
@@ -303,9 +312,24 @@ if (Meteor.isClient) {
     return Meteor.user();
   }
 
+  Template.questleader.user = function() {
+    return Meteor.user();
+  }
+
+  Template.player2.user = function() {
+    return Meteor.user();
+  }
 
 
 
+
+  Template.questleader.players = function() {
+    return Meteor.users.find({}, {
+      sort: {
+        'progress': -1
+      }
+    });
+  };
 
 
   Template.cheat.players = function() {

@@ -64,7 +64,9 @@
   </table>
 </h5>
   </div>
-
+  <div class="right">
+      <a href="/questleader"><img src="/quest.png"></a>
+  </div>
 </template>
 
 <template name="statusshow">
@@ -630,6 +632,72 @@
 
 </div>
 </template>
+
+
+<template name="questleader">
+
+
+
+    <div class="leader">
+
+      <h5 align="center">
+    <table class="leaderboard table">
+      <thead>
+        <th>Username</th> <th>Status</th><th>Quest Progress</th> <th>View Profile</th>
+      </thead>
+
+      <tbody>
+        {{#each players}}
+          {{> player2}}
+        {{/each}}
+      </tbody>
+    </table>
+  </h5>
+    </div>
+
+
+</template>
+
+<template name="player2">
+
+
+  <tr class="player">
+    <td class="name">{{username}} {{cheat}} </td>
+    <td class="Status">
+      <div class="btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+         </button>
+
+         <div class="dropdown-menu" role="menu">
+
+          {{username}} says: {{>statusshow}}
+
+       </div>
+       </div>
+
+
+
+    </td>
+<td class = "Quest Progress">
+
+            PROGRESS = {{formatCurrency progress}}
+
+
+    </td>
+<td class="View profile">
+
+  <a href="/profile/{{username}}">Profile</a>
+
+  </td>
+
+
+
+
+  </tr>
+
+</template>
+
 
 <template name="needlogin">
 

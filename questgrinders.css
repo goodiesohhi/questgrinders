@@ -88,6 +88,14 @@ p2 {
 H2 {
   font-size: 100%;
 }
+
+
+.right {
+  width: 150px;
+  height: 100px;
+  float: right;
+  margin-right: 260px;
+}
 .left-panel {
   width: 150px;
   height: 100px;
