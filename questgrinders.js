@@ -5,9 +5,7 @@ Items = [{
 
 
 
-
 if (Meteor.isClient) {
-
 
 
 
@@ -26,19 +24,12 @@ if (Meteor.isClient) {
     }
   });
 
+  Router.route('/new', function() {
+    this.render('new');
+  });
+
   Router.route('/quest', function() {
     this.render('quest');
-  });
-
-
-  Router.route('/1234567890youhavewon', function() {
-    this.render('reward');
-  });
-
-
-
-  Router.route('/spyshop', function() {
-    this.render('spyshop');
   });
 
   Router.route('/myprofile', function() {
@@ -81,10 +72,6 @@ if (Meteor.isClient) {
 
   Router.route('/', function() {
     this.render('start');
-  });
-
-  Router.route('/new', function() {
-    this.render('new');
   });
 
   Router.route('/base', function() {
@@ -132,10 +119,6 @@ if (Meteor.isClient) {
   });
 
   Meteor.subscribe('userData');
-
-  Meteor.subscribe('keeperData');
-
-    Meteor.subscribe('keeper');
 
 
 
@@ -464,19 +447,15 @@ Template.pvp.events({
 
 
 
-
-
-
-
-  Handlebars.registerHelper('formatCurrency', function(number) {
-    return number.toLocaleString();
-  });
+    Handlebars.registerHelper('formatCurrency', function(number) {
+      return number.toLocaleString();
+    });
 
 
 
 
 
-}
+  }
 
 
 if (Meteor.isServer) {
@@ -595,12 +574,6 @@ if (Meteor.isServer) {
     });
   });
 
-  Meteor.publish("keeperData", function() {
-    var username1="QuestKeeper";
-    return Meteor.users.findOne({
-        username:username1
-    });
-  });
 
 }
 

@@ -173,6 +173,13 @@ background-color: white;
   margin-left: 260px;
 }
 
+.push {
+  background-color: white;
+    border: 5px solid #000000;
+  float: center;
+  margin-left: 260px;
+}
+
 .prof{
   margin-left: 200px;
 }
