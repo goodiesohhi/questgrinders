@@ -3,10 +3,7 @@ Items = [{
 }];
 
 
-pets = ['turtle', 'adminMenu', 'categoriesMenu'];
 
-
-var spyshop = "yesspyshop"
 
 
 if (Meteor.isClient) {
