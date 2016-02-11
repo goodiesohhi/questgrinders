@@ -1,13 +1,16 @@
-Items = [{
-  name: "Hero"
-}];
-
 
 
 
 if (Meteor.isClient) {
 
 
+  $('html').bind('keypress', function(e)
+  {
+     if(e.keyCode == 13)
+     {
+        return false;
+     }
+  });
 
   Router.onBeforeAction(function() {
       if (!Meteor.user() && this.ready())
@@ -236,6 +239,13 @@ if (Meteor.isClient) {
     Template.player.user = function() {
       return Meteor.user();
     }
+
+
+    Template.quest.user = function() {
+      return Meteor.user();
+    }
+
+
 
     Template.keeper.keeper = function() {
       var username1="QuestKeeper";

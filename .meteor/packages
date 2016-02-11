@@ -19,8 +19,8 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 insecure                # Allow all DB writes from clients (for prototyping)
 accounts-ui-unstyled
 bootstrap
-iron:router
 accounts-password
 meteorhacks:fast-render
 infinitedg:gsap
 mrt:gsap
+iron:router@1.0.0-pre4
