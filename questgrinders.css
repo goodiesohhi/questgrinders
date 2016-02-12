@@ -115,7 +115,7 @@ background-color: white;
 
 .base {
 border: 6px solid #000000;
-margin-left: 260px;
+margin-left: 100px;
 background-color: white;
 }
 .map2 {
@@ -135,11 +135,21 @@ background-color: white;
 
 
 
-.chat {
-  padding: 10;
-}
+
 .ads {
   float: none;
+}
+
+.low {
+
+  border: 1px solid #000000;
+
+  background-color: white;
+
+
+  margin-left: 400px;
+    width: 950px;
+    height: : 1050px;
 }
 .login {
   width: 250px;
@@ -187,7 +197,7 @@ background-color: white;
   background-color: white;
     border: 5px solid #000000;
   float: center;
-  margin-left: 260px;
+  margin-left: 350px;
 }
 
 .prof{

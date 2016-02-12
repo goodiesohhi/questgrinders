@@ -4,8 +4,10 @@
 if (Meteor.isClient) {
 
 
+
   Meteor.startup(function () {
        setInterval(function () {
+
            Meteor.call("getServerTime", function (error, result) {
                Session.set("time", result);
            });
@@ -15,7 +17,10 @@ if (Meteor.isClient) {
    Template.dash.time = function () {
        return Session.get("time");
    };
-
+   Template.chat.onRendered(function(){
+     window.disqus = new Disqus('questgrinders');
+     disqus.loadComments();
+   });
 
   $('html').bind('keypress', function(e)
   {
@@ -64,6 +69,11 @@ if (Meteor.isClient) {
   Router.route('/city', function() {
     this.render('city');
   });
+
+  Router.route('/chat', function() {
+    this.render('chat');
+  });
+
 
   Router.route('/lib', function() {
     this.render('lib');
@@ -321,6 +331,8 @@ if (Meteor.isClient) {
   }
 
 
+
+disqus_shortname="questgrinders";
 
 
   Template.questleader.players = function() {

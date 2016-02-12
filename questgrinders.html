@@ -24,6 +24,9 @@
 
     {{>logo}}
 
+<noscript>This site requires javascript to be enabled</noscript>
+
+
 
   </p2>
 
@@ -38,6 +41,8 @@
 
 
 </body>
+
+
 
 
 
@@ -129,51 +134,13 @@
 </template>
 
 <template name="chat">
-  <div class="right-panel">
-    <style>
-      #wrapper {
-        width: 400px;
-        height: 600px;
-        padding: 10;
-        overflow: hidden;
-      }
 
-      #scaled-frame {
-        width: 400px;
-        height: 600px;
-        border: 0px;
-      }
-
-      #scaled-frame {
-        zoom: 1111;
-        -moz-transform: scale(0.71);
-        -moz-transform-origin: 0 0;
-        -o-transform: scale(0.71);
-        -o-transform-origin: 0 0;
-        -webkit-transform: scale(0.71);
-        -webkit-transform-origin: 0 0;
-      }
-
-      @media screen and (-webkit-min-device-pixel-ratio:0) {
-        #scaled-frame {
-          zoom: 1;
-        }
-      }
-    </style>
-
-
-
-    <div id="wrapper">
-      <!-- Begin ParaChat Basic v9 Code -->
-      <iframe id="scaled-frame" src='http://quest-grinders.wikia.com/wiki/Special:Chat' style="border-style:ridge;border-width:1px;border-color:#eeeeee #eeeeee;" framespacing='0' frameborder='0' scrolling='yes' width='500' height='200'>
-        <p>You do not have iframes enabled. <a href="http://www.parachat.com/iframe.html">More Info</a></p>
-      </iframe>
-      <a href="http://www.parachat.com"><img src="http://www.parachat.com/images/basic.png" border="0"></a>
-
-      <!-- End ParaChat Basic v9 Code -->
+    <div class="low">
+<div id="disqus_thread"></div>
 
     </div>
-  </div>
+
+
 </template>
 
 
@@ -231,6 +198,8 @@
 </div>
 
 
+
+
 </template>
 
 
@@ -256,12 +225,13 @@
 <div class="status2">
 <a href="/base">Your Base</a><br>
 
+
 <a href="/map">Map</a><br>
 <a href="/leaderboard">The Leaderboards</a><br>
 <a href="/myprofile">Your Profile</a><br>
 
 <a href="http://quest-grinders.wikia.com/wiki/">Official Wiki</a><br>
-<a href="/help">Help!</a><br>
+<a href="/chat">In-Game Chat</a><br>
 <a href="/contact">Contact</a><br>
 <a href="http://foxfyre.boards.net/">Official Forum</a><br>
 <a href="https://discord.gg/0mpIi9utjLhoCJDT">Official Chatroom</a><br>
@@ -849,12 +819,14 @@
       <div class="status">
 
 
-WHATS NEW<br>
+WHATS NEW:<br>
+In-game chat,<br>
 
 QUESTS!<br>
 Visit the Questco HeadQuarters to see <br>
 TBA:<br>
 PETS!<br>
+
 
 
 
