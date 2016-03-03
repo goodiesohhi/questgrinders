@@ -133,7 +133,7 @@ if (Meteor.isClient) {
   });
 
   Router.route('/store', function() {
-    this.render('construct');
+    this.render('store');
   });
   Router.route('/jack', function() {
     this.render('jack');
@@ -637,15 +637,7 @@ if (Meteor.isServer) {
         }, {
           $set: {
 
-            'archer': 0,
-            'archerpower': 1,
-            'mage': 0,
-            'magepower': 1,
-          'archerprice': 20000,
-           'money': 1337,
-
-          'mageprice' : 1500000,
-
+          'superstition': 1337,
           },
 
 
