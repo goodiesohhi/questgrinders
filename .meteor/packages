@@ -26,3 +26,4 @@ mrt:gsap
 iron:router@1.0.0-pre4
 visudare:disqus
 webtempest:disqus
+easy:search

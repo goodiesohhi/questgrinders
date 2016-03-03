@@ -53,6 +53,7 @@
 
   <div class="right">
       <a href="/questleader"><img src="/quest.png"></a>
+      <a href="/search"><img src="/search.png"></a>
   </div>
 
   <div class="leader">
@@ -339,7 +340,8 @@
 
     You have g{{formatCurrency user.money}} <br>
 
-<div class="white">      <div class="text"> Hero Hire Price: g{{formatCurrency user.cost}} <input type="image" src="/hero.png" class="buy btn span2" id="{{user.cost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" />
+
+<div class="white">      <div class="text"> <input type="image" src="/power.png" class="power btn span2" id="{{user.pcost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" /> Price: g{{formatCurrency user.pcost}}
   <div class="btn-group">
 
 
@@ -351,15 +353,52 @@
        <ul class="dropdown-menu" role="menu">
 
 
-    <li><input type="image" src="/power.png" class="power btn span2" id="{{user.pcost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" /> Price: g{{formatCurrency user.pcost}}</li>
+
     <li><input type="image" src="/mult.png" class="mult btn span2" id="{{user.wepcost}}" value="Ultima Weapon" /> Price: g{{formatCurrency user.wepcost}} </li>
-    <li><input type="image" src="/hpower.png" class="hpowerup btn span2" id="{{user.hpowercost}}" value="Hero Power" /> Price: g{{formatCurrency user.hpowercost}} </li>
-    <li><a href="/spyshop"> <img src="/pvp.png"></a></li>
+
     </ul>
   </div>
+  <br>
+   <input type="image" src="/hero.png" class="buy btn span2" id="{{user.cost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" /> Hero Hire Price: g{{formatCurrency user.cost}}
+  <div class="btn-group">
 
 
 
+
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <span class="caret"></span>
+       </button>
+       <ul class="dropdown-menu" role="menu">
+
+
+
+
+    <li><input type="image" src="/hpower.png" class="hpowerup btn span2" id="{{user.hpowercost}}" value="Hero Power" /> Price: g{{formatCurrency user.hpowercost}} </li>
+
+    </ul>
+  </div>
+  <br>
+  <input type="image" src="/hero.png" class="buy btn span2" id="{{user.cost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" /> Hero Hire Price: g{{formatCurrency user.cost}}
+ <div class="btn-group">
+
+
+
+
+ <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+     <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+
+
+
+   <li><input type="image" src="/mult.png" class="mult btn span2" id="{{user.wepcost}}" value="Ultima Weapon" /> Price: g{{formatCurrency user.wepcost}} </li>
+   <li><input type="image" src="/hpower.png" class="hpowerup btn span2" id="{{user.hpowercost}}" value="Hero Power" /> Price: g{{formatCurrency user.hpowercost}} </li>
+   <li><a href="/spyshop"> <img src="/pvp.png"></a></li>
+   </ul>
+ </div>
+
+<br>
+  <a href="/spyshop"> <img src="/pvp.png"></a><br>
   <div class="btn-group">
 
   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -935,6 +974,44 @@ You do not have access to spy shop.
 </form>
 
 </template>
+
+<template name="searchBox">
+  <div class="derp">
+  {{> EasySearch.Input index=playersIndex }}
+
+  <ul>
+      {{#EasySearch.Each index=playersIndex }}
+          <th>Username</th> <th>Status</th><th>View stats</th> <th>View Profile</th><th>Exp</th>
+      {{/EasySearch.Each}}
+  </ul>
+</div>
+</template>
+
+
+<template name="search">
+{{> searchBox}}
+<div class="leader">
+
+  <h5 align="center">
+<table class="leaderboard table">
+  <thead>
+
+  </thead>
+
+  <tbody>
+    {{#each players}}
+      {{> player}}
+    {{/each}}
+  </tbody>
+</table>
+</h5>
+</div>
+
+</template>
+
+
+
+
 
 
 <template name="spyshop">

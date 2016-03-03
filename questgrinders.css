@@ -160,6 +160,10 @@ background-color: white;
   margin-left: 260px;
 }
 
+.search {
+  margin-left: 360px;
+}
+
 .dataNotFound {
 
   float: center;
@@ -188,6 +192,13 @@ background-color: white;
 
 .info {
   background-color: white;
+    border: 5px solid #000000;
+  float: center;
+  margin-left: 260px;
+}
+
+.derp{
+  
     border: 5px solid #000000;
   float: center;
   margin-left: 260px;

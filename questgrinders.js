@@ -3,10 +3,10 @@
 
 if (Meteor.isClient) {
 
-
-
   Meteor.startup(function () {
+
        setInterval(function () {
+
 
            Meteor.call("getServerTime", function (error, result) {
                Session.set("time", result);
@@ -55,6 +55,9 @@ if (Meteor.isClient) {
     });
     Router.route('/questleader', function() {
       this.render('questleader');
+    });
+    Router.route('/search', function() {
+      this.render('search');
     });
 
 
@@ -321,7 +324,9 @@ if (Meteor.isClient) {
   Template.leaderboards.user = function() {
     return Meteor.user();
   }
-
+  Template.search.user = function() {
+    return Meteor.user();
+  }
   Template.questleader.user = function() {
     return Meteor.user();
   }
@@ -344,6 +349,11 @@ disqus_shortname="questgrinders";
   };
 
 
+
+
+
+
+
   Template.cheat.players = function() {
     return Meteor.users.find({}, {
       sort: {
@@ -351,6 +361,38 @@ disqus_shortname="questgrinders";
       }
     });
   };
+
+  Template.search.players = function() {
+   var one = Meteor.user().lastSearch;
+   var done = Meteor.users.findOne({
+       username: one
+   });
+    return done
+  };
+
+
+
+
+
+
+
+
+  Template.search.events({
+
+    'submit' : function(event) {
+        event.preventDefault(); //prevent page refresh
+
+
+
+        var derp = event.target.searchbar.value;
+
+
+
+        Meteor.call('searched', derp);
+    }
+});
+
+
 
 
 
@@ -494,31 +536,29 @@ Template.pvp.events({
     }
   });
 
-
-
-
-
-
-
-
-
-
-
-
-
-    Handlebars.registerHelper('formatCurrency', function(number) {
+Handlebars.registerHelper('formatCurrency', function(number) {
       return number.toLocaleString();
     });
-
-
-
-
 
   }
 
 
+
+
+
+
+
+
 if (Meteor.isServer) {
 
+
+
+    const Players = new Mongo.Collection('players'),
+      PlayersIndex = new EasySearch.Index({
+        collection: Players,
+        fields: ['username'],
+        engine: new EasySearch.Minimongo()
+      });
 
 
 
@@ -571,16 +611,24 @@ if (Meteor.isServer) {
   Meteor.startup(function() {
 
 
+
+
+
     Meteor.setInterval(function() {
 
       Meteor.users.find({}).map(function(user) {
+
         Meteor.users.update({
           _id: user._id
         }, {
-          $inc: {
-            'money': user.rate*user.heropower,
-            'exp': user.rate/100
-          }
+          $set: {
+
+            'archer': 0,
+            'archerpower': 1,
+            'mage': 0,
+            'magepower': 1,
+
+          },
 
 
 
@@ -592,7 +640,81 @@ if (Meteor.isServer) {
 
     }, 1500)
 
-  });
+
+
+    Meteor.setInterval(function() {
+
+      Meteor.users.find({}).map(function(user) {
+        Meteor.users.update({
+          _id: user._id
+        }, {
+          $inc: {
+            'money': user.rate*user.heropower,
+            'exp': user.rate/100
+          },
+
+
+
+        })
+      });
+
+
+
+
+    }, 1500)
+
+
+
+              Meteor.setInterval(function() {
+
+                Meteor.users.find({}).map(function(user) {
+                  Meteor.users.update({
+                    _id: user._id
+                  }, {
+                    $inc: {
+                      'money': user.mage*2*user.magepower,
+
+
+                    }
+
+
+
+                  })
+                });
+
+
+
+
+              }, 3000)
+
+
+
+
+
+      Meteor.setInterval(function() {
+
+        Meteor.users.find({}).map(function(user) {
+          Meteor.users.update({
+            _id: user._id
+          }, {
+            $inc: {
+              'money': user.archer*user.archerpower,
+
+
+            }
+
+
+
+          })
+        });
+
+
+
+
+      }, 500)
+
+    });
+
 
 
 
@@ -620,6 +742,13 @@ if (Meteor.isServer) {
     user.hpowercost = 1500000;
     user.spycost = 100;
     user.spy = 0;
+    user.archer = 0;
+    user.archerprice= 20000;
+    user.archerpower = 1;
+    user.magepower = 1;
+    user.mage = 0;
+    user.mageprice = 1500000 ;
+
     return user;
 
 
@@ -654,10 +783,10 @@ Meteor.methods({
 
           getServerTime: function () {
               var _time = (new Date).toTimeString();
-              console.log(_time);
+
+
               return _time;
           },
-
 
   submitme2: function() {
       var statusvar = document.getElementById("status").value;
@@ -685,6 +814,45 @@ Meteor.methods({
 },
 
 
+searched: function(derp) {
+
+
+  var searched = derp;
+  Meteor.users.update({
+      _id: this.userId
+  }, {
+
+      $set: {
+          'lastSearch': searched
+      }
+
+
+  });
+var searched2 =  Meteor.user().lastSearch;
+
+    console.log(searched);
+    Meteor.call('s2');
+    return searched2
+},
+
+
+
+
+s2: function() {
+
+
+  var searched2 =  Meteor.user().lastSearch;
+  console.log(searched2);
+  return searched2
+
+
+
+
+
+
+},
+
+
 attack: function(target) {
 
 
@@ -709,8 +877,8 @@ attack2: function(target) {
 
   var person = Meteor.users.findOne(
     { 'username' : target },
+);
 
-)
 
 
 
