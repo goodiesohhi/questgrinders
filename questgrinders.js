@@ -133,7 +133,7 @@ if (Meteor.isClient) {
   });
 
   Router.route('/store', function() {
-    this.render('store');
+    this.render('construct');
   });
   Router.route('/jack', function() {
     this.render('jack');
@@ -516,6 +516,20 @@ Template.pvp.events({
   });
 
   Template.store.events({
+    'click input.buya': function(event) {
+      Meteor.call('buya', event.target.id);
+    }
+  });
+
+    Template.store.events({
+      'click input.buym': function(event) {
+        Meteor.call('buym', event.target.id);
+      }
+    });
+
+
+
+  Template.store.events({
     'click input.hpowerup': function(event) {
       Meteor.call('hpowerup', event.target.id);
     }
@@ -627,6 +641,10 @@ if (Meteor.isServer) {
             'archerpower': 1,
             'mage': 0,
             'magepower': 1,
+          'archerprice': 20000,
+
+
+          'mageprice' : 1500000
 
           },
 
@@ -928,6 +946,40 @@ attack2: function(target) {
 
     },
 
+    buya: function(amount) {
+      var archer = Meteor.user().archer;
+      var cost = archer * 1500;
+      if (Meteor.user().money >= amount && amount > 0)
+        Meteor.users.update({
+          _id: this.userId
+        }, {
+          $inc: {
+            'archer': 1,
+            'archerprice': cost,
+            'money': (0 - amount),
+          }
+        });
+
+
+    },
+
+
+    buym: function(amount) {
+      var mage = Meteor.user().mageprice;
+      var cost = mage * 2;
+      if (Meteor.user().money >= amount && amount > 0)
+        Meteor.users.update({
+          _id: this.userId
+        }, {
+          $inc: {
+            'mage': 1,
+            'mageprice': cost,
+            'money': (0 - amount),
+          }
+        });
+
+
+    },
 
   buy: function(amount) {
     var hero = Meteor.user().rate;
