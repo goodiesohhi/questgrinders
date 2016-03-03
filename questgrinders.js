@@ -642,9 +642,9 @@ if (Meteor.isServer) {
             'mage': 0,
             'magepower': 1,
           'archerprice': 20000,
+           'money': 1337,
 
-
-          'mageprice' : 1500000
+          'mageprice' : 1500000,
 
           },
 
