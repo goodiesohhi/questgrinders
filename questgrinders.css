@@ -1,258 +1,419 @@
-/* CSS declarations go here */
-moon {
-  background-image: url("/border.png");
-}
+  /* CSS declarations go here */
+  moon {
+    background-image: url("/border.png");
+  }
 
-a {
-  color: purple;
-}
-body {
-  background-image: url("/background.png");
-  background-size: 1350px 1050px;
-  background-repeat: no-repeat;
-  padding-top: 40px;
-  background-size:cover
+  a {
+    color: purple;
+  }
+  body {
+    background-image: url("/background.png");
+    background-size: 1350px 1050px;
+    background-repeat: no-repeat;
+    padding-top: 40px;
+    background-size:cover
 
-}
-body {
-  color: red;
-}
+  }
+  body {
+    color: red;
+  }
 
-P {
-  color: blue;
-  font-size: 75%;
-}
-H2 {
-  color: blue;
-}
-P3 {
-  color: red;
-}
-P4 {
-  color: black;
-}
-html {
-  overflow: scroll;
-}
-P5 {
-  color: black;
-  font-size: 200%;
-}
-H3 {
-  width: 250px;
+  P {
+    color: blue;
+    font-size: 75%;
+  }
+  H2 {
+    color: blue;
+  }
+  P3 {
+    color: red;
+  }
+  P4 {
+    color: black;
+  }
+  html {
+    overflow: scroll;
+  }
+  P5 {
+    color: black;
+    font-size: 200%;
+  }
+  H3 {
+    width: 250px;
+    border: 6px solid #000000;
+
+
+
+    background-color: grey;
+
+    font-size: 100%;
+  }
+
+
+  btn-group {
+    font-size: 100%;
+    color: black;
+    background-color: white;
+  }
+  H5 {
+    font-size: 100%;
+    color: black;
+  }
+  P {
+    color: blue;
+    font-size: 50%;
+  }
+  P6 {
+    color: white;
+    background-color: black;
+  }
+  p {
+    font-size: 200%;
+  }
+  p3 {
+    font-size: 300%;
+  }
+  P2 {
+    font-size: 300%;
+  }
+  p {
+    font-family: "Times New Roman", Times, serif;
+  }
+  p2 {
+    font-family: "Times New Roman", Times, serif;
+  }
+  p2 {
+    colour: black;
+  }
+  H2 {
+    font-size: 100%;
+  }
+
+
+  .right {
+    width: 150px;
+    height: 100px;
+    float: right;
+    margin-right: 260px;
+  }
+  .left-panel {
+    width: 150px;
+    height: 100px;
+    float: left;
+      font-size: 95%;
+        line-height: 30%;
+  }
+  .right-panel {
+    float: right;
+  }
+
+  .leader {
+  border: 6px solid #000000;
+  margin-left: 260px;
+  background-color: white;
+  }
+
+  .base {
+  border: 6px solid #000000;
+  margin-left: 100px;
+  background-color: white;
+  }
+  .map2 {
   border: 6px solid #000000;
 
 
-
-  background-color: grey;
-
-  font-size: 100%;
-}
-
-
-btn-group {
-  font-size: 100%;
-  color: black;
   background-color: white;
-}
-H5 {
-  font-size: 100%;
-  color: black;
-}
-P {
-  color: blue;
-  font-size: 50%;
-}
-P6 {
-  color: white;
-  background-color: black;
-}
-p {
-  font-size: 200%;
-}
-p3 {
-  font-size: 300%;
-}
-P2 {
-  font-size: 300%;
-}
-p {
-  font-family: "Times New Roman", Times, serif;
-}
-p2 {
-  font-family: "Times New Roman", Times, serif;
-}
-p2 {
-  colour: black;
-}
-H2 {
-  font-size: 100%;
-}
+  }
 
-
-.right {
-  width: 150px;
-  height: 100px;
-  float: right;
-  margin-right: 260px;
-}
-.left-panel {
-  width: 150px;
-  height: 100px;
-  float: left;
-    font-size: 95%;
-      line-height: 30%;
-}
-.right-panel {
-  float: right;
-}
-
-.leader {
-border: 6px solid #000000;
-margin-left: 260px;
-background-color: white;
-}
-
-.base {
-border: 6px solid #000000;
-margin-left: 100px;
-background-color: white;
-}
-.map2 {
-border: 6px solid #000000;
-
-
-background-color: white;
-}
-
-.contact {
-border: 6px solid #000000;
-margin-left: 260px;
-
-
-background-color: white;
-}
-
-
-
-
-.ads {
-  float: none;
-}
-
-.low {
-
-  border: 1px solid #000000;
-
-  background-color: white;
-
-
-  margin-left: 300px;
-    width: 850px;
-    height: : 1050px;
-}
-.login {
-  width: 250px;
-}
-.moon {
-  background-color: black;
-  float: center;
+  .contact {
+  border: 6px solid #000000;
   margin-left: 260px;
-}
-
-.search {
-  margin-left: 360px;
-}
-
-.dataNotFound {
-
-  float: center;
-  margin-left: 360px;
-}
 
 
-
-.white {
   background-color: white;
-  padding: 70;
-
-}
-
-.text {
-    font-size: 50%;
-}
-
-.donate {
-  background-color: white;
-  width: 150px;
-  padding: 700;
-  margin-left: 42px;
-  border: 3px solid #000000;
-}
-
-.info {
-  background-color: white;
-    border: 5px solid #000000;
-  float: center;
-  margin-left: 260px;
-}
-
-.derp{
-  
-    border: 5px solid #000000;
-  float: center;
-  margin-left: 260px;
-}
-
-.push {
-  background-color: white;
-    border: 5px solid #000000;
-  float: center;
-  margin-left: 350px;
-}
-
-.prof{
-  margin-left: 200px;
-}
-
-.helpbutton {
+  }
 
 
-  margin-left: 720px;
-}
 
-.dash {
-  position:fixed;
-}
 
-.dash2 {
-  position:fixed;
-  margin-left: 360px;
-}
+  .ads {
+    float: none;
+  }
 
-.needlogin {
-  background-color: black;
+  .low {
 
-}
-.stats {
-  background-image: url("/background.png")
-}
+    border: 1px solid #000000;
 
-.status2 {
-  background-color: white;
+    background-color: white;
 
-  white-space: normal;
-  border: 3px solid #000000;
-  word-wrap: break-word;
-}
 
-.dropdown-menu{
-  white-space: normal;
-}
-.status {
+    margin-left: 300px;
+      width: 850px;
+      height: : 1050px;
+  }
+  .login {
+    width: 250px;
+  }
+  .moon {
+    background-color: black;
+    float: center;
+    margin-left: 260px;
+  }
+
+  .search {
+    margin-left: 360px;
+  }
+
+  .dataNotFound {
+
+    float: center;
+    margin-left: 360px;
+  }
+
+
+
+  .white {
+    background-color: white;
+    padding: 70;
+
+  }
+
+  .text {
+      font-size: 50%;
+  }
+
+  .donate {
+    background-color: white;
+    width: 150px;
+    padding: 700;
+    margin-left: 42px;
+    border: 3px solid #000000;
+  }
+
+  .info {
+    background-color: white;
+      border: 5px solid #000000;
+    float: center;
+    margin-left: 260px;
+  }
+
+
+
+
+
+  .derp{
+
+      border: 5px solid #000000;
+    float: center;
+    margin-left: 260px;
+  }
+
+  .push {
+    background-color: white;
+      border: 5px solid #000000;
+    float: center;
+    margin-left: 350px;
+  }
+
+  .prof{
+    margin-left: 200px;
+  }
+
+  .helpbutton {
+
+
+    margin-left: 720px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .dash {
+    position:fixed;
+
+
+  }
+
+  .dash2 {
+    position:fixed;
+    margin-left: 360px;
+  }
+
+  .needlogin {
+    background-color: black;
+
+  }
+  .stats {
+    background-image: url("/background.png")
+  }
+
+  .status2 {
+    background-color: white;
+
     white-space: normal;
-  background-color: white;
-  width: 500px;
-  border: 3px solid #000000;
-  word-wrap: break-word;
+    border: 3px solid #000000;
+    word-wrap: break-word;
+  }
+
+  .dropdown-menu{
+    white-space: normal;
+  }
+  .status {
+      white-space: normal;
+    background-color: white;
+    width: 500px;
+    border: 3px solid #000000;
+    word-wrap: break-word;
+  }
+
+  .smalldash {
+    margin-left:  1px;
+
+    background-color: white;
+
+
+
+    }
+
+  @media (min-width:992px) {
+    .smalldash {
+
+        display: none;
+    }
 }
+
+
+  @media (max-width: 991px) {
+    .logo {
+
+      display: none;
+
+    }
+
+
+
+
+  }
+
+  @media (max-width: 991px) {
+    .dash {
+
+      display: none;
+
+    }
+
+
+
+  }
+
+  @media (max-width: 991px) {
+    .basetext {
+
+font-size: 60%;
+margin-left:  260px;
+    }
+
+
+
+
+  }
+
+  @media (max-width: 991px) {
+    .details {
+
+margin-left:  260px;
+
+    }
+
+
+
+
+  }
+
+  @media (max-width: 991px) {
+    .white {
+font-size: 80%;
+  margin-left:  180px;
+
+    }
+
+
+
+
+  }
+
+  @media (max-width: 991px) {
+    .no {
+      white-space: normal;
+    background-color: white;
+    width: 200px;
+    height: 600px;
+    border: 3px solid #000000;
+    word-wrap: break-word;
+font-size: 150%;
+  margin-left:  480px;
+
+    }
+
+
+
+
+  }
+
+
+  @media (max-width: 991px) {
+    .status {
+      white-space: normal;
+    background-color: white;
+    width: 300px;
+
+    border: 3px solid #000000;
+    word-wrap: break-word;
+font-size: 50%;
+  margin-left:  280px;
+
+    }
+
+
+
+
+  }
+
+  @media (max-width: 991px) {
+    .hide {
+      display: none;
+
+    }
+
+
+
+
+  }
+
+
+
+    @media (max-width: 991px) {
+      .jack{
+        display: none;
+      }
+
+
+
+
+    }

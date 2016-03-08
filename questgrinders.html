@@ -10,13 +10,18 @@
 
   <title>QuestGrinders</title>
 
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="apple-touch-icon" href="/1.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/152.png">
+<link rel="apple-touch-startup-image" href="/startup.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 
 <body>
   {{>dash}}
-
+  {{>smalldash}}
   <p2 align="right">
 
 
@@ -178,8 +183,10 @@
 
 
 <div class="base">
+
   <p align="center">
     <br> <br>
+      <div class="basetext">
     You ({{user.username}}) have {{formatCurrency user.money}} gold. <br> <br> {{formatCurrency user.rate}} Heroes work for you.
     <br>
     <br> Visit the shack to hire heroes!
@@ -187,6 +194,7 @@
     <br> Click the do a quest button to earn money.
     <br>
     <br>
+  </div>
 
 
 
@@ -214,6 +222,41 @@
   {{else}}
   {{> needlogin}}
   {{/if}}
+</template>
+
+
+<template name="smalldash">
+  <div class="left-panel">
+  <div class="smalldash">
+  <div class="status2">
+
+    <h3 align="center">
+<div class="login" align="center">
+
+{{> loginButtons}}
+</div><br>
+<div class="status2">
+  <a href="/base"> <img src="/base.png"></a><br>
+
+
+  <a href="/store"> <img src="/store.png"></a><br>
+
+  <a href="/leaderboard"> <img src="/leaderboard.png"></a><br>
+
+  <a href="/myprofile"> <img src="/profile.png"></a><br>
+
+
+
+
+
+</div>
+
+
+<br>
+</h3>
+  </div>
+</div>
+</div>
 </template>
 
 <template name="dash">
@@ -300,10 +343,11 @@
 </template>
 
 <template name="logo">
-
+<div class = "logo">
   <p align="center">
     <a href="/base"><img src="/logo.png"></a>
   </p>
+</div>
 
 </template>
 
@@ -339,8 +383,9 @@
 
 
   <p align="center">
+    <div class="jack">
     <a href="/jack"><img src="/shack.png"></a>
-
+</div>
     You have g{{formatCurrency user.money}} <br>
 
 
@@ -362,7 +407,7 @@
     </ul>
   </div>
   <br>
-   <input type="image" src="/hero.png" class="buy btn span2" id="{{user.cost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" /> Hero Hire Price: g{{formatCurrency user.cost}}
+   <input type="image" src="/hero.png" class="buy btn span2" id="{{user.cost}}" value="Hire a Hero ({{formatCurrency cost}}) gold" />Price: g{{formatCurrency user.cost}}
   <div class="btn-group">
 
 
@@ -381,7 +426,7 @@
     </ul>
   </div>
   <br>
-  <input type="image" src="/archer.png" class="buya btn span2" id="{{user.archerprice}}" value="Hire an Archer ({{formatCurrency archerprice}}) gold" /> Archer Hire Price: g{{formatCurrency user.archerprice}}
+  <input type="image" src="/archer.png" class="buya btn span2" id="{{user.archerprice}}" value="Hire an Archer ({{formatCurrency archerprice}}) gold" />  Price: g{{formatCurrency user.archerprice}}
  <div class="btn-group">
 
 
@@ -401,7 +446,7 @@
 <br>
 
 
-<input type="image" src="/mage.png" class="buym btn span2" id="{{user.archerprice}}" value="Hire an Archer ({{formatCurrency archerprice}}) gold" /> Mage Hire Price: g{{formatCurrency user.mageprice}}
+<input type="image" src="/mage.png" class="buym btn span2" id="{{user.archerprice}}" value="Hire an Archer ({{formatCurrency archerprice}}) gold" /> Hire Price: g{{formatCurrency user.mageprice}}
 <div class="btn-group">
 
 
@@ -440,24 +485,29 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 </p>
 
 </div>
 
 
 </template>
+
+
+
+
+<template name="no">
+  <div class ="no">
+  YOUR SCREEN IS TOO SMALL TO DISPLAY THIS PAGE.<br>
+  WHILE THE MOBILE VERSION IS GREAT FOR CLICKING AND BUYING MORE QUESTERS,<br> SOME ELEMENTS WILL NOT DISPLAY PROPERLY SUCH AS THE LEADERBOARD....<br> WE WILL TRY TO GET THIS WORKING SOON
+</div>
+</template>
+
+
+
+
+
+
+
 
 
 
@@ -833,12 +883,14 @@
 </div>
   <div class="status">
     <br>
-
+   <div class="hide">
         Current Status: <br><br>
+
         <div class="status">
           <div class="text">
             {{status}}
           </div>
+            </div>
         </div>
     <br><br>
 
@@ -931,19 +983,23 @@ PETS!<br>
 <div class="prof">
 
   <p align="center">
+    <div class="hide">
         <div class="status">
           <br>
     Username: {{user.username}} <br><br>
       Title: {{user.cheat}}  <br><br>
     </div>
+  </div>
 
     <div class="status">
 
-<br>
+<br><div class="status">
     Current Status: <br> <br>
-    <div class="status">
+
+      <div class="hide">
       <div class="text">
         {{user.status}}
+          </div>
       </div>
     </div>
 <br><br>

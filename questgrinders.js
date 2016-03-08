@@ -65,6 +65,8 @@ if (Meteor.isClient) {
     this.render('quest');
   });
 
+
+
   Router.route('/myprofile', function() {
     this.render('myProfile');
   });
@@ -80,6 +82,10 @@ if (Meteor.isClient) {
 
   Router.route('/lib', function() {
     this.render('lib');
+  });
+
+  Router.route('/no', function() {
+    this.render('no');
   });
 
 
@@ -253,6 +259,19 @@ if (Meteor.isClient) {
       this.rendered = true;
     }
   };
+  Template.leaderboards.rendered = function(){
+    if (screen.width <= 900) {
+    window.location = "/no";
+  }
+  };
+  Template.no.rendered = function(){
+    if (screen.width >= 900) {
+    window.location = "/base";
+  }
+  };
+
+
+
 
   Template.leaderboard.rendered = function(){
     if (!this.rendered){
@@ -955,6 +974,23 @@ attack2: function(target) {
 
     },
 
+    buyi: function(amount) {
+      var archer = Meteor.user().archer;
+      var cost = archer * 1500;
+      if (Meteor.user().money >= amount && amount > 0)
+        Meteor.users.update({
+          _id: this.userId
+        }, {
+          $inc: {
+            'archer': 1,
+            'archerprice': cost,
+            'money': (0 - amount),
+          }
+        });
+
+
+    },
+
 
     buym: function(amount) {
       var mage = Meteor.user().mageprice;
@@ -1005,6 +1041,20 @@ attack2: function(target) {
 
   },
 
+  apower: function(amount) {
+    if (Meteor.user().money >= amount && amount > 0)
+      Meteor.users.update({
+        _id: this.userId
+      }, {
+        $inc: {
+          'archerpower': 1,
+          'archerpcost': 1000000,
+          'money': (0 - amount),
+        }
+      });
+
+
+  },
 
   mult: function(amount) {
     if (Meteor.user().money >= amount && amount > 0)
