@@ -32,9 +32,9 @@ if (Meteor.isClient) {
 
   Router.onBeforeAction(function() {
       if (!Meteor.user() && this.ready())
-          return this.redirect('/needlogin');
+          return this.redirect('/home');
       else { this.next() }
-  }, {except: ['needlogin','leaderboard','contact','help','infopages']});
+  }, {except: ['needlogin','leaderboard','contact','help','infopages','home']});
 
 
 
@@ -52,6 +52,10 @@ if (Meteor.isClient) {
 
     Router.route('/spyshop', function() {
       this.render('spyshop');
+    });
+
+    Router.route('/home', function() {
+      this.render('home');
     });
     Router.route('/questleader', function() {
       this.render('questleader');
@@ -263,6 +267,11 @@ if (Meteor.isClient) {
     if (screen.width <= 900) {
     window.location = "/no";
   }
+};
+  Template.start.rendered = function(){
+
+    window.location = "/home";
+
   };
   Template.no.rendered = function(){
     if (screen.width >= 900) {

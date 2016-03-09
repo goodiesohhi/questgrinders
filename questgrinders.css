@@ -18,7 +18,7 @@
     color: red;
   }
 H1{
-  font-size: 50%;
+  font-size: 100%;
 }
   P {
     color: blue;
@@ -268,6 +268,15 @@ H1{
   .status2 {
     background-color: white;
 
+    white-space: normal;
+    border: 3px solid #000000;
+    word-wrap: break-word;
+  }
+
+  .status4 {
+    background-color: white;
+      margin-left:  360px;
+  width: auto;
     white-space: normal;
     border: 3px solid #000000;
     word-wrap: break-word;
