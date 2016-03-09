@@ -656,7 +656,12 @@ if (Meteor.isServer) {
         }, {
           $set: {
 
-          'superstition': 1337,
+            'archerpcost' : 10000,
+            'magepcost' : 100000,
+            'mageprice' : 15000,
+            
+
+          'superstition': "2spooky4me",
           },
 
 
@@ -774,9 +779,12 @@ if (Meteor.isServer) {
     user.archer = 0;
     user.archerprice= 20000;
     user.archerpower = 1;
+    user.archerpcost = 10000;
+    user.magepcost = 100000;
     user.magepower = 1;
+
     user.mage = 0;
-    user.mageprice = 1500000 ;
+    user.mageprice = 150000 ;
 
     return user;
 
@@ -994,7 +1002,7 @@ attack2: function(target) {
 
     buym: function(amount) {
       var mage = Meteor.user().mageprice;
-      var cost = mage * 2;
+      var cost = mage * 0.5;
       if (Meteor.user().money >= amount && amount > 0)
         Meteor.users.update({
           _id: this.userId
