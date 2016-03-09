@@ -662,7 +662,7 @@ if (Meteor.isServer) {
         }, {
           $set: {
 
-          
+
 
 
           'superstition': "2spooky4me",
@@ -1005,8 +1005,8 @@ attack2: function(target) {
 
 
     buym: function(amount) {
-      var mage = Meteor.user().mageprice;
-      var cost = mage * 0.5;
+      var mage = Meteor.user().mage;
+      var cost = mage * 100;
       if (Meteor.user().money >= amount && amount > 0)
         Meteor.users.update({
           _id: this.userId

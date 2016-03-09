@@ -285,12 +285,28 @@
   .smalldash {
     margin-left:  1px;
         float: left;
+    width: 40px;
 
     background-color: white;
 
 
 
     }
+
+  @media (max-width:991px) {
+    H3 {
+      width: 150px;
+      border: 6px solid #000000;
+
+
+
+      background-color: grey;
+
+      font-size: 100%;
+    }
+  }
+
+
 
   @media (min-width:992px) {
     .smalldash {
@@ -336,9 +352,10 @@ margin-left:  260px;
   }
 
   @media (max-width: 991px) {
-    .details {
+    .details2 {
 
-margin-left:  260px;
+margin-left:  300px;
+font-size: 5px;
 
     }
 
@@ -363,6 +380,13 @@ font-size: 80%;
 
 
   }
+  @media (max-width: 991px) {
+  .details
+  {
+    font-size: 20px;
+  }
+
+      }
 
   @media (max-width: 991px) {
     .no {
