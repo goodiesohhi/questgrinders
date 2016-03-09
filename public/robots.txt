@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /profile
+Disallow: /public
+Disallow: /PWNED.html
+Disallow: /google1d10f1c25f3fb56a.html
