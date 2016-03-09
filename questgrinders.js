@@ -1006,7 +1006,7 @@ attack2: function(target) {
 
     buym: function(amount) {
       var mage = Meteor.user().mage;
-      var cost = mage * 100;
+      var cost = mage * 500;
       if (Meteor.user().money >= amount && amount > 0)
         Meteor.users.update({
           _id: this.userId
