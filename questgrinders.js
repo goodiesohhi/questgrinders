@@ -526,6 +526,12 @@ Template.pvp.events({
     }
   });
 
+  Template.store.events({
+    'click input.apower': function(event) {
+      Meteor.call('apower', event.target.id);
+    }
+  });
+
 
 
   Template.store.events({
@@ -656,10 +662,8 @@ if (Meteor.isServer) {
         }, {
           $set: {
 
-            'archerpcost' : 10000,
-            'magepcost' : 100000,
-            'mageprice' : 15000,
-            
+          
+
 
           'superstition': "2spooky4me",
           },
