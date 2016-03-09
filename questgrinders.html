@@ -280,9 +280,14 @@
     <h3 align="center">
 <div class="login" align="center">
 
-{{> loginButtons}}
-</div><br>
-<div class="status2">
+
+
+  <a href="/login"> <img src="/store.png"></a><br>
+
+
+
+
+
 <a href="/base">Your Base</a><br>
 
 
@@ -290,13 +295,15 @@
 <a href="/leaderboard">The Leaderboards</a><br>
 <a href="/myprofile">Your Profile</a><br>
 
-<a href="http://quest-grinders.wikia.com/wiki/">Official Wiki</a><br>
+
 <a href="/chat">In-Game Chat</a><br>
 <a href="/contact">Contact</a><br>
-<a href="http://foxfyre.boards.net/">Official Forum</a><br>
+
 <a href="http://goodieshowdown.herokuapp.com">Pokemon Showdown Server</a><br>
 <a href="/new">WHAT'S NEW?</a><br>
+<div class="time">
  {{time}}
+ </div>
 {{>donate}}
 </div>
 
@@ -820,9 +827,11 @@
 
 <template name="login">
   <p align ="center">
-
+    <h4>
+<div class="status2">
   {{>loginButtons}}
-
+</div>
+</h4>
 </p>
 </template>
 

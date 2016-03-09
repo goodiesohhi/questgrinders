@@ -41,7 +41,7 @@ H1{
     font-size: 200%;
   }
   H3 {
-    width: 250px;
+    width: 400  px;
     border: 6px solid #000000;
 
 
@@ -51,6 +51,16 @@ H1{
     font-size: 100%;
   }
 
+  H4 {
+    width: 400px;
+    border: 6px solid #000000;
+
+   margin-left: 230px;
+
+    background-color: grey;
+
+    font-size: 55%;
+  }
 
   btn-group {
     font-size: 100%;
@@ -243,11 +253,14 @@ H1{
 
 
 
-
+.time{
+  font-size: 75%;
+}
 
 
   .dash {
     position:fixed;
+
 
 
   }
@@ -271,6 +284,7 @@ H1{
     white-space: normal;
     border: 3px solid #000000;
     word-wrap: break-word;
+
   }
 
   .status4 {
@@ -301,6 +315,19 @@ H1{
     background-color: white;
 
 
+
+    }
+  @media (max-width:991px) {
+    H4 {
+      width: 400px;
+      border: 6px solid #000000;
+
+     margin-left: 280px;
+
+      background-color: grey;
+
+      font-size: 55%;
+    }
 
     }
 
@@ -350,11 +377,25 @@ H1{
 
   }
 
-  @media (max-width: 991px) {
-    .basetext {
 
-font-size: 60%;
-margin-left:  260px;
+    @media (max-width: 991px) {
+      .basetext {
+
+  font-size: 60%;
+  margin-left:  260px;
+      }
+
+
+
+
+    }
+
+
+  @media (max-width: 991px) {
+    H3 {
+
+font-size: 40%;
+width: 400;
     }
 
 

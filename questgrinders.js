@@ -265,14 +265,14 @@ if (Meteor.isClient) {
     }
   };
   Template.leaderboards.rendered = function(){
-    if (screen.width <= 900) {
+    if (screen.width <= 1200) {
     window.location = "/no";
 
   }
 };
 
 Template.smalldash.rendered = function(){
-  if (screen.width <= 900) {
+  if (screen.width <= 1200) {
  console.log("derp");
   Blaze.remove(dash);
 }
