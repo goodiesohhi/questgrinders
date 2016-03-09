@@ -34,7 +34,7 @@ if (Meteor.isClient) {
       if (!Meteor.user() && this.ready())
           return this.redirect('/home');
       else { this.next() }
-  }, {except: ['needlogin','leaderboard','contact','help','infopages','home']});
+  }, {except: ['needlogin','leaderboard','contact','help','infopages','home', 'login']});
 
 
 
@@ -157,10 +157,11 @@ if (Meteor.isClient) {
     this.render('contact');
   });
 
-
   Router.route('/login', function() {
-    this.render('loginButtons');
+    this.render('login');
   });
+
+
 
   Accounts.ui.config({
     passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
@@ -266,7 +267,15 @@ if (Meteor.isClient) {
   Template.leaderboards.rendered = function(){
     if (screen.width <= 900) {
     window.location = "/no";
+
   }
+};
+
+Template.smalldash.rendered = function(){
+  if (screen.width <= 900) {
+ console.log("derp");
+  Blaze.remove(dash);
+}
 };
   Template.start.rendered = function(){
 
