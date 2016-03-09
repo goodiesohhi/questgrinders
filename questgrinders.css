@@ -17,7 +17,9 @@
   body {
     color: red;
   }
-
+H1{
+  font-size: 50%;
+}
   P {
     color: blue;
     font-size: 75%;
