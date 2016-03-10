@@ -1,0 +1,4 @@
+https://questgrinders.herokuapp.com/home
+https://questgrinders.herokuapp.com/infopages
+https://questgrinders.herokuapp.com/help
+https://questgrinders.herokuapp.com/needlogin
