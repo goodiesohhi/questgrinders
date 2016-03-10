@@ -269,6 +269,9 @@ if (Meteor.isClient) {
     window.location = "/no";
 
   }
+  else {
+    return false;
+  }
 };
 
 Template.smalldash.rendered = function(){
