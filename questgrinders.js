@@ -1060,13 +1060,14 @@ attack2: function(target) {
   },
 
   power: function(amount) {
+    var power = Meteor.user().power
     if (Meteor.user().money >= amount && amount > 0)
       Meteor.users.update({
         _id: this.userId
       }, {
         $inc: {
           'power': 5,
-          'pcost': 1000000,
+          'pcost': power*10,
           'money': (0 - amount),
         }
       });
@@ -1135,6 +1136,7 @@ attack2: function(target) {
         'done2': 0,
         'done3': 0,
         'done4': 0,
+        'done5': 1,
         'progress': 1,
       },
 
@@ -1160,60 +1162,19 @@ attack2: function(target) {
 
 
       spyset: function () {
-        if(Meteor.user().done < 10000 )
+        if(Meteor.user().done5 <150 )
 
           Meteor.users.update({
             _id: this.userId
           }, {
             $set: {
-              'spy' : 0,
-              'spycost': 100000,
-              'done': 111120,
-              'done4': 9999999,
-              'attackattempts': 3,
+              'power' : 25,
+                'pcost' : 100000,
+               'done5' : 200,
 
             }
             });
         },
-
-
-        spyset: function () {
-          if(Meteor.user().done4 < 10000 )
-
-            Meteor.users.update({
-              _id: this.userId
-            }, {
-              $set: {
-
-                'done4': 9999999,
-                'attackattempts': 3,
-
-              }
-              });
-          },
-
-
-
-        promo1: function () {
-          if(Meteor.user().done2 < 1000 )
-
-
-            Meteor.users.update({
-              _id: this.userId
-            }, {
-              $set: {
-
-                'done2': 99111120,
-
-              },
-
-              $inc: {
-
-                'heropower': 1,
-
-              }
-              });
-          },
 
 
 
