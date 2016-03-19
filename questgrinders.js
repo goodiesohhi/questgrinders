@@ -683,31 +683,6 @@ if (Meteor.isServer) {
 
 
 
-    Meteor.setInterval(function() {
-
-      Meteor.users.find({}).map(function(user) {
-
-        Meteor.users.update({
-          _id: user._id
-        }, {
-          $unset : {
-
-
-
-
-          'status': false,
-          },
-
-
-
-        })
-      });
-
-
-
-
-    }, 1500)
-
 
 
     Meteor.setInterval(function() {
