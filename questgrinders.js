@@ -179,8 +179,14 @@ if (Meteor.isClient) {
   Template.online.players = function() {
         return Meteor.users.find({ "status.online": true });
   };
+  Template.online.playernumber = function() {
+        return Meteor.users.find({ "status.online": true }).count();
+  };
 
 
+    Template.leaderboards.playernumber = function() {
+      return Meteor.users.find({}).count();
+    };
 
   Template.leaderboard.players = function() {
     return Meteor.users.find({}, {
