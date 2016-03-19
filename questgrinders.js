@@ -160,6 +160,10 @@ if (Meteor.isClient) {
   Router.route('/login', function() {
     this.render('login');
   });
+  Router.route('/online', function() {
+    this.render('online');
+  });
+
 
 
 
@@ -168,10 +172,13 @@ if (Meteor.isClient) {
   });
 
   Meteor.subscribe('userData');
+  Meteor.subscribe('userStatus');
 
 
 
-
+  Template.online.players = function() {
+        return Meteor.users.find({ "status.online": true });
+  };
 
 
 
@@ -620,7 +627,9 @@ if (Meteor.isServer) {
         engine: new EasySearch.Minimongo()
       });
 
-
+      Meteor.publish("userStatus", function() {
+        return Meteor.users.find({ "status2.online": true });
+      });
 
   Meteor.publish("userProfile",function(username){
       // simulate network latency by sleeping 2s
@@ -681,12 +690,12 @@ if (Meteor.isServer) {
         Meteor.users.update({
           _id: user._id
         }, {
-          $set: {
+          $unset : {
 
 
 
 
-          'superstition': "2spooky4me",
+          'status': false,
           },
 
 
@@ -866,7 +875,7 @@ Meteor.methods({
     }, {
 
         $set: {
-            'status': statusvar
+            'status3': statusvar
         }
 
 

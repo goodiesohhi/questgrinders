@@ -69,6 +69,52 @@
 
 
 
+<template name="online">
+
+  <div class="right">
+      <a href="/questleader"><img src="/quest.png"></a>
+
+  </div>
+
+  <div class="leader">
+
+    <h5 align="center">
+      These players are currently logged on.
+  <table class="leaderboard table">
+    <thead>
+      <th>Username</th> <th>Status</th><th>View Profile</th>
+    </thead>
+
+    <tbody>
+      {{#each players}}
+        {{> onlineplayer}}
+      {{/each}}
+    </tbody>
+  </table>
+</h5>
+  </div>
+
+</template>
+
+<template name="onlineplayer">
+
+
+  <tr class="player">
+    <td class="name">{{username}} {{cheat}} </td>
+
+
+<td class="View profile">
+
+  <a href="/profile/{{username}}">Profile</a>
+
+  </td>
+
+
+  </tr>
+
+</template>
+
+
 
 <template name="leaderboards">
 
@@ -85,6 +131,10 @@
       <th>Username</th> <th>Status</th><th>View stats</th> <th>View Profile</th><th>Exp</th>
     </thead>
 
+
+
+
+
     <tbody>
       {{#each players}}
         {{> player}}
@@ -98,7 +148,7 @@
 
 <template name="statusshow">
   <div class="status2">
-  {{status}}
+  {{status3}}
 </div>
 </template>
 <template name="player">
@@ -174,25 +224,6 @@
 
 
 
-
-<template name="RESET">
-  <p5>
-    THERE WILL ALSO BE A RESET...
-    <br>
-    <br>
-    <br>
-    <br>? PLAY THIS GAME WHILE YOU ARE WAITING: goodiesohhi.minitroopers.com
-  </p5>
-
-</template>
-
-
-<template name="UPDATE">
-  <p5>
-    AN UPDATE IS COMING... GAME DISABLED..
-  </p5>
-
-</template>
 
 
 <template name="leaderboard">
@@ -917,7 +948,7 @@
 
         <div class="status">
           <div class="text">
-            {{status}}
+            {{status3}}
           </div>
             </div>
         </div>
@@ -1028,13 +1059,13 @@ PETS!<br>
 
       <div class="hide">
       <div class="text">
-        {{user.status}}
+        {{user.status3}}
           </div>
       </div>
     </div>
 <br><br>
 Update status below: <br><br>
-    {{>status}}<br><br>
+    {{>status3}}<br><br>
 
     Exp: {{user.exp}} <br><br>
 
