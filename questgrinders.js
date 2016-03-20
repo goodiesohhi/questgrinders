@@ -2,6 +2,8 @@
 
 
 if (Meteor.isClient) {
+  
+
   Avatar.setOptions({
     customImageProperty: function() {
       var user = this;
@@ -654,7 +656,19 @@ Handlebars.registerHelper('formatCurrency', function(number) {
 
 if (Meteor.isServer) {
 
+SyncedCron.start();
 
+  SyncedCron.add({
+    name: 'Reset Attacks',
+    schedule: function(parser) {
+
+      return parser.text('at 10:15 pm');
+    },
+    job: function() {
+      var reset = reset();
+      return reset;
+    }
+  });
 
 
       Meteor.publish("userStatus", function() {
@@ -891,6 +905,23 @@ Meteor.methods({
         });
 
         console.log(avatarvar)
+      },
+
+      reset: function() {
+
+
+        Meteor.users.update({
+            _id: user._id
+        }, {
+
+            $set: {
+                'attacks': 3
+            }
+
+
+        });
+
+
       },
 
 

@@ -31,3 +31,4 @@ force-ssl
 okgrow:analytics
 mizzao:user-status
 utilities:avatar
+percolate:synced-cron
