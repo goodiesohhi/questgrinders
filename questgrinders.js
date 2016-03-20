@@ -2,7 +2,13 @@
 
 
 if (Meteor.isClient) {
-
+  Avatar.setOptions({
+    customImageProperty: function() {
+      var user = this;
+      // calculate the image URL here
+      return user.avatar2;
+    }
+  });
   Meteor.startup(function () {
 
        setInterval(function () {
@@ -195,6 +201,11 @@ if (Meteor.isClient) {
       }
     });
   };
+
+
+
+
+
   Template.leaderboard.items = function() {
     return Items;
   }
@@ -464,6 +475,21 @@ disqus_shortname="questgrinders";
     }
 });
 
+Template.avatar2.events({
+
+  'submit' : function(event) {
+      event.preventDefault(); //prevent page refresh
+
+
+
+      var avatarvar = event.target.avatar.value;
+
+
+      alert("Submitted!");
+      Meteor.call('setavatar', avatarvar);
+  }
+});
+
 
 Template.pvp.events({
 
@@ -626,15 +652,9 @@ if (Meteor.isServer) {
 
 
 
-    const Players = new Mongo.Collection('players'),
-      PlayersIndex = new EasySearch.Index({
-        collection: Players,
-        fields: ['username'],
-        engine: new EasySearch.Minimongo()
-      });
 
       Meteor.publish("userStatus", function() {
-        return Meteor.users.find({ "status2.online": true });
+        return Meteor.users.find({ "status.online": true });
       });
 
   Meteor.publish("userProfile",function(username){
@@ -668,7 +688,13 @@ if (Meteor.isServer) {
   });
 
 
-
+  Avatar.setOptions({
+    customImageProperty: function() {
+      var user = this;
+      // calculate the image URL here
+      return user.avatar2;
+    }
+  });
 
 
   ProfileController=RouteController.extend({
@@ -683,6 +709,7 @@ if (Meteor.isServer) {
           });
       }
   });
+
   Meteor.startup(function() {
 
 
@@ -846,6 +873,29 @@ Meteor.methods({
       event.preventDefault();
     },
 
+    setavatar: function() {
+      
+        Meteor.call('setavatar2', avatarvar);
+        event.preventDefault();
+      },
+
+
+      setavatar2: function(statusvar) {
+
+
+        Meteor.users.update({
+            _id: this.userId
+        }, {
+
+            $set: {
+                'avatar2': avatarvar
+            }
+
+
+        });
+
+        console.log(avatarvar)
+      },
 
 
   submitme: function(statusvar) {

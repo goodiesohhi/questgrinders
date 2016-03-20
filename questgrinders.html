@@ -158,7 +158,7 @@
 
 
   <tr class="player">
-    <td class="name">{{username}} {{cheat}} </td>
+    <td class="name">  {{> avatar user=this shape="rounded" }} {{username}} {{cheat}} </td>
     <td class="Status">
       <div class="btn-group">
       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -941,6 +941,7 @@
   <p align="center">
       <div class="status">
         <br>
+        {{> avatar user=this shape="rounded" size="large"}}<br>
     Username: {{username}} <br><br>
     Title: {{cheat}}  <br><br>
 </div>
@@ -1050,6 +1051,7 @@ PETS!<br>
     <div class="hide">
         <div class="status">
           <br>
+            {{> avatar user=this shape="rounded" size="large"}}<br>
     Username: {{user.username}} <br><br>
       Title: {{user.cheat}}  <br><br>
     </div>
@@ -1067,8 +1069,10 @@ PETS!<br>
       </div>
     </div>
 <br><br>
-Update status below: <br><br>
-    {{>status}}<br><br>
+Update status below: <br>
+    {{>status}}<br>
+    Avatar URL: <br>
+    {{>avatar2}}<br><br>
 
     Exp: {{user.exp}} <br><br>
 
@@ -1114,6 +1118,15 @@ You do not have access to spy shop.
 <template name="status">
   <form id="status">
        <input id="status" type="text" name="status"/>
+       <input type="submit" id="submit"/>
+
+</form>
+
+</template>
+
+<template name="avatar2">
+  <form id="status">
+       <input id="avatar" type="text" name="avatar"/>
        <input type="submit" id="submit"/>
 
 </form>
