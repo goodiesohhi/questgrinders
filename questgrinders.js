@@ -7,7 +7,11 @@ if (Meteor.isClient) {
       var user = this;
       // calculate the image URL here
       return user.avatar2;
-    }
+    },
+    imageSizes: {
+   'large': 150,
+   'mySize': 90
+ }
   });
   Meteor.startup(function () {
 
@@ -486,7 +490,7 @@ Template.avatar2.events({
 
 
       alert("Submitted!");
-      Meteor.call('setavatar', avatarvar);
+      Meteor.call('setavatar2', avatarvar);
   }
 });
 
@@ -693,7 +697,11 @@ if (Meteor.isServer) {
       var user = this;
       // calculate the image URL here
       return user.avatar2;
-    }
+    },
+    imageSizes: {
+   'large': 150,
+   'mySize': 90
+ }
   });
 
 
@@ -867,20 +875,8 @@ Meteor.methods({
               return _time;
           },
 
-  submitme2: function() {
-      var statusvar = document.getElementById("status").value;
-      Meteor.call('submitme', statusvar);
-      event.preventDefault();
-    },
 
-    setavatar: function() {
-      
-        Meteor.call('setavatar2', avatarvar);
-        event.preventDefault();
-      },
-
-
-      setavatar2: function(statusvar) {
+      setavatar2: function(avatarvar) {
 
 
         Meteor.users.update({
