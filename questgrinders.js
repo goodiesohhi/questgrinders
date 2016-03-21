@@ -672,7 +672,7 @@ SyncedCron.start();
     name: 'Reset Attacks',
     schedule: function(parser) {
 
-      return parser.text('at 10:15 pm');
+      return parser.text('at 8:10 pm');
     },
     job: function() {
       var reset = reset1();
