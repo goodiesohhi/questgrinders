@@ -660,6 +660,12 @@ Handlebars.registerHelper('formatCurrency', function(number) {
 
 if (Meteor.isServer) {
 
+
+    function reset1() {
+          Meteor.call('reset');
+
+    }
+
 SyncedCron.start();
 
   SyncedCron.add({
