@@ -2,7 +2,11 @@
 
 
 if (Meteor.isClient) {
-  
+
+  function reset1() {
+        Meteor.call('reset');
+
+  }
 
   Avatar.setOptions({
     customImageProperty: function() {
@@ -665,7 +669,7 @@ SyncedCron.start();
       return parser.text('at 10:15 pm');
     },
     job: function() {
-      var reset = reset();
+      var reset = reset1();
       return reset;
     }
   });
