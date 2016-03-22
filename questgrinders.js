@@ -751,10 +751,19 @@ Meteor.setInterval(function() {
         name: 'Reset Attacks2',
         schedule: function(parser) {
 
-          return parser.text('at 10:40 pm');
+          return parser.text('at 11:00 pm');
         },
         job: function() {
-            Meteor.call('reset');
+          Meteor.users.update({
+              _id: this._id
+          }, {
+
+              $set: {
+                  'attacks': 3
+              }
+
+
+          });
         }
       });
 
