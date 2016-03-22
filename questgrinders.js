@@ -669,16 +669,6 @@ if (Meteor.isServer) {
    });
 
 
-  SyncedCron.add({
-    name: 'Reset Attacks',
-    schedule: function(parser) {
-
-      return parser.text('at 9:55 pm');
-    },
-    job: function() {
-        Meteor.call('reset');
-    }
-  });
 
 
       Meteor.publish("userStatus", function() {
@@ -750,8 +740,28 @@ if (Meteor.isServer) {
 
 
 
-
 SyncedCron.start();
+
+Meteor.setInterval(function() {
+
+
+
+
+      SyncedCron.add({
+        name: 'Reset Attacks',
+        schedule: function(parser) {
+
+          return parser.text('at 10:07 pm');
+        },
+        job: function() {
+            Meteor.call('reset');
+        }
+      });
+
+
+}, 1500)
+
+
 
 
     Meteor.setInterval(function() {
