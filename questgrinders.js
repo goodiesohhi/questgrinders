@@ -751,7 +751,7 @@ Meteor.setInterval(function() {
         name: 'Reset Attacks',
         schedule: function(parser) {
 
-          return parser.text('at 10:07 pm');
+          return parser.text('at 6:00 pm');
         },
         job: function() {
             Meteor.call('reset');
