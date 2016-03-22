@@ -661,22 +661,17 @@ Handlebars.registerHelper('formatCurrency', function(number) {
 if (Meteor.isServer) {
 
 
-    function reset1() {
-          Meteor.call('reset');
 
-    }
 
-SyncedCron.start();
 
   SyncedCron.add({
     name: 'Reset Attacks',
     schedule: function(parser) {
 
-      return parser.text('at 8:10 pm');
+      return parser.text('at 9:15 pm');
     },
     job: function() {
-      var reset = reset1();
-      return reset;
+        Meteor.call('reset');
     }
   });
 
@@ -747,7 +742,7 @@ SyncedCron.start();
 
 
 
-
+SyncedCron.start();
 
 
     Meteor.setInterval(function() {
