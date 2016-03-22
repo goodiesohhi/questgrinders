@@ -668,7 +668,7 @@ if (Meteor.isServer) {
     name: 'Reset Attacks',
     schedule: function(parser) {
 
-      return parser.text('at 9:25 pm');
+      return parser.text('at 9:37 pm');
     },
     job: function() {
         Meteor.call('reset');
