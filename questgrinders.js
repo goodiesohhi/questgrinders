@@ -665,7 +665,7 @@ if (Meteor.isServer) {
      // Log job run details to console
      log: true,
 
-    
+
    });
 
 
@@ -673,7 +673,7 @@ if (Meteor.isServer) {
     name: 'Reset Attacks',
     schedule: function(parser) {
 
-      return parser.text('at 9:37 pm');
+      return parser.text('at 9:55 pm');
     },
     job: function() {
         Meteor.call('reset');
@@ -741,6 +741,10 @@ if (Meteor.isServer) {
           });
       }
   });
+
+
+  SyncedCron.start();
+
 
   Meteor.startup(function() {
 
