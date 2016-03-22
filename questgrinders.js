@@ -748,10 +748,10 @@ Meteor.setInterval(function() {
 
 
       SyncedCron.add({
-        name: 'Reset Attacks',
+        name: 'Reset Attacks2',
         schedule: function(parser) {
 
-          return parser.text('at 6:00 pm');
+          return parser.text('at 6:35 pm');
         },
         job: function() {
             Meteor.call('reset');
