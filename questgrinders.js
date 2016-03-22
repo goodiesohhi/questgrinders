@@ -661,7 +661,12 @@ Handlebars.registerHelper('formatCurrency', function(number) {
 if (Meteor.isServer) {
 
 
+  SyncedCron.config({
+     // Log job run details to console
+     log: true,
 
+    
+   });
 
 
   SyncedCron.add({
