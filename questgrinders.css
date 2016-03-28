@@ -20,6 +20,12 @@
 H1{
   font-size: 100%;
 }
+
+ads{
+  float: right;
+}
+
+
   P {
     color: blue;
     font-size: 75%;
@@ -146,11 +152,6 @@ H1{
   }
 
 
-
-
-  .ads {
-    float: none;
-  }
 
   .low {
 

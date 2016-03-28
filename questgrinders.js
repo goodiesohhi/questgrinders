@@ -180,6 +180,11 @@ if (Meteor.isClient) {
     this.render('online');
   });
 
+  Router.route('/ads', function() {
+    this.render('ads');
+  });
+
+
 
 
 
@@ -325,7 +330,14 @@ Template.smalldash.rendered = function(){
   }
   };
 
-
+  Template.ads.rendered = function() {
+    $.getScript("//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", function() {
+      var ads, adsbygoogle;
+      ads = '<ins class="adsbygoogle"style="display:block"data-ad-client="ca-pub-5252557572574596"data-ad-slot="9460618067"data-ad-format="auto"></ins>';
+      $('.leaderboard').html(ads);
+      return (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+  };
 
 
   Template.leaderboard.rendered = function(){
