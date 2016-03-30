@@ -21,8 +21,9 @@ H1{
   font-size: 100%;
 }
 
-ads{
+.ads{
   float: right;
+  margin-left: 400; 
 }
 
 
