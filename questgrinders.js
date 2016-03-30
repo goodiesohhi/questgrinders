@@ -340,7 +340,7 @@ Template.smalldash.rendered = function(){
   };
 
 Router.map( function () {
-  this.route('base', 'map', 'shop'{
+  this.route('base', 'map', 'shop',{
     waitOn: function() {
       return IRLibLoader.load("//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js");
     }
