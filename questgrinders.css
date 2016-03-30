@@ -21,9 +21,14 @@ H1{
   font-size: 100%;
 }
 
-.ads{
-  float: right;
-  margin-left: 400; 
+iframe{
+    overflow:hidden;
+  
+}
+
+.hide2{
+  display: block;
+  margin-left: 400;
 }
 
 
@@ -159,10 +164,11 @@ H1{
     border: 1px solid #000000;
 
     background-color: white;
+    float: top;
 
 
     margin-left: 300px;
-      width: 850px;
+      width: 600px;
       height: : 1050px;
   }
   .login {
@@ -490,6 +496,17 @@ font-size: 50%;
 
   }
 
+
+    @media (max-width: 991px) {
+      .hide2 {
+        display: none;
+
+      }
+
+
+
+
+    }
 
 
     @media (max-width: 991px) {

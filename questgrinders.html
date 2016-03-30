@@ -31,16 +31,14 @@
 
 
     {{>logo}}
-<div class="ads">
-<iframe height=600 width= 200 src="/ads.html"></iframe>
-</div>
+
 
 <noscript>This site requires javascript to be enabled</noscript>
 
 
 
   </p2>
-
+{{>ads}}
 
 
 
@@ -56,8 +54,12 @@
 
 
 <template name="ads">
+<div class="hide2">
 
- <div class="leaderboard"></div>
+
+  <iframe height=200 width=1700 scrolling="no" src="/ads.html"></iframe>
+
+</div>
 
 </template>
 <template name="home">
