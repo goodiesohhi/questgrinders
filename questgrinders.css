@@ -27,8 +27,10 @@ iframe{
 }
 
 .hide2{
-  display: block;
-  margin-left: 400;
+
+  margin-left: 500;
+  background-color: white;
+  float: right;
 }
 
 
