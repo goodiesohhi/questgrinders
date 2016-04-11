@@ -76,7 +76,12 @@ button {
 
 
 
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">window.getInv = function() {
+
+
+
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">
+
+window.getInv = function() {
   return state.active.variables.inventory;
 }
 
@@ -125,10 +130,27 @@ macros.invWithLinks = {
       new Wikifier(place, '[[' + state.active.variables.inventory.join(']]<br>[[') + ']]');
     }
   }
-};</script><tw-passagedata pid="1" name="Start" tags="start" position="900,200">
+};
+
+
+</script><tw-passagedata pid="1" name="Start" tags="start" position="900,200">
+&lt;&lt;set $player = {
+  name: &quot;Hero&quot;,
+ 
+  deaths: &quot;0&quot;, 
+  status: &quot;Alive&quot;,
+}&gt;&gt;
+
+&lt;&lt;set $room = {
+  
+ 
+  
+  last: &quot;0&quot;,
+}&gt;&gt;
 &lt;p align =&quot;center&quot;&gt;
 &lt;div class=&#39;wrapper&#39;&gt;
 &lt;form id=&#39;nameForm&#39;&gt;
+
 
 &lt;div class=&#39;form-sub&#39;&gt;
 
@@ -147,7 +169,8 @@ Here have a cookie as reimbursement
 &lt;&lt;addToInv Poisoned_Cookie&gt;&gt;
 Btw. It&#39;s Poisoned.
 [[You see a door |door]]</tw-passagedata>
-<tw-passagedata pid="3" name="StoryMenu" tags="" position="550,300">[[Inventory]]</tw-passagedata>
+<tw-passagedata pid="3" name="StoryMenu" tags="" position="550,300">[[Inventory]]
+</tw-passagedata>
 <tw-passagedata pid="4" name="two" tags="" position="900,350">Well aren&#39;t you a snarky one?
 Why are names not important to you?
 [[The button was broken|3]]
@@ -157,16 +180,35 @@ Why are names not important to you?
 However you have a monster you need to beat.
 [[Battle!|battle1]]
 </tw-passagedata>
-<tw-passagedata pid="6" name="Inventory" tags="" position="550,450">&lt;&lt;if $inventory.length == 0&gt;&gt;You are not carrying anything.&lt;&lt;else&gt;&gt;You are carrying:&lt;&lt;invWithLinks&gt;&gt; &lt;&lt;endif&gt;&gt;&lt;&lt;back&gt;&gt;
+<tw-passagedata pid="6" name="Inventory" tags="" position="489,1001">&lt;&lt;if not tags(previous()).contains(&quot;inv&quot;)&gt;&gt;
+&lt;&lt;set $room.last to previous()&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+Name: &lt;&lt;print $player.name&gt;&gt;
+Deaths: &lt;&lt;print $player.deaths&gt;&gt;
+Status: &lt;&lt;print $player.status&gt;&gt;
+Current Command: &lt;&lt;print $room.last&gt;&gt;
+
+&lt;&lt;if $inventory.length == 0&gt;&gt;You are not carrying anything.&lt;&lt;else&gt;&gt;You are carrying:&lt;&lt;invWithLinks&gt;&gt; &lt;&lt;endif&gt;&gt;
+[[Exit Inventory|$room.last]]
 </tw-passagedata>
-<tw-passagedata pid="7" name="StoryInit" tags="" position="425,296.5">&lt;&lt;initInv&gt;&gt;</tw-passagedata>
-<tw-passagedata pid="8" name="Poisoned_Cookie" tags="" position="1170,355">You eat it.
+<tw-passagedata pid="7" name="StoryInit" tags="" position="425,296">&lt;&lt;initInv&gt;&gt;</tw-passagedata>
+<tw-passagedata pid="8" name="Poisoned_Cookie" tags="inv" position="868,1298">&lt;&lt;if not tags($room.last).contains(&quot;aliveonly&quot;)&gt;&gt;
+You eat it.
 You killed yourself.
 This caused you to die.
 You realize you were never alive to begin with.
 You are just some random video game character.
 You realize how pointless this is.
-&lt;&lt;back&gt;&gt;</tw-passagedata>
+That said. You are now dead.
+You see dead people and such.
+&lt;&lt;set $player.status = &quot;Dead&quot;&gt;&gt;
+&lt;&lt;set $player.deaths += 1&gt;&gt;
+
+&lt;&lt;return&gt;&gt;
+&lt;&lt;else&gt;&gt;
+You don&#39;t want to kill yourself right now. That&#39;s a waste of time.
+&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata>
 <tw-passagedata pid="9" name="door" tags="" position="701,700">There is a door here.
 Obviously there must be a key to progress the game.
 Will you try the only thing you have?
@@ -186,7 +228,8 @@ Some random person runs up to you like a lunatic.
 [[Slap him with a fish.|No Fish]]
 [[Take on your new found responsibilities.|fishibilty]]</tw-passagedata>
 <tw-passagedata pid="13" name="No Fish" tags="" position="701,1150">You don&#39;t have a fish. Stupid.
-&lt;&lt;back&gt;&gt;</tw-passagedata>
+&lt;&lt;return&gt;&gt; 
+</tw-passagedata>
 <tw-passagedata pid="14" name="fishibilty" tags="" position="1013,1004">You are a hero now..
 So of course this is the part where we actually give you a fish.&lt;&lt;addToInv Fish&gt;&gt; 
 [[Slap the man.|Slap]]
@@ -204,21 +247,71 @@ This caused you to die
 You realize you were never alive to begin with.
 You are just some random video game character.
 You realize how pointless this is.
-&lt;&lt;back&gt;&gt;</tw-passagedata>
-<tw-passagedata pid="17" name="Eat a potato" tags="" position="1242,1242">You don&#39;t have a potato. Stupid.
+&lt;&lt;return&gt;&gt; 
+</tw-passagedata>
+<tw-passagedata pid="17" name="Eat a potato" tags="" position="1187,1267">You don&#39;t have a potato. Stupid.
 &lt;&lt;if $inventory.indexOf(&quot;Potato&quot;) == -1&gt;&gt;[[Make a potato.]]&lt;&lt;endif&gt;&gt;
 </tw-passagedata>
 <tw-passagedata pid="18" name="Make a potato." tags="" position="1242,1392">Poof.
 You made a potato.
 &lt;&lt;addToInv Potato&gt;&gt;
 [[Eat said potato]]</tw-passagedata>
-<tw-passagedata pid="19" name="Eat Potato" tags="" position="1117,1392">Double-click this passage to edit it.</tw-passagedata>
-<tw-passagedata pid="20" name="Fish" tags="" position="997.5,1267">It&#39;s a fish.
+<tw-passagedata pid="19" name="Fish" tags="inv" position="1013,1193">It&#39;s a fish.
 More specifically a halibut.
-Nice and flat for slapping.&lt;&lt;back&gt;&gt;</tw-passagedata>
-<tw-passagedata pid="21" name="Eat said potato" tags="" position="1242,1542">Should probably save it.
-[[Aww. Kay]]</tw-passagedata>
-<tw-passagedata pid="22" name="Aww. Kay" tags="" position="1242,1692">End of demo</tw-passagedata>
+Nice and flat for slapping.&lt;&lt;return&gt;&gt; 
+</tw-passagedata>
+<tw-passagedata pid="20" name="Eat said potato" tags="" position="1242,1542">You eat it.
+If you were dead. You are now alive.
+&lt;&lt;set $player.status = &quot;Alive&quot;&gt;&gt;
+[[Go to next room]]</tw-passagedata>
+<tw-passagedata pid="21" name="Go to next room" tags="" position="1117,1692">&lt;&lt;if $player.status neq &quot;Dead&quot;&gt;&gt;
+This room is empty but how will you progress?
+There&#39;s nothing here but that ghostly white ghost thing.
+&lt;&lt;else&gt;&gt;
+You are a ghostly being. Therefore you can converse with other ghostly beings.
+[[Confront the ghostly man with a sword]]
+&lt;&lt;/if&gt;&gt;</tw-passagedata>
+<tw-passagedata pid="22" name="Potato" tags="inv" position="1538,1058">
+
+&lt;&lt;if not tags($room.last).contains(&quot;deadonly&quot;)&gt;&gt;
+The potato fills you with strength.
+You are now alive.
+&lt;&lt;set $player.status = &quot;Alive&quot;&gt;&gt;
+&lt;&lt;return&gt;&gt;
+&lt;&lt;else&gt;&gt;
+You are doing ghostly things right now. So you can&#39;t ressurect yourself yet.
+&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata>
+<tw-passagedata pid="23" name="Confront the ghostly man with a sword" tags="deadonly" position="1117,1842">I am the guardian of this place. YOU SHALL NOT PASS
+[[Walk through him towards the door.]]</tw-passagedata>
+<tw-passagedata pid="24" name="Walk through him towards the door." tags="deadonly" position="1117,1992">No! Come back here. You can&#39;t leave!
+[[Why not?]]
+[[Ignore him.]]</tw-passagedata>
+<tw-passagedata pid="25" name="Why not?" tags="deadonly" position="1117,2142">I can not tell you that. God told me not to let anyone out.
+[[You realize you&#39;ve just told me why right?]]</tw-passagedata>
+<tw-passagedata pid="26" name="Ignore him." tags="deadonly" position="1267,2142">You walk past him out into the open field.
+You trip and somehow fall back into the building.
+No matter what, you can not seem to leave this place.
+The ghost watches you.
+You decide to ask him [[Why not?]]</tw-passagedata>
+<tw-passagedata pid="27" name="You realize you&#39;ve just told me why right?" tags="deadonly" position="1119,2292">Oh.. Shoot.
+But god forbids me to let you out.
+[[And where is god now?]]</tw-passagedata>
+<tw-passagedata pid="28" name="And where is god now?" tags="deadonly" position="1119,2442">I don&#39;t know but I will not let you leave.
+[[When&#39;s the last time you&#39;ve interacted with anyone other than now?.]]</tw-passagedata>
+<tw-passagedata pid="29" name="When&#39;s the last time you&#39;ve interacted with anyone other than now?." tags="deadonly" position="1119,2591">I will not let you leave.
+[[Stop dodging the question.]]</tw-passagedata>
+<tw-passagedata pid="30" name="Stop dodging the question." tags="deadonly" position="1365,2583">Fine. 
+You are not allowed to leave because you have the responsibility of replacing me as guardian of this sacred dwelling.
+[[Dwelling? What is this place?]]</tw-passagedata>
+<tw-passagedata pid="31" name="Dwelling? What is this place?" tags="deadonly" position="1445,2437">You are in the Temple of Souls,
+You will eventually replace me as guardian when I fade.
+Then someone will replace you when you fade.
+[[What are you guarding?]]</tw-passagedata>
+<tw-passagedata pid="32" name="What are you guarding?" tags="deadonly" position="1490,2587">Souls. Kept here for the purpose of guarding.
+[[Wait. Wait. Hold it. Why do we need to guard souls?]]</tw-passagedata>
+<tw-passagedata pid="33" name="Wait. Wait. Hold it. Why do we need to guard souls?" tags="deadonly" position="1490,2737">ENd of demo. (sofar)
+You should save.</tw-passagedata>
 </tw-storydata>
 </div>
 	<script id="script-sugarcube" type="text/javascript">
