@@ -313,6 +313,7 @@ if (Meteor.isClient) {
   }
 };
 
+
 Template.smalldash.rendered = function(){
   if (screen.width <= 1200) {
  console.log("derp");
