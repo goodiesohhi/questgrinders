@@ -1092,6 +1092,8 @@ Update status below: <br>
     {{>status}}<br>
     Avatar URL: <br>
     {{>avatar2}}<br><br>
+    GameJolt Account Link:
+    {{>gamejolt}}
 
     Exp: {{user.exp}} <br><br>
 
@@ -1150,6 +1152,19 @@ You do not have access to spy shop.
        <input type="submit" id="submit"/>
 
 </form>
+
+
+</template>
+<template name="gamejolt">
+  <form id="gamejolt">
+    Gamejolt Username:
+       <input id="g1" type="text" name="g1"/>
+    Gamejolt Token (Not password):
+       <input id="g2" type="text" name="g2"/>
+       <input type="submit" id="submit"/>
+
+</form>
+
 
 </template>
 

@@ -1,12 +1,56 @@
-
-
-
 if (Meteor.isClient) {
+  GJAPI = {
+    base_url: "http://gamejolt.com/api/game/v1/",
+    game_id: 141967,
+    private_key: "70dd4bdf8694d3b5514e09f52e00f1f4",
 
-  function reset1() {
-        Meteor.call('reset');
+    format: "json",
+    getURL: function(e, t) {
+      t = t || {};
+      var n = GJAPI.base_url + e  ;
+      if (Object.keys(t).length > 0) {
+        n += "?";
+        for (var r in t) {
+          if (t.hasOwnProperty(r)) n += r + "=" + t[r] + "&"
+        }
+      }
+      if (n.substr(n.length - 1) != "&") n += "&";
+      n += "format=" + GJAPI.format + "&game_id=" + GJAPI.game_id;
+      n += "&signature=" + md5(n + GJAPI.private_key);
+      return n
+    },
+    sendURL: function(url, callback) {
+      callback = callback || function(e) {};
+      var xmlhttp;
+      if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest;
+      else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          if (GJAPI.format == "json") {
+            var d = eval("(" + xmlhttp.responseText + ")").response;
+            callback(d);
 
-  }
+          } else {
+            var d = xmlhttp.responseText;
+            callback(d);
+
+          }
+        }
+      };
+      xmlhttp.open("GET", url, true);
+      xmlhttp.send()
+    },
+    request: function(e, t, n) {
+      if (arguments.length == 2) {
+        n = t;
+        t = {}
+      }
+      GJAPI.sendURL(GJAPI.getURL(e, t), n)
+    }
+  };
+  md5=function(){function n(t){var n,r,i,s,o=[],u=unescape(encodeURI(t)),a=u.length,f=[n=1732584193,r=-271733879,~n,~r],l=0;for(;l<=a;)o[l>>2]|=(u.charCodeAt(l)||128)<<8*(l++%4);o[t=(a+8>>6)*16+14]=a*8;l=0;for(;l<t;l+=16){a=f;s=0;for(;s<64;){a=[i=a[3],(n=a[1]|0)+((i=a[0]+[n&(r=a[2])|~n&i,i&n|~i&r,n^r^i,r^(n|~i)][a=s>>4]+(e[s]+(o[[s,5*s+1,3*s+5,7*s][a]%16+l]|0)))<<(a=[7,12,17,22,5,9,14,20,4,11,16,23,6,10,15,21][4*a+s++%4])|i>>>32-a),n,r]}for(s=4;s;)f[--s]=f[s]+a[s]}t="";for(;s<32;)t+=(f[s>>3]>>(1^s++&7)*4&15).toString(16);return t}var e=[],t=0;for(;t<64;){e[t]=0|Math.abs(Math.sin(++t))*4294967296}return n}();
+
+
 
   Avatar.setOptions({
     customImageProperty: function() {
@@ -15,42 +59,70 @@ if (Meteor.isClient) {
       return user.avatar2;
     },
     imageSizes: {
-   'large': 150,
-   'mySize': 90
- }
+      'large': 150,
+      'mySize': 90
+    }
   });
-  Meteor.startup(function () {
-
-       setInterval(function () {
+  Meteor.startup(function() {
 
 
-           Meteor.call("getServerTime", function (error, result) {
-               Session.set("time", result);
-           });
-       }, 1000);
-   });
+    setInterval(function() {
+      var user2 = this.gjuser;
+      var token = this.gjtoken;
 
-   Template.dash.time = function () {
-       return Session.get("time");
-   };
-   Template.chat.onRendered(function(){
-     window.disqus = new Disqus('questgrinders');
-     disqus.loadComments();
-   });
 
-  $('html').bind('keypress', function(e)
-  {
-     if(e.keyCode == 13)
-     {
-        return false;
-     }
+
+
+
+        GJAPI.request('users/auth/?username=' + user2+'&user_token='+token , function(data) {
+          console.log(data);
+        });
+        GJAPI.request('sessions/ping/?username=' + user2+'&user_token='+token  ,  function(data) {
+          console.log(data);
+        });
+        GJAPI.request('sessions/open/?username=' + user2+'&user_token='+token);
+        GJAPI.request('trophies/add-achieved/?trophy_id=55758&username=' + user2+'&user_token='+token ,55758, function(data) {
+          console.log(data);
+        });
+
+
+
+    }, 30000);
+
+
+
+    setInterval(function() {
+
+
+      Meteor.call("getServerTime", function(error, result) {
+        Session.set("time", result);
+      });
+    }, 1000);
+  });
+
+  Template.dash.time = function() {
+    return Session.get("time");
+  };
+  Template.chat.onRendered(function() {
+    window.disqus = new Disqus('questgrinders');
+    disqus.loadComments();
+  });
+
+  $('html').bind('keypress', function(e) {
+    if (e.keyCode == 13) {
+      return false;
+    }
   });
 
   Router.onBeforeAction(function() {
-      if (!Meteor.user() && this.ready())
-          return this.redirect('/home');
-      else { this.next() }
-  }, {except: ['needlogin','leaderboard','contact','help','infopages','home', 'login']});
+    if (!Meteor.user() && this.ready())
+      return this.redirect('/home');
+    else {
+      this.next()
+    }
+  }, {
+    except: ['needlogin', 'leaderboard', 'contact', 'help', 'infopages', 'home', 'login']
+  });
 
 
 
@@ -66,19 +138,19 @@ if (Meteor.isClient) {
   });
 
 
-    Router.route('/spyshop', function() {
-      this.render('spyshop');
-    });
+  Router.route('/spyshop', function() {
+    this.render('spyshop');
+  });
 
-    Router.route('/home', function() {
-      this.render('home');
-    });
-    Router.route('/questleader', function() {
-      this.render('questleader');
-    });
-    Router.route('/search', function() {
-      this.render('search');
-    });
+  Router.route('/home', function() {
+    this.render('home');
+  });
+  Router.route('/questleader', function() {
+    this.render('questleader');
+  });
+  Router.route('/search', function() {
+    this.render('search');
+  });
 
 
   Router.route('/quest', function() {
@@ -198,16 +270,20 @@ if (Meteor.isClient) {
 
 
   Template.online.players = function() {
-        return Meteor.users.find({ "status.online": true });
+    return Meteor.users.find({
+      "status.online": true
+    });
   };
   Template.online.playernumber = function() {
-        return Meteor.users.find({ "status.online": true }).count();
+    return Meteor.users.find({
+      "status.online": true
+    }).count();
   };
 
 
-    Template.leaderboards.playernumber = function() {
-      return Meteor.users.find({}).count();
-    };
+  Template.leaderboards.playernumber = function() {
+    return Meteor.users.find({}).count();
+  };
 
   Template.leaderboard.players = function() {
     return Meteor.users.find({}, {
@@ -260,13 +336,13 @@ if (Meteor.isClient) {
 
 
 
-    Template.reward.events({
-      'click input.win': function() {
-        Meteor.call('promo1');
-        alert("You have just won 1 free Standard QuestCo. Questing Rifle! Unless you already did this. This only works once!");
+  Template.reward.events({
+    'click input.win': function() {
+      Meteor.call('promo1');
+      alert("You have just won 1 free Standard QuestCo. Questing Rifle! Unless you already did this. This only works once!");
 
-      }
-    });
+    }
+  });
 
   Template.leaderboard.events({
     'click input.buy': function(event) {
@@ -275,60 +351,59 @@ if (Meteor.isClient) {
   });
 
 
-  Template.moon.rendered = function(){
-    if (!this.rendered){
-      $('body').css('background-image','url(/moonback.png)');
+  Template.moon.rendered = function() {
+    if (!this.rendered) {
+      $('body').css('background-image', 'url(/moonback.png)');
       this.rendered = true;
     }
   };
 
 
-  Template.needlogin.rendered = function(){
-    if (!this.rendered){
-      $('body').css('background-image','url(/moonback.png)');
+  Template.needlogin.rendered = function() {
+    if (!this.rendered) {
+      $('body').css('background-image', 'url(/moonback.png)');
       this.rendered = true;
     }
   };
 
-  Template.store.rendered = function(){
-    if (!this.rendered){
-      $('body').css('background-image','url(/store.png)');
+  Template.store.rendered = function() {
+    if (!this.rendered) {
+      $('body').css('background-image', 'url(/store.png)');
       this.rendered = true;
     }
   };
 
-  Template.leaderboards.rendered = function(){
-    if (!this.rendered){
-      $('body').css('background-image','url(/scroll.png)');
+  Template.leaderboards.rendered = function() {
+    if (!this.rendered) {
+      $('body').css('background-image', 'url(/scroll.png)');
       this.rendered = true;
     }
   };
-  Template.leaderboards.rendered = function(){
+  Template.leaderboards.rendered = function() {
     if (screen.width <= 1200) {
-    window.location = "/no";
+      window.location = "/no";
 
-  }
-  else {
-    return false;
-  }
-};
+    } else {
+      return false;
+    }
+  };
 
 
-Template.smalldash.rendered = function(){
-  if (screen.width <= 1200) {
- console.log("derp");
-  Blaze.remove(dash);
-}
-};
-  Template.start.rendered = function(){
+  Template.smalldash.rendered = function() {
+    if (screen.width <= 1200) {
+      console.log("derp");
+      Blaze.remove(dash);
+    }
+  };
+  Template.start.rendered = function() {
 
     window.location = "/home";
 
   };
-  Template.no.rendered = function(){
+  Template.no.rendered = function() {
     if (screen.width >= 900) {
-    window.location = "/base";
-  }
+      window.location = "/base";
+    }
   };
 
   Template.ads.rendered = function() {
@@ -340,58 +415,58 @@ Template.smalldash.rendered = function(){
     });
   };
 
-  Template.leaderboard.rendered = function(){
-    if (!this.rendered){
-      $('body').css('background-image','url(/background.png)');
+  Template.leaderboard.rendered = function() {
+    if (!this.rendered) {
+      $('body').css('background-image', 'url(/background.png)');
       this.rendered = true;
     }
   };
 
-    Template.player.players = function() {
-      return Meteor.users.find({}, {
-        sort: {
-          'rate': -1
-        }
-      });
-    };
-    Template.player.items = function() {
-      return Items;
-    }
-    Template.player.user = function() {
-      return Meteor.user();
-    }
+  Template.player.players = function() {
+    return Meteor.users.find({}, {
+      sort: {
+        'rate': -1
+      }
+    });
+  };
+  Template.player.items = function() {
+    return Items;
+  }
+  Template.player.user = function() {
+    return Meteor.user();
+  }
 
 
-    Template.quest.user = function() {
-      return Meteor.user();
-    }
+  Template.quest.user = function() {
+    return Meteor.user();
+  }
 
 
 
-    Template.keeper.keeper = function() {
-      var username1="QuestKeeper";
-      return Meteor.users.findOne({
-          username:username1
-      });
+  Template.keeper.keeper = function() {
+    var username1 = "QuestKeeper";
+    return Meteor.users.findOne({
+      username: username1
+    });
 
-    }
+  }
 
 
-    Template.quest.keeper = function() {
-      var username1="QuestKeeper";
-      return Meteor.users.findOne({
-          username:username1
-      });
+  Template.quest.keeper = function() {
+    var username1 = "QuestKeeper";
+    return Meteor.users.findOne({
+      username: username1
+    });
 
-    }
+  }
 
-    Template.leaderboard.keeper = function() {
-      var username1="QuestKeeper";
-      return Meteor.users.findOne({
-          username:username1
-      });
+  Template.leaderboard.keeper = function() {
+    var username1 = "QuestKeeper";
+    return Meteor.users.findOne({
+      username: username1
+    });
 
-    }
+  }
 
 
 
@@ -423,7 +498,7 @@ Template.smalldash.rendered = function(){
 
 
 
-disqus_shortname="questgrinders";
+  disqus_shortname = "questgrinders";
 
 
   Template.questleader.players = function() {
@@ -449,10 +524,10 @@ disqus_shortname="questgrinders";
   };
 
   Template.search.players = function() {
-   var one = Meteor.user().lastSearch;
-   var done = Meteor.users.findOne({
-       username: one
-   });
+    var one = Meteor.user().lastSearch;
+    var done = Meteor.users.findOne({
+      username: one
+    });
     return done
   };
 
@@ -465,18 +540,18 @@ disqus_shortname="questgrinders";
 
   Template.search.events({
 
-    'submit' : function(event) {
-        event.preventDefault(); //prevent page refresh
+    'submit': function(event) {
+      event.preventDefault(); //prevent page refresh
 
 
 
-        var derp = event.target.searchbar.value;
+      var derp = event.target.searchbar.value;
 
 
 
-        Meteor.call('searched', derp);
+      Meteor.call('searched', derp);
     }
-});
+  });
 
 
 
@@ -484,22 +559,22 @@ disqus_shortname="questgrinders";
 
   Template.status.events({
 
-    'submit' : function(event) {
-        event.preventDefault(); //prevent page refresh
+    'submit': function(event) {
+      event.preventDefault(); //prevent page refresh
 
 
 
-        var statusvar = event.target.status.value;
+      var statusvar = event.target.status.value;
 
 
-        alert("Submitted!");
-        Meteor.call('submitme', statusvar);
+      alert("Submitted!");
+      Meteor.call('submitme', statusvar);
     }
-});
+  });
 
-Template.avatar2.events({
+  Template.avatar2.events({
 
-  'submit' : function(event) {
+    'submit': function(event) {
       event.preventDefault(); //prevent page refresh
 
 
@@ -509,13 +584,31 @@ Template.avatar2.events({
 
       alert("Submitted!");
       Meteor.call('setavatar2', avatarvar);
-  }
-});
+    }
+  });
+
+  Template.gamejolt.events({
+
+    'submit': function(event) {
+      event.preventDefault(); //prevent page refresh
 
 
-Template.pvp.events({
 
-  'submit' : function(event) {
+      var gjuser = event.target.g1.value;
+      var gjtoken = event.target.g2.value;
+
+
+
+      alert("Submitted!");
+      Meteor.call('gj2', gjuser, gjtoken);
+    }
+  });
+
+
+
+  Template.pvp.events({
+
+    'submit': function(event) {
       event.preventDefault(); //prevent page refresh
 
 
@@ -525,8 +618,8 @@ Template.pvp.events({
 
       alert("Attacked!");
       Meteor.call('attack', target);
-  }
-});
+    }
+  });
 
 
 
@@ -593,7 +686,7 @@ Template.pvp.events({
     'click input.code': function() {
       Meteor.call('click');
 
- }
+    }
 
   });
 
@@ -628,11 +721,11 @@ Template.pvp.events({
     }
   });
 
-    Template.store.events({
-      'click input.buym': function(event) {
-        Meteor.call('buym', event.target.id);
-      }
-    });
+  Template.store.events({
+    'click input.buym': function(event) {
+      Meteor.call('buym', event.target.id);
+    }
+  });
 
 
 
@@ -644,11 +737,12 @@ Template.pvp.events({
   Template.store.events({
     'click input.spy': function(event) {
 
-    if (Meteor.user().rate >= 0)
-    var spyshop = "yesspyshop"
-  else {    var spyshop = "nospyshop"
-  }
-  }
+      if (Meteor.user().rate >= 0)
+        var spyshop = "yesspyshop"
+      else {
+        var spyshop = "nospyshop"
+      }
+    }
   });
 
   Template.spyshop.events({
@@ -657,11 +751,11 @@ Template.pvp.events({
     }
   });
 
-Handlebars.registerHelper('formatCurrency', function(number) {
-      return number.toLocaleString();
-    });
+  Handlebars.registerHelper('formatCurrency', function(number) {
+    return number.toLocaleString();
+  });
 
-  }
+}
 
 
 
@@ -674,47 +768,48 @@ if (Meteor.isServer) {
 
 
   SyncedCron.config({
-     // Log job run details to console
-     log: true,
+    // Log job run details to console
+    log: true,
 
 
-   });
+  });
 
 
 
 
-      Meteor.publish("userStatus", function() {
-        return Meteor.users.find({ "status.online": true });
+  Meteor.publish("userStatus", function() {
+    return Meteor.users.find({
+      "status.online": true
+    });
+  });
+
+  Meteor.publish("userProfile", function(username) {
+    // simulate network latency by sleeping 2s
+    Meteor._sleepForMs(2000);
+    // try to find the user by username
+    var user = Meteor.users.findOne({
+      username: username
+    });
+    // if we can't find it, mark the subscription as ready and quit
+    if (!user) {
+      this.ready();
+      return;
+    }
+    // if the user we want to display the profile is the currently logged in user...
+    if (this.userId == user._id) {
+      // then we return the corresponding full document via a cursor
+      return Meteor.users.find(this.userId);
+    } else {
+      // if we are viewing only the public part, strip the "profile"
+      // property from the fetched document, you might want to
+      // set only a nested property of the profile as private
+      // instead of the whole property
+      return Meteor.users.find(user._id, {
+        fields: {
+          "profile": 0
+        }
       });
-
-  Meteor.publish("userProfile",function(username){
-      // simulate network latency by sleeping 2s
-      Meteor._sleepForMs(2000);
-      // try to find the user by username
-      var user=Meteor.users.findOne({
-          username:username
-      });
-      // if we can't find it, mark the subscription as ready and quit
-      if(!user){
-          this.ready();
-          return;
-      }
-      // if the user we want to display the profile is the currently logged in user...
-      if(this.userId==user._id){
-          // then we return the corresponding full document via a cursor
-          return Meteor.users.find(this.userId);
-      }
-      else{
-          // if we are viewing only the public part, strip the "profile"
-          // property from the fetched document, you might want to
-          // set only a nested property of the profile as private
-          // instead of the whole property
-          return Meteor.users.find(user._id,{
-              fields:{
-                  "profile":0
-              }
-          });
-      }
+    }
   });
 
 
@@ -725,23 +820,23 @@ if (Meteor.isServer) {
       return user.avatar2;
     },
     imageSizes: {
-   'large': 150,
-   'mySize': 90
- }
+      'large': 150,
+      'mySize': 90
+    }
   });
 
 
-  ProfileController=RouteController.extend({
-      template:"profile",
-      waitOn:function(){
-          return Meteor.subscribe("userProfile",this.params.username);
-      },
-      data:function(){
-          var username=Router.current().params.username;
-          return Meteor.users.findOne({
-              username:username
-          });
-      }
+  ProfileController = RouteController.extend({
+    template: "profile",
+    waitOn: function() {
+      return Meteor.subscribe("userProfile", this.params.username);
+    },
+    data: function() {
+      var username = Router.current().params.username;
+      return Meteor.users.findOne({
+        username: username
+      });
+    }
   });
 
 
@@ -752,9 +847,9 @@ if (Meteor.isServer) {
 
 
 
-SyncedCron.start();
+    SyncedCron.start();
 
-Meteor.setInterval(function() {
+    Meteor.setInterval(function() {
 
 
 
@@ -767,12 +862,12 @@ Meteor.setInterval(function() {
         },
         job: function() {
           Meteor.users.update({
-              _id: this._id
+            _id: this._id
           }, {
 
-              $set: {
-                  'attacks': 3
-              }
+            $set: {
+              'attacks': 3
+            }
 
 
           });
@@ -780,7 +875,7 @@ Meteor.setInterval(function() {
       });
 
 
-}, 1500)
+    }, 1500)
 
 
 
@@ -792,8 +887,8 @@ Meteor.setInterval(function() {
           _id: user._id
         }, {
           $inc: {
-            'money': user.rate*user.heropower,
-            'exp': user.rate/100
+            'money': user.rate * user.heropower,
+            'exp': user.rate / 100
           },
 
 
@@ -808,57 +903,55 @@ Meteor.setInterval(function() {
 
 
 
-              Meteor.setInterval(function() {
+    Meteor.setInterval(function() {
 
-                Meteor.users.find({}).map(function(user) {
-                  Meteor.users.update({
-                    _id: user._id
-                  }, {
-                    $inc: {
-                      'money': user.mage*2*user.magepower,
-
-
-                    }
+      Meteor.users.find({}).map(function(user) {
+        Meteor.users.update({
+          _id: user._id
+        }, {
+          $inc: {
+            'money': user.mage * 2 * user.magepower,
 
 
-
-                  })
-                });
+          }
 
 
 
-
-              }, 3000)
+        })
+      });
 
 
 
 
-
-      Meteor.setInterval(function() {
-
-        Meteor.users.find({}).map(function(user) {
-          Meteor.users.update({
-            _id: user._id
-          }, {
-            $inc: {
-              'money': user.archer*user.archerpower,
-
-
-            }
-
-
-
-          })
-        });
+    }, 3000)
 
 
 
 
-      }, 500)
 
-    });
+    Meteor.setInterval(function() {
+
+      Meteor.users.find({}).map(function(user) {
+        Meteor.users.update({
+          _id: user._id
+        }, {
+          $inc: {
+            'money': user.archer * user.archerpower,
 
 
+          }
+
+
+
+        })
+      });
+
+
+
+
+    }, 500)
+
+  });
 
 
 
@@ -886,14 +979,14 @@ Meteor.setInterval(function() {
     user.spycost = 100;
     user.spy = 0;
     user.archer = 0;
-    user.archerprice= 20000;
+    user.archerprice = 20000;
     user.archerpower = 1;
     user.archerpcost = 10000;
     user.magepcost = 100000;
     user.magepower = 1;
 
     user.mage = 0;
-    user.mageprice = 150000 ;
+    user.mageprice = 150000;
 
     return user;
 
@@ -920,144 +1013,159 @@ Meteor.setInterval(function() {
 
 
 
-
-
-
-
 Meteor.methods({
 
 
-          getServerTime: function () {
-              var _time = (new Date).toTimeString();
+  getServerTime: function() {
+    var _time = (new Date).toTimeString();
 
 
-              return _time;
-          },
+    return _time;
+  },
 
 
-      setavatar2: function(avatarvar) {
+  gj2: function(gjuser, gjtoken) {
 
 
-        Meteor.users.update({
-            _id: this.userId
-        }, {
+    Meteor.users.update({
+      _id: this.userId
+    }, {
 
-            $set: {
-                'avatar2': avatarvar
-            }
-
-
-        });
-
-        console.log(avatarvar)
-      },
-
-      reset: function() {
+      $set: {
+        'gjuser': gjuser,
+        'gjtoken': gjtoken,
+      }
 
 
-        Meteor.users.update({
-            _id: this._id
-        }, {
+    });
 
-            $set: {
-                'attacks': 3
-            }
+    console.log(gjuser)
 
+  },
 
-        });
+  setavatar2: function(avatarvar) {
 
 
-      },
+    Meteor.users.update({
+      _id: this.userId
+    }, {
+
+      $set: {
+        'avatar2': avatarvar
+      }
+
+
+    });
+
+    console.log(avatarvar)
+  },
+
+  reset: function() {
+
+
+    Meteor.users.update({
+      _id: this._id
+    }, {
+
+      $set: {
+        'attacks': 3
+      }
+
+
+    });
+
+
+  },
 
 
   submitme: function(statusvar) {
 
 
     Meteor.users.update({
-        _id: this.userId
+      _id: this.userId
     }, {
 
-        $set: {
-            'status3': statusvar
-        }
+      $set: {
+        'status3': statusvar
+      }
 
 
     });
 
     console.log(statusvar)
-},
+  },
 
 
-searched: function(derp) {
+  searched: function(derp) {
 
 
-  var searched = derp;
-  Meteor.users.update({
+    var searched = derp;
+    Meteor.users.update({
       _id: this.userId
-  }, {
+    }, {
 
       $set: {
-          'lastSearch': searched
+        'lastSearch': searched
       }
 
 
-  });
-var searched2 =  Meteor.user().lastSearch;
+    });
+    var searched2 = Meteor.user().lastSearch;
 
     console.log(searched);
     Meteor.call('s2');
     return searched2
-},
+  },
 
 
 
 
-s2: function() {
+  s2: function() {
 
 
-  var searched2 =  Meteor.user().lastSearch;
-  console.log(searched2);
-  return searched2
-
-
-
+    var searched2 = Meteor.user().lastSearch;
+    console.log(searched2);
+    return searched2
 
 
 
-},
 
 
-attack: function(target) {
+
+  },
 
 
-  Meteor.users.update({
+  attack: function(target) {
+
+
+    Meteor.users.update({
       _id: this.userId
-  }, {
+    }, {
 
       $set: {
-          'attack': target
+        'attack': target
       }
 
 
-  });
+    });
 
     Meteor.call('attack2');
 
 
-},
+  },
 
-attack2: function(target) {
-
-
-  var person = Meteor.users.findOne(
-    { 'username' : target },
-);
+  attack2: function(target) {
 
 
+    var person = Meteor.users.findOne({
+      'username': target
+    }, );
 
 
 
-},
+
+
+  },
 
 
 
@@ -1085,74 +1193,74 @@ attack2: function(target) {
 
 
 
-    buyspy: function(amount) {
-      var spyrate = Meteor.user().spy;
-      var spycostnew = spyrate * 10000;
-      if (Meteor.user().money >= amount && amount > 0)
-        Meteor.users.update({
-          _id: this.userId
-        }, {
-          $inc: {
-            'spy': 1,
-            'spycost': spycostnew,
-            'money': (0 - amount),
-          }
-        });
+  buyspy: function(amount) {
+    var spyrate = Meteor.user().spy;
+    var spycostnew = spyrate * 10000;
+    if (Meteor.user().money >= amount && amount > 0)
+      Meteor.users.update({
+        _id: this.userId
+      }, {
+        $inc: {
+          'spy': 1,
+          'spycost': spycostnew,
+          'money': (0 - amount),
+        }
+      });
 
 
-    },
+  },
 
-    buya: function(amount) {
-      var archer = Meteor.user().archer;
-      var cost = archer * 1500;
-      if (Meteor.user().money >= amount && amount > 0)
-        Meteor.users.update({
-          _id: this.userId
-        }, {
-          $inc: {
-            'archer': 1,
-            'archerprice': cost,
-            'money': (0 - amount),
-          }
-        });
-
-
-    },
-
-    buyi: function(amount) {
-      var archer = Meteor.user().archer;
-      var cost = archer * 1500;
-      if (Meteor.user().money >= amount && amount > 0)
-        Meteor.users.update({
-          _id: this.userId
-        }, {
-          $inc: {
-            'archer': 1,
-            'archerprice': cost,
-            'money': (0 - amount),
-          }
-        });
+  buya: function(amount) {
+    var archer = Meteor.user().archer;
+    var cost = archer * 1500;
+    if (Meteor.user().money >= amount && amount > 0)
+      Meteor.users.update({
+        _id: this.userId
+      }, {
+        $inc: {
+          'archer': 1,
+          'archerprice': cost,
+          'money': (0 - amount),
+        }
+      });
 
 
-    },
+  },
+
+  buyi: function(amount) {
+    var archer = Meteor.user().archer;
+    var cost = archer * 1500;
+    if (Meteor.user().money >= amount && amount > 0)
+      Meteor.users.update({
+        _id: this.userId
+      }, {
+        $inc: {
+          'archer': 1,
+          'archerprice': cost,
+          'money': (0 - amount),
+        }
+      });
 
 
-    buym: function(amount) {
-      var mage = Meteor.user().mage;
-      var cost = mage * 500;
-      if (Meteor.user().money >= amount && amount > 0)
-        Meteor.users.update({
-          _id: this.userId
-        }, {
-          $inc: {
-            'mage': 1,
-            'mageprice': cost,
-            'money': (0 - amount),
-          }
-        });
+  },
 
 
-    },
+  buym: function(amount) {
+    var mage = Meteor.user().mage;
+    var cost = mage * 500;
+    if (Meteor.user().money >= amount && amount > 0)
+      Meteor.users.update({
+        _id: this.userId
+      }, {
+        $inc: {
+          'mage': 1,
+          'mageprice': cost,
+          'money': (0 - amount),
+        }
+      });
+
+
+  },
 
   buy: function(amount) {
     var hero = Meteor.user().rate;
@@ -1179,7 +1287,7 @@ attack2: function(target) {
       }, {
         $inc: {
           'power': 5,
-          'pcost': power*10,
+          'pcost': power * 10,
           'money': (0 - amount),
         }
       });
@@ -1238,6 +1346,7 @@ attack2: function(target) {
 
     var power = Meteor.user().power;
     var mult = Meteor.user().mult;
+
     Meteor.users.update({
       _id: this.userId
     }, {
@@ -1256,7 +1365,7 @@ attack2: function(target) {
     });
 
     Meteor.users.update({
-        username:"QuestKeeper"
+      username: "QuestKeeper"
 
     }, {
       $inc: {
@@ -1267,26 +1376,26 @@ attack2: function(target) {
 
 
     });
-      Meteor.call('spyset');
+    Meteor.call('spyset');
   },
 
 
 
 
-      spyset: function () {
-        if(Meteor.user().done5 <150 )
+  spyset: function() {
+    if (Meteor.user().done5 < 150)
 
-          Meteor.users.update({
-            _id: this.userId
-          }, {
-            $set: {
-              'power' : 25,
-                'pcost' : 100000,
-               'done5' : 200,
+      Meteor.users.update({
+      _id: this.userId
+    }, {
+      $set: {
+        'power': 25,
+        'pcost': 100000,
+        'done5': 200,
 
-            }
-            });
-        },
+      }
+    });
+  },
 
 
 
