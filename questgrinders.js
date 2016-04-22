@@ -69,6 +69,7 @@ if (Meteor.isClient) {
       var user2 = Meteor.user().gjuser;
       var token = Meteor.user().gjtoken;
       var clicks = Meteor.user().lifetimeclick;
+      var heroes = Meteor.user().rate;
       console.log(user2)
 
 
@@ -78,9 +79,17 @@ if (Meteor.isClient) {
         GJAPI.request('users/auth/?username=' + user2+'&user_token='+token , function(data) {
           console.log(data);
         });
+        GJAPI.request('users/trophies/add-achieved/?trophy_id=55758&username=' + user2+'&user_token='+token , function(data) {
+          console.log(data);
+        });
         GJAPI.request('scores/add/?table_id=146594&score='+ clicks+' Clicks&sort='+clicks + '&username=' + user2+'&user_token='+token , function(data) {
           console.log(data);
         });
+
+        GJAPI.request('scores/add/?table_id=146594&score='+ heroes+' Heroes&sort='+heroes + '&username=' + user2+'&user_token='+token , function(data) {
+          console.log(data);
+        });
+
 
         GJAPI.request('sessions/open/?username=' + user2+'&user_token='+token);
 
@@ -710,6 +719,9 @@ if (Meteor.isClient) {
 
   Template.store.events({
     'click input.buy': function(event) {
+      GJAPI.request('users/trophies/add-achieved/?trophy_id=55920&username=' + user2+'&user_token='+token , function(data) {
+        console.log(data);
+      });
       Meteor.call('buy', event.target.id);
     }
   });
