@@ -67,8 +67,9 @@ if (Meteor.isClient) {
 
 
     setInterval(function() {
-      var user2 = this.gjuser;
-      var token = this.gjtoken;
+      var user2 = Meteor.user().gjuser;
+      var token = Meteor.user().gjtoken;
+      console.log(user2)
 
 
 
