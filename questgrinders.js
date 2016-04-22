@@ -78,7 +78,7 @@ if (Meteor.isClient) {
         GJAPI.request('users/auth/?username=' + user2+'&user_token='+token , function(data) {
           console.log(data);
         });
-        GJAPI.request('scores/add/?table_id=146594&score='+ clicks + '&username=' + user2+'&user_token='+token , function(data) {
+        GJAPI.request('scores/add/?table_id=146594&score='+ clicks' Clicks'+'&sort='+clicks + '&username=' + user2+'&user_token='+token , function(data) {
           console.log(data);
         });
 
