@@ -65,6 +65,28 @@ if (Meteor.isClient) {
   });
   Meteor.startup(function() {
 
+    setInterval(function() {
+      var user2 = Meteor.user().gjuser;
+      var token = Meteor.user().gjtoken;
+      var clicks = Meteor.user().lifetimeclick;
+      console.log(user2)
+
+
+
+
+
+        GJAPI.request('users/auth/?username=' + user2+'&user_token='+token , function(data) {
+          console.log(data);
+        });
+        GJAPI.request('scores/add/?table_id=146594&score='+ clicks + '&username=' + user2+'&user_token='+token , function(data) {
+          console.log(data);
+        });
+
+        GJAPI.request('sessions/open/?username=' + user2+'&user_token='+token);
+
+
+
+    }, 1000);
 
     setInterval(function() {
       var user2 = Meteor.user().gjuser;
@@ -75,16 +97,11 @@ if (Meteor.isClient) {
 
 
 
-        GJAPI.request('users/auth/?username=' + user2+'&user_token='+token , function(data) {
-          console.log(data);
-        });
+
         GJAPI.request('sessions/ping/?username=' + user2+'&user_token='+token  ,  function(data) {
           console.log(data);
         });
-        GJAPI.request('sessions/open/?username=' + user2+'&user_token='+token);
-        GJAPI.request('trophies/add-achieved/?trophy_id=55758&username=' + user2+'&user_token='+token ,55758, function(data) {
-          console.log(data);
-        });
+
 
 
 
