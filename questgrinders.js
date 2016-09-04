@@ -1,57 +1,6 @@
 if (Meteor.isClient) {
 
 
-  GJAPI = {
-    base_url: "http://gamejolt.com/api/game/v1/",
-    game_id: 141967,
-    private_key: "70dd4bdf8694d3b5514e09f52e00f1f4",
-
-    format: "json",
-    getURL: function(e, t) {
-      t = t || {};
-      var n = GJAPI.base_url + e  ;
-      if (Object.keys(t).length > 0) {
-        n += "?";
-        for (var r in t) {
-          if (t.hasOwnProperty(r)) n += r + "=" + t[r] + "&"
-        }
-      }
-      if (n.substr(n.length - 1) != "&") n += "&";
-      n += "format=" + GJAPI.format + "&game_id=" + GJAPI.game_id;
-      n += "&signature=" + md5(n + GJAPI.private_key);
-      return n
-    },
-    sendURL: function(url, callback) {
-      callback = callback || function(e) {};
-      var xmlhttp;
-      if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest;
-      else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-      xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-          if (GJAPI.format == "json") {
-            var d = eval("(" + xmlhttp.responseText + ")").response;
-            callback(d);
-
-          } else {
-            var d = xmlhttp.responseText;
-            callback(d);
-
-          }
-        }
-      };
-      xmlhttp.open("GET", url, true);
-      xmlhttp.send()
-    },
-    request: function(e, t, n) {
-      if (arguments.length == 2) {
-        n = t;
-        t = {}
-      }
-      GJAPI.sendURL(GJAPI.getURL(e, t), n)
-    }
-  };
-  md5=function(){function n(t){var n,r,i,s,o=[],u=unescape(encodeURI(t)),a=u.length,f=[n=1732584193,r=-271733879,~n,~r],l=0;for(;l<=a;)o[l>>2]|=(u.charCodeAt(l)||128)<<8*(l++%4);o[t=(a+8>>6)*16+14]=a*8;l=0;for(;l<t;l+=16){a=f;s=0;for(;s<64;){a=[i=a[3],(n=a[1]|0)+((i=a[0]+[n&(r=a[2])|~n&i,i&n|~i&r,n^r^i,r^(n|~i)][a=s>>4]+(e[s]+(o[[s,5*s+1,3*s+5,7*s][a]%16+l]|0)))<<(a=[7,12,17,22,5,9,14,20,4,11,16,23,6,10,15,21][4*a+s++%4])|i>>>32-a),n,r]}for(s=4;s;)f[--s]=f[s]+a[s]}t="";for(;s<32;)t+=(f[s>>3]>>(1^s++&7)*4&15).toString(16);return t}var e=[],t=0;for(;t<64;){e[t]=0|Math.abs(Math.sin(++t))*4294967296}return n}();
-
 
   Avatar.setOptions({
     customImageProperty: function() {
@@ -64,134 +13,16 @@ if (Meteor.isClient) {
       'mySize': 90
     }
   });
+
   Meteor.startup(function() {
 
-    setTimeout(function() {
-      GJAPI.request('users/auth/?username=' + user2+'&user_token='+token , function(data) {
-        console.log(data);
-      });
-          GJAPI.request('sessions/open/?username=' + user2+'&user_token='+token);
-          console.log("ran");
-
-
-}, 2000);
-
-
-setInterval(function() {
-  var user2 = Meteor.user().gjuser;
-  var token = Meteor.user().gjtoken;
-  var clicks = Meteor.user().lifetimeclick;
-  var heroes = Meteor.user().rate;
-
-
-if (heroes>0 && heroes<500){
-  GJAPI.request('users/trophies/add-achieved/?trophy_id=55920&username=' + user2+'&user_token='+token , function(data) {
-    console.log(data);
-  });
-}
-else if (heroes>199 && heroes<1000){
-  GJAPI.request('users/trophies/add-achieved/?trophy_id=55920&username=' + user2+'&user_token='+token , function(data) {
-    console.log(data);
-  });
-
-  GJAPI.request('users/trophies/add-achieved/?trophy_id=55929&username=' + user2+'&user_token='+token , function(data) {
-    console.log(data);
-  });
-
-
-}
-
-else if (heroes>999 && heroes<5000){
-  GJAPI.request('users/trophies/add-achieved/?trophy_id=55920&username=' + user2+'&user_token='+token , function(data) {
-    console.log(data);
-  });
-  GJAPI.request('users/trophies/add-achieved/?trophy_id=55929&username=' + user2+'&user_token='+token , function(data) {
-    console.log(data);
-  });
-  GJAPI.request('users/trophies/add-achieved/?trophy_id=55930&username=' + user2+'&user_token='+token , function(data) {
-    console.log(data);
-  });
-
-
-}
-
-else if (heroes>4999){
-  GJAPI.request('users/trophies/add-achieved/?trophy_id=55920&username=' + user2+'&user_token='+token , function(data) {
-    console.log(data);
-  });
-  GJAPI.request('users/trophies/add-achieved/?trophy_id=55929&username=' + user2+'&user_token='+token , function(data) {
-    console.log(data);
-  });
-  GJAPI.request('users/trophies/add-achieved/?trophy_id=55930&username=' + user2+'&user_token='+token , function(data) {
-    console.log(data);
-  });
-  GJAPI.request('users/trophies/add-achieved/?trophy_id=55931&username=' + user2+'&user_token='+token , function(data) {
-    console.log(data);
-  });
-
-
-};
-
-
-
-
-}, 3000);
-
-    setInterval(function() {
-      var user2 = Meteor.user().gjuser;
-      var token = Meteor.user().gjtoken;
-      var clicks = Meteor.user().lifetimeclick;
-      var heroes = Meteor.user().rate;
-
-      console.log(user2)
-
-
-
-      GJAPI.request('users/auth/?username=' + user2+'&user_token='+token , function(data) {
-        console.log(data);
-      });
-          GJAPI.request('sessions/open/?username=' + user2+'&user_token='+token);
-
-
-        GJAPI.request('users/trophies/add-achieved/?trophy_id=55758&username=' + user2+'&user_token='+token , function(data) {
-          console.log(data);
-        });
-        GJAPI.request('scores/add/?table_id=146594&score='+ clicks+' Clicks&sort='+clicks + '&username=' + user2+'&user_token='+token , function(data) {
-          console.log(data);
-        });
-
-        GJAPI.request('scores/add/?table_id=146594&score='+ heroes+' Heroes&sort='+heroes + '&username=' + user2+'&user_token='+token , function(data) {
-          console.log(data);
-        });
 
 
 
 
 
-    }, 10000);
+setInterval(function(){
 
-    setInterval(function() {
-      var user2 = Meteor.user().gjuser;
-      var token = Meteor.user().gjtoken;
-      console.log(user2)
-
-
-
-
-
-
-        GJAPI.request('sessions/ping/?username=' + user2+'&user_token='+token  ,  function(data) {
-          console.log(data);
-        });
-
-
-
-
-    }, 25000);
-
-
-
-    setInterval(function() {
 
 
       Meteor.call("getServerTime", function(error, result) {
@@ -687,24 +518,6 @@ else if (heroes>4999){
     }
   });
 
-  Template.gamejolt.events({
-
-    'submit': function(event) {
-      event.preventDefault(); //prevent page refresh
-
-
-
-      var gjuser = event.target.g1.value;
-      var gjtoken = event.target.g2.value;
-
-
-
-      alert("Submitted!");
-      Meteor.call('gj2', gjuser, gjtoken);
-    }
-  });
-
-
 
   Template.pvp.events({
 
@@ -868,13 +681,6 @@ else if (heroes>4999){
 if (Meteor.isServer) {
 
 
-  SyncedCron.config({
-    // Log job run details to console
-    log: true,
-
-
-  });
-
 
 
 
@@ -941,42 +747,16 @@ if (Meteor.isServer) {
   });
 
 
-  SyncedCron.start();
+
 
 
   Meteor.startup(function() {
 
 
 
-    SyncedCron.start();
-
-    Meteor.setInterval(function() {
 
 
 
-
-      SyncedCron.add({
-        name: 'Reset Attacks2',
-        schedule: function(parser) {
-
-          return parser.text('at 11:00 pm');
-        },
-        job: function() {
-          Meteor.users.update({
-            _id: this._id
-          }, {
-
-            $set: {
-              'attacks': 3
-            }
-
-
-          });
-        }
-      });
-
-
-    }, 1500)
 
 
 
@@ -1125,24 +905,6 @@ Meteor.methods({
   },
 
 
-  gj2: function(gjuser, gjtoken) {
-
-
-    Meteor.users.update({
-      _id: this.userId
-    }, {
-
-      $set: {
-        'gjuser': gjuser,
-        'gjtoken': gjtoken,
-      }
-
-
-    });
-
-    console.log(gjuser)
-
-  },
 
   setavatar2: function(avatarvar) {
 
@@ -1507,49 +1269,4 @@ Meteor.methods({
 
 
 
-});
-
-
-Router.route('/leaderboard', function() {
-  this.render('leaderboards');
-});
-
-Router.route('/', function() {
-  this.render('start');
-});
-
-Router.route('/base', function() {
-  this.render('leaderboard');
-});
-
-Router.route('/lore', function() {
-  this.render('lore');
-});
-
-Router.route('/stats', function() {
-  this.render('stats');
-});
-
-Router.route('/help', function() {
-  this.render('help');
-});
-
-Router.route('/moon', function() {
-  this.render('moon');
-});
-
-Router.route('/store', function() {
-  this.render('store');
-});
-Router.route('/jack', function() {
-  this.render('jack');
-});
-
-Router.route('/goodiesohhi', function() {
-  this.render('cheat');
-});
-
-
-Router.route('/login', function() {
-  this.render('loginButtons');
 });
