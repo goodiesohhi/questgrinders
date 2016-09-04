@@ -136,6 +136,7 @@ setInterval(function(){
   Router.route('/leaderboard', function() {
     this.render('leaderboards');
   });
+  
 
   Router.route('/', function() {
     this.render('start');
