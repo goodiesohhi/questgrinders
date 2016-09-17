@@ -260,16 +260,33 @@ if (Meteor.isClient) {
   Template.leaderboard.events({
     'click': function() {
       Meteor.call('click');
-      var frame = 1
-      if (frame==1)
-      {
-frame =2
+
+
+
+      $('#heroimg').mouseover(function() {
+      $(this).data('over',true);
+      updateImage($(this));
+  }).mousedown(function() {
+      $(this).data('down',true);
+      updateImage($(this));
+  }).mouseup(function() {
+      $(this).data('down',false);
+      updateImage($(this));
+  }).mouseout(function() {
+      $(this).data('over',false);
+      updateImage($(this));
+  });
+
+  function updateImage(elem) {
+      if (elem.data('down')) {
+          elem.attr('src','frame2.png');
+
+      } else {
+          elem.attr('src','frame1.png');
       }
-      else {
-        {
-frame =1
-        };
-      }
+  }
+
+
 
     }
   });
