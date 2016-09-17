@@ -260,6 +260,16 @@ if (Meteor.isClient) {
   Template.leaderboard.events({
     'click': function() {
       Meteor.call('click');
+      var frame = 1
+      if (frame==1)
+      {
+frame =2
+      }
+      else {
+        {
+frame =1
+        };
+      }
 
     }
   });
