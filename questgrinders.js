@@ -258,7 +258,7 @@ if (Meteor.isClient) {
 
 
   Template.leaderboard.events({
-    'click input.code': function() {
+    'click': function() {
       Meteor.call('click');
 
     }
@@ -348,7 +348,7 @@ if (Meteor.isClient) {
 
   Template.leaderboard.rendered = function() {
     if (!this.rendered) {
-      $('body').css('background-image', 'url(/background.png)');
+      $('body').css('background-image', 'url(/background.jpg)');
       this.rendered = true;
     }
   };
@@ -561,11 +561,8 @@ if (Meteor.isClient) {
   });
 
 
-  Template.leaderboards.events({
-    'click input.code': function() {
-      Meteor.call('click');
-    }
-  });
+
+
 
   Template.leaderboards.events({
     'click input.buy': function(event) {
