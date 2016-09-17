@@ -1,17 +1,29 @@
   /* CSS declarations go here */
-  moon {
+
+
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0 ; }
+}
+
+moon {
     background-image: url("/border.png");
   }
 
-  a {
+
+ a {
     color: purple;
   }
-  body {
-    background-image: url("/background.png");
-    background-size: 1350px 1050px;
-    background-repeat: no-repeat;
+
+
+body {
+    background-image: url("/background.jpg");
+ background-position: 0px 0px;
+
+
+	animation: animatedBackground 40s linear infinite;
     padding-top: 40px;
-    background-size:cover
+  
 
   }
   body {

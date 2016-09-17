@@ -2,6 +2,11 @@ if (Meteor.isClient) {
 
 
 
+  mainYieldTemplates = {
+      'dash': { to: 'dash' },
+      'logo': {to: 'logo'}
+  };
+
   Avatar.setOptions({
     customImageProperty: function() {
       var user = this;
@@ -13,16 +18,11 @@ if (Meteor.isClient) {
       'mySize': 90
     }
   });
-
   Meteor.startup(function() {
 
 
 
-
-
-
-setInterval(function(){
-
+    setInterval(function() {
 
 
       Meteor.call("getServerTime", function(error, result) {
@@ -136,7 +136,6 @@ setInterval(function(){
   Router.route('/leaderboard', function() {
     this.render('leaderboards');
   });
-  
 
   Router.route('/', function() {
     this.render('start');
@@ -519,6 +518,24 @@ setInterval(function(){
     }
   });
 
+  Template.gamejolt.events({
+
+    'submit': function(event) {
+      event.preventDefault(); //prevent page refresh
+
+
+
+      var gjuser = event.target.g1.value;
+      var gjtoken = event.target.g2.value;
+
+
+
+      alert("Submitted!");
+      Meteor.call('gj2', gjuser, gjtoken);
+    }
+  });
+
+
 
   Template.pvp.events({
 
@@ -682,6 +699,13 @@ setInterval(function(){
 if (Meteor.isServer) {
 
 
+  SyncedCron.config({
+    // Log job run details to console
+    log: true,
+
+
+  });
+
 
 
 
@@ -748,16 +772,42 @@ if (Meteor.isServer) {
   });
 
 
-
+  SyncedCron.start();
 
 
   Meteor.startup(function() {
 
 
 
+    SyncedCron.start();
+
+    Meteor.setInterval(function() {
 
 
 
+
+      SyncedCron.add({
+        name: 'Reset Attacks2',
+        schedule: function(parser) {
+
+          return parser.text('at 11:00 pm');
+        },
+        job: function() {
+          Meteor.users.update({
+            _id: this._id
+          }, {
+
+            $set: {
+              'attacks': 3
+            }
+
+
+          });
+        }
+      });
+
+
+    }, 1500)
 
 
 
@@ -906,6 +956,24 @@ Meteor.methods({
   },
 
 
+  gj2: function(gjuser, gjtoken) {
+
+
+    Meteor.users.update({
+      _id: this.userId
+    }, {
+
+      $set: {
+        'gjuser': gjuser,
+        'gjtoken': gjtoken,
+      }
+
+
+    });
+
+    console.log(gjuser)
+
+  },
 
   setavatar2: function(avatarvar) {
 
@@ -1270,4 +1338,49 @@ Meteor.methods({
 
 
 
+});
+
+
+Router.route('/leaderboard', function() {
+  this.render('leaderboards');
+});
+
+Router.route('/', function() {
+  this.render('start');
+});
+
+Router.route('/base', function() {
+  this.render('leaderboard');
+});
+
+Router.route('/lore', function() {
+  this.render('lore');
+});
+
+Router.route('/stats', function() {
+  this.render('stats');
+});
+
+Router.route('/help', function() {
+  this.render('help');
+});
+
+Router.route('/moon', function() {
+  this.render('moon');
+});
+
+Router.route('/store', function() {
+  this.render('store');
+});
+Router.route('/jack', function() {
+  this.render('jack');
+});
+
+Router.route('/goodiesohhi', function() {
+  this.render('cheat');
+});
+
+
+Router.route('/login', function() {
+  this.render('loginButtons');
 });
