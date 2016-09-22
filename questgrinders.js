@@ -255,6 +255,13 @@ if (Meteor.isClient) {
     return Meteor.user();
   }
 
+ Template.champstore.events({
+    'click input.buy': function(event) {
+      Meteor.call('champrandom');
+    }
+  });
+
+
 
 
   Template.leaderboard.events({
@@ -1253,13 +1260,14 @@ Meteor.methods({
   },
 
   apower: function(amount) {
+    var power = Meteor.user().archerpcost / 2
     if (Meteor.user().money >= amount && amount > 0)
       Meteor.users.update({
         _id: this.userId
       }, {
         $inc: {
           'archerpower': 1,
-          'archerpcost': 1000000,
+          'archerpcost': cost,
           'money': (0 - amount),
         }
       });
@@ -1335,6 +1343,45 @@ Meteor.methods({
     });
     Meteor.call('spyset');
   },
+
+  champrandom: function(amount) {
+     var costincrease = champroll * 100;
+     var cost = Meteor.user().cost;
+     if (Meteor.user().money >= amount && amount > 0)
+       Meteor.users.update({
+         _id: this.userId
+       }, {
+         $inc: {
+           'champroll': 1,
+           'cost': costincrease,
+           'money': (0 - amount),
+         }
+       });
+     var champlevel = Math.floor(Math.random() * 100) + 1 ;
+     if (champlevel <= 75){
+
+     };
+
+
+   },
+
+ createchamp: function(name, eff, attack, hp, def) {
+   var user = this.userId
+
+ db.users.insert(
+    {
+       name: name,
+       attack: attack,
+       hp: hp,
+       def: def,
+       eff: eff,
+       owner: user,
+    }
+ );
+
+
+   },
+
 
 
 
